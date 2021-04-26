@@ -4,7 +4,7 @@ from coreference import *
 honorific_words = ['Dr.', 'Prof.', 'Mr.', 'Ms.', 'Msr.', 'Jr.', 'Sr.', 'Lord']
 person_verbs_ = ['said', 'sniffed',  'met', 'greet', 'walked', 'respond', 'talk', 'think', 'hear', 'go', 'wait', 'pause', 'write', 'smile', 'answer', 'wonder', 'reply', 'read', 'sit', 'muttered', 'fumble', 'ask', 'sigh']
 person_verbs = [lemmatization(w, 'v') for w in person_verbs_]
-location_name = ['planet', 'kingdom', 'world', 'region', 'location']
+location_name = ['planet', 'kingdom', 'world', 'region', 'location', 'republic']
 location_name_pattern = [{'POS': 'NOUN'}, {'LOWER': 'of'}, {'POS': 'PROPN'}]
 travel_to_verbs_ = ['go', 'travel', 'move', 'exiled']
 travel_to_verbs = [lemmatization(w, 'v') for w in travel_to_verbs_]
@@ -33,6 +33,9 @@ def preprocess(text):
 
 
 def entity_identification(parsed_list):
+    """
+    :return: chronological sequence of unified character and location occurrences
+    """
     # 3 - NER
     main_characters_ = []
     locations_ = []
@@ -47,18 +50,16 @@ def entity_identification(parsed_list):
                     else:
                         main_characters_.append(token.text)
                 if detect_location(doc, token):
-                    print(token)
                     full_name = [x for x in doc.ents if str(token) in str(x) and len(x) > 1]
                     if len(full_name) > 0:
                         locations_.append(full_name[0])
                     else:
                         locations_.append(token.text)
 
-    locations_ = [x for x in locations_ if str(x) not in main_characters_]
+    # locations_ = [x for x in locations_ if str(x) not in main_characters_]
     people_list = Counter(main_characters_).most_common(180)
-    location_list = Counter(main_characters_).most_common(150)
-    # people_list = [x for x in people_list if x[1] > 2]
-    dict = pd.DataFrame(people_list, columns=['Name', 'Count'])
+    location_list = Counter(locations_).most_common(150)
+    location_list = [x for x in location_list if x[1] > 1]
 
     return people_list, dict
 
