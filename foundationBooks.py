@@ -1,4 +1,38 @@
-# https://asimov.fandom.com/wiki/Foundation_trilogy
+"""
+https://asimov.fandom.com/wiki/Foundation_trilogy
+FOUNDATION
+1 The Psychohistorians
+- planets: Synnax, Trantor, Terminus
+- People: Gaal Dornick, Hari Seldon, Galactic Empire, Foundation
+2 The Encyclopedists
+- planets: Anacreon, Terminus
+- people: Anselm Haut Rodric, Salvor Hardin,The Mayor, (Dr. Bor Alurin),
+3 The Mayors
+- planets: Terminus, Four Kingdoms (Anacreon, Smyrno, Konom and Daribow)
+- people: Salvor Hardin, Prince Regent Wienis
+4 The Traders
+- planets: Askone, Terminus
+- people: Limmar Ponyets, Eskel Gorov, The Grand Master, Pherl
+5 The Merchant Princes
+- planets: Republic of Korell, Terminus
+- people: Hober Mallow, Commdor Asper Argo, Commdora Licia Argo, Viceroy, Jord Parma
+
+FOUNDATION AND EMPIRE
+Bel Riose
+- planets: Trantor
+- people: Bel Riose, Ducem Barr, Onum Barr (father), Lathan Devers, Cleon II, Ammel Brodrig
+The Mule
+- planets: Trantor, Terminus, Great Library
+- people: Indbur III, Mule, Magnifico Giganticus (Mule), Toran Darell, Bayta Darell, Ebling Mis, Second Foundation
+
+SECOND FOUNDATION
+Search by the Mule
+- planets: Tazenda, Rossem
+- people: Bayta Darell, the Mule, Second Foundation, Han Pritcher, Foundation, Bail Channis, The First Speaker
+Search by the Foundation
+- planets: Kalgan, Terminus, Trantor
+- people: First Foundation, Second Foundation, Toran Darell, Pelleas Anthor, Homir Munn, Elvett Semic, Jole Turbor, Arcadia Darell (Arkady), Lord Stettin, Callia, Preem Palver
+"""
 
 FoundationTrilogy = """PART I 
 

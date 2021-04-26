@@ -130,11 +130,3 @@ def coreference(parsed):
     if len(cluster) > 0:
         cluster = cluster[0].mentions
     return cluster
-
-
-# Proper Name Identification Regular Expressions:
-honorific_words = ['Dr.', 'Prof.', 'Mr.', 'Ms.', 'Msr.', 'Jr.', 'Sr.', 'Lord']
-# capitalized letter followed by optional period
-person_verbs_ = ['said', 'met', 'walked', 'respond', 'talk', 'think', 'hear', 'go', 'wait', 'pause', 'write', 'smile', 'answer', 'wonder', 'reply', 'read', 'sit']
-person_verbs = [lemmatization(w, 'v') for w in person_verbs_]
-location_nouns = ['planet', 'kingdom']

@@ -26,6 +26,7 @@ https://arxiv.org/pdf/1907.02704.pdf
 from entity_extraction import *
 
 if __name__ == '__main__':
+    test = "I was on Synnax"
     parsed_list = preprocess(FoundationTrilogy)
     people_list, people_list_df = entity_identification(parsed_list)
     print(people_list_df)
