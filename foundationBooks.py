@@ -1,36 +1,37 @@
+Target_locations = ['Synnax', 'Trantor', 'Terminus', 'Anacreon', 'Smyrno', 'Askone', 'Kalgan', 'Great Library', 'Tazenda', 'Rossem', 'Korell']
+Target_people = ['Gaal Dornick', 'Hari Seldon', 'Galactic Empire', 'Foundation', 'Anselm Haut Rodric', 'Salvor Hardin', 'Salvor Hardin', 'Prince Regent Wienis', 'Limmar Ponyets', 'Eskel Gorov', 'The Grand Master', 'Pherl', 'Republic of Korell', 'Hober Mallow', 'Commdor Asper Argo', 'Commdora Licia Argo', 'Viceroy', 'Jord Parma', 'Trantor', 'Bel Riose', 'Ducem Barr', 'Onum Barr (father)', 'Lathan Devers', 'Cleon II', 'Ammel Brodrig', 'Indbur III', 'Mule', 'Magnifico Giganticus (Mule)', 'Toran Darell', 'Bayta Darell', 'Ebling Mis', 'Second Foundation', 'Bayta Darell', 'the Mule', 'Second Foundation', 'Han Pritcher', 'Foundation', 'Bail Channis', 'The First Speaker', 'First Foundation', 'Second Foundation', 'Toran Darell', 'Pelleas Anthor', 'Homir Munn', 'Elvett Semic', 'Jole Turbor', 'Arcadia Darell (Arkady)', 'Lord Stettin', 'Callia', 'Preem Palver']
 """
 https://asimov.fandom.com/wiki/Foundation_trilogy
 FOUNDATION
 1 The Psychohistorians
-- planets: Synnax, Trantor, Terminus
+- locations: Synnax, Trantor, Terminus
 - People: Gaal Dornick, Hari Seldon, Galactic Empire, Foundation
 2 The Encyclopedists
-- planets: Anacreon, Terminus
+- locations: Anacreon, Terminus
 - people: Anselm Haut Rodric, Salvor Hardin,The Mayor, (Dr. Bor Alurin),
 3 The Mayors
-- planets: Terminus, Four Kingdoms (Anacreon, Smyrno, Konom and Daribow)
+- locations: Terminus, Four Kingdoms (Anacreon, Smyrno, Konom and Daribow)
 - people: Salvor Hardin, Prince Regent Wienis
 4 The Traders
-- planets: Askone, Terminus
+- locations: Askone, Terminus
 - people: Limmar Ponyets, Eskel Gorov, The Grand Master, Pherl
 5 The Merchant Princes
-- planets: Republic of Korell, Terminus
+- locations: Republic of Korell, Terminus
 - people: Hober Mallow, Commdor Asper Argo, Commdora Licia Argo, Viceroy, Jord Parma
 
 FOUNDATION AND EMPIRE
-Bel Riose
-- planets: Trantor
+- locations: Trantor
 - people: Bel Riose, Ducem Barr, Onum Barr (father), Lathan Devers, Cleon II, Ammel Brodrig
 The Mule
-- planets: Trantor, Terminus, Great Library
+- locations: Trantor, Terminus, Great Library
 - people: Indbur III, Mule, Magnifico Giganticus (Mule), Toran Darell, Bayta Darell, Ebling Mis, Second Foundation
 
 SECOND FOUNDATION
 Search by the Mule
-- planets: Tazenda, Rossem
+- locations: Tazenda, Rossem
 - people: Bayta Darell, the Mule, Second Foundation, Han Pritcher, Foundation, Bail Channis, The First Speaker
 Search by the Foundation
-- planets: Kalgan, Terminus, Trantor
+- locations: Kalgan, Terminus, Trantor
 - people: First Foundation, Second Foundation, Toran Darell, Pelleas Anthor, Homir Munn, Elvett Semic, Jole Turbor, Arcadia Darell (Arkady), Lord Stettin, Callia, Preem Palver
 """
 
@@ -21419,7 +21420,7 @@ here? What do you th ... think I'm supposed to do with you? What's going on here
 He might have asked questions indefinitely, but Arcadia interrupted sweetly, "I just wanted to 
 come along, Uncle Homir." 
 
-"Why?\'m not going anywhere?" 
+"Why? I'm not going anywhere?" 
 
 "You're going to Kalgan for information about the Second Foundation." 
 

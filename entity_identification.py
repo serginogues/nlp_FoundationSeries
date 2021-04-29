@@ -1,3 +1,10 @@
+"""
+Two steps:
+a) Detection of Character Occurrences
+b) Unification of Character Occurrences (alias resolution)
+ - grouping proper nouns referring to the same character
+"""
+
 from utils import *
 from coreference import *
 
@@ -11,25 +18,6 @@ travel_to_verbs = [lemmatization(w, 'v') for w in travel_to_verbs_]
 travel_to_pattern = [{'POS': 'VERB'}, {'LOWER': 'to'}, {'POS': 'PROPN'}]
 be_in_pattern = [{'POS': 'AUX'}, {'LOWER': 'in'}, {'POS': 'PROPN'}]
 be_on_pattern = [{'POS': 'AUX'}, {'LOWER': 'on'}, {'POS': 'PROPN'}]
-
-
-def preprocess(text):
-    # 0 - preprocessing
-    text = re.sub('\n ', '', str(text))  # removing new line characters
-    text = re.sub('\n', ' ', str(text))
-
-    # 1 - original sentence
-    sentences = sent_tokenize(text)
-    print("Number of sentences: ", len(sentences))
-    sentences = [re.sub(' +', ' ', sent) for sent in sentences]
-
-    # 2 - Part of speech Tagging + 3 - shallow parsing
-    parsed_list = []
-    for i in tqdm(range(len(sentences))):  # len(sentences)
-        parsed_list.append(nlp(sentences[i]))
-    print("Number of parsed sentences: ", len(parsed_list))
-
-    return parsed_list
 
 
 def entity_identification(parsed_list):
@@ -49,24 +37,25 @@ def entity_identification(parsed_list):
                         main_characters_.append(full_name[0])
                     else:
                         main_characters_.append(token.text)
-                if detect_location(doc, token):
+                    print("Character -", str(token), "- found in: ", str(doc))
+                elif detect_location(doc, token):
                     full_name = [x for x in doc.ents if str(token) in str(x) and len(x) > 1]
                     if len(full_name) > 0:
                         locations_.append(full_name[0])
                     else:
                         locations_.append(token.text)
 
-    # locations_ = [x for x in locations_ if str(x) not in main_characters_]
-    people_list = Counter(main_characters_).most_common(180)
-    location_list = Counter(locations_).most_common(150)
-    location_list = [x for x in location_list if x[1] > 1]
+    people_tuple_list = Counter(main_characters_).most_common(180)
+    location_tuple_list = Counter(locations_).most_common(150)
+    location_tuple_list = [x for x in location_tuple_list if x[1] > 1]
 
-    return people_list, dict
+
+    return people_tuple_list, location_tuple_list
 
 
 def detect_main_character(doc, token):
     """
-    :return: True if @token is person
+    :return: True if @token has person behaviour
     """
     if str(token) not in honorific_words:
         if token.dep_ == "nsubj" and token.head.pos_ == 'VERB' and token.head.lemma_ in person_verbs:
@@ -83,6 +72,7 @@ def detect_location(doc, token):
     """
     1 - if sentence has PERSON, and within its coreferences in the sentence there is a location_noun e.g. 'planet'
     2 - if the sentence is of the form "VERB + to + PERSON" -> Person is a candidate of location
+    :return: True if @token has location behaviour
     """
     matcher.add('location', [location_name_pattern])
     m = matcher(doc)
@@ -112,3 +102,25 @@ def detect_location(doc, token):
         span = doc[start: end]
         if len([x for x in nlp(str(span)) if x.pos_ == "VERB" or "AUX" and x.lemma_ == 'be']) and str(token) in str(span):
             return True
+
+
+def preprocess(text):
+    """
+    Remove unwanted characters + split by sentences + sentence tokenization + lemmatization + POS tagging
+    """
+    # 0 - preprocessing
+    text = re.sub('\n ', '', str(text))  # removing new line characters
+    text = re.sub('\n', ' ', str(text))
+
+    # 1 - original sentence
+    sentences = sent_tokenize(text)
+    print("Number of sentences: ", len(sentences))
+    sentences = [re.sub(' +', ' ', sent) for sent in sentences]
+
+    # 2 - Part of speech Tagging + 3 - shallow parsing
+    parsed_list = []
+    for i in tqdm(range(len(sentences))):  # len(sentences)
+        parsed_list.append(nlp(sentences[i]))
+    print("Number of parsed sentences: ", len(parsed_list))
+
+    return parsed_list

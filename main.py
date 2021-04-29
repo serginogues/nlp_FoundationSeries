@@ -23,7 +23,7 @@ https://arxiv.org/pdf/1907.02704.pdf
         a partial integration, and producing a dynamic network.
 """
 
-from entity_extraction import *
+from entity_identification import *
 
 if __name__ == '__main__':
     test = "I was on Synnax"
