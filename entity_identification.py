@@ -30,25 +30,25 @@ def entity_identification(parsed_list):
     for i in tqdm(range(len(parsed_list))):
         doc = parsed_list[i]
         for token in doc:
-            if token.pos_ == 'PROPN':
+            if token.pos_ == 'PROPN' and str(token) not in honorific_words:
                 if detect_main_character(doc, token):
                     full_name = [x for x in doc.ents if str(token) in str(x) and len(x) > 1]
                     if len(full_name) > 0:
                         main_characters_.append(full_name[0])
                     else:
                         main_characters_.append(token.text)
-                    print("Character -", str(token), "- found in: ", str(doc))
+                    print("Person -", str(token), "- found in: ", str(doc))
                 elif detect_location(doc, token):
                     full_name = [x for x in doc.ents if str(token) in str(x) and len(x) > 1]
                     if len(full_name) > 0:
                         locations_.append(full_name[0])
                     else:
                         locations_.append(token.text)
+                    print("Location -", str(token), "- found in: ", str(doc))
 
     people_tuple_list = Counter(main_characters_).most_common(180)
+    people_tuple_list = [x for x in people_tuple_list if x[1] > 1]
     location_tuple_list = Counter(locations_).most_common(150)
-    location_tuple_list = [x for x in location_tuple_list if x[1] > 1]
-
 
     return people_tuple_list, location_tuple_list
 
@@ -57,15 +57,13 @@ def detect_main_character(doc, token):
     """
     :return: True if @token has person behaviour
     """
-    if str(token) not in honorific_words:
-        if token.dep_ == "nsubj" and token.head.pos_ == 'VERB' and token.head.lemma_ in person_verbs:
-            return True
-        else:
-            for i, word in enumerate(doc):
-                if str(word) in honorific_words and i < len(doc)-1 and doc[i+1] == token:
-                    return True
+    if token.dep_ == "nsubj" and token.head.pos_ == 'VERB' and token.head.lemma_ in person_verbs:
+        return True
     else:
-        return False
+        for i, word in enumerate(doc):
+            if str(word) in honorific_words and i < len(doc)-1 and doc[i+1] == token:
+                return True
+    return False
 
 
 def detect_location(doc, token):
@@ -89,19 +87,12 @@ def detect_location(doc, token):
         if len([x for x in nlp(str(span)) if x.pos_ == "VERB" and str(x) in travel_to_verbs]) and str(token) in str(span):
             return True
 
-    matcher.add('location', [be_in_pattern])
+    """matcher.add('location', [be_in_pattern])
     m = matcher(doc)
     for match_id, start, end in m:
         span = doc[start: end]
         if len([x for x in nlp(str(span)) if (x.pos_ == "VERB" or x.pos_ == "AUX") and x.lemma_ == 'be']) and str(token) in str(span):
-            return True
-
-    matcher.add('location', [be_on_pattern])
-    m = matcher(doc)
-    for match_id, start, end in m:
-        span = doc[start: end]
-        if len([x for x in nlp(str(span)) if x.pos_ == "VERB" or "AUX" and x.lemma_ == 'be']) and str(token) in str(span):
-            return True
+            return True"""
 
 
 def preprocess(text):
@@ -109,7 +100,9 @@ def preprocess(text):
     Remove unwanted characters + split by sentences + sentence tokenization + lemmatization + POS tagging
     """
     # 0 - preprocessing
-    text = re.sub('\n ', '', str(text))  # removing new line characters
+    text = re.sub(', ', ' ', str(text))  # removing new line characters
+    text = re.sub(',', ' ', str(text))
+    text = re.sub('\n ', '', str(text))
     text = re.sub('\n', ' ', str(text))
 
     # 1 - original sentence

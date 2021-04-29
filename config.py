@@ -1,4 +1,4 @@
-from foundationBooks import FoundationTrilogy
+from foundationBooks import FoundationTrilogy, Target_people, Target_locations
 import spacy
 import numpy as np
 from spacy.matcher import Matcher

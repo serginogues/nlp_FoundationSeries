@@ -130,3 +130,21 @@ def coreference(parsed):
     if len(cluster) > 0:
         cluster = cluster[0].mentions
     return cluster
+
+
+def check_results(people_tuple_list, location_tuple_list):
+    n = 0
+    for name in Target_people:
+        if len([x for x in people_tuple_list if str(x[0]) in name]) > 0:
+            n += 1
+        else:
+            print("Person -", name, "- not found")
+    print(str((n/len(people_tuple_list))*100), "% of people found")
+
+    n = 0
+    for name in Target_locations:
+        if len([x for x in location_tuple_list if str(x[0]) in name]) > 0:
+            n += 1
+        else:
+            print("Location -", name, "- not found")
+    print(str((n/len(Target_locations))*100), "% of locations found")
