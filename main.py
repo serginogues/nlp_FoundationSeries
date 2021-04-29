@@ -25,9 +25,6 @@ https://arxiv.org/pdf/1907.02704.pdf
 
 from entity_identification import *
 
-Test_locations = [('Trantor', 7), ('Synnax', 2), ('Kalgan', 2), ('Arcturus', 1), ('Ahctuwus', 1), ('Anacreon', 1), ('Askone', 1), ('Radole', 1), ('Dellcass', 1), ('Haven', 1), ('Gentri', 1), ('Rossem', 1), ('Space under Foundation', 1)]
-Test_people = [('Darell', 78), ('Seldon', 45), ('Barr', 44), ('Bayta', 41), ('Mallow', 40), ('Fie', 31), ('Hardin', 29), ('Toran', 28), ('Gaal', 26), ('Anthor', 22), ('Stettin', 22), ('Mis', 21), ('Dorwin', 20), ('Channis', 19), ('Munn', 18), ('Pritcher', 15), ('Mule', 15), ('Speaker', 15), ('Brodrig', 14), ('Arcadia', 14), ('Pirenne', 12), ('Sutt', 11), ('Pappa', 11), ('Randu', 10), ('Magnifico', 9), ('Indbur', 9), ('Turbor', 9), ('Verisof', 8), ('Wienis', 7), ('Ponyets', 7), ('Jael', 7), ('Forell', 7), ('Sermak', 6), ('Lepold', 6), ('Gorov', 6), ('Mayor', 5), ('Fara', 5), ('Master', 5), ('Commdor', 5), ('Riose', 5), ('Fran', 5), ('Kleise', 5), ('Mamma', 5), ('Lee', 4), ('Bort', 4), ('Pherl', 4), ('Chen', 3), ('Walto', 3), ('Aporat', 3), ('Fox', 3), ('Elders', 3), ('Student', 3), ('Semic', 3), ('Avakim', 2), ('Advocate', 2), ('Lameth', 2), ('Fulham', 2), ('Empire', 2), ('Orsy', 2), ('Foundation', 2), ('Capsule', 2), ('Iwo', 2), ('Mangin', 2), ('Ovall', 2), ('Hella', 2), ('Commason', 2), ('Plan', 2), ('Meirus', 2), ('Callia', 2), ('Poochie', 2), ('Palver', 2)]
-
 if __name__ == '__main__':
 
     parsed_list = preprocess(FoundationTrilogy)
