@@ -1,4 +1,5 @@
 """
+pip install -r requirements.txt
 https://arxiv.org/pdf/1907.02704.pdf
 1) The identification of characters. We distinguish two substeps:
     - Detect occurrences of characters in the narrative
@@ -30,6 +31,7 @@ if __name__ == '__main__':
     parsed_list = preprocess(FoundationTrilogy)
     people_list, people_list_df = entity_identification(parsed_list)
     #ToDo:
+    # - https://www.snorkel.org/use-cases/spouse-demo
     # - negation handling, co-reference & pronoun handling and normalization of entities before visualization.
     # - measure the quality
     # - One or more visualizations. Word Cloud does not count as a visualization!
