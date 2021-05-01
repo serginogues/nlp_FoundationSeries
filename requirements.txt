@@ -1,4 +1,5 @@
-spacy
 numpy
 nltk
+spacy
 neuralcoref
+pandas

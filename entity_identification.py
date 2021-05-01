@@ -110,10 +110,10 @@ def preprocess(text):
     print("Number of sentences: ", len(sentences))
     sentences = [re.sub(' +', ' ', sent) for sent in sentences]
 
-    # 2 - Part of speech Tagging + 3 - shallow parsing
+    # English tokenizer, tagger, parser and NER
     parsed_list = []
-    for i in tqdm(range(len(sentences))):  # len(sentences)
+    for i in tqdm(range(len(sentences))):
         parsed_list.append(nlp(sentences[i]))
-    print("Number of parsed sentences: ", len(parsed_list))
+    print("Number of preprocessed sentences: ", len(parsed_list))
 
     return parsed_list
