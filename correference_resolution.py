@@ -26,9 +26,9 @@ def pronoun_references(doc):
     """Pronouns and their references:"""
     list = []
     for token in doc:
-        if token.pos_ == 'PRON' and token._.in_coref:
-            for cluster in token._.coref_clusters:
-                list.append((token.text, cluster.main.text))
+        # if token.pos_ == 'PRON' and token._.in_coref:
+        for cluster in token._.coref_clusters:
+            list.append((token.text, cluster.main.text))
     return list
 
 
@@ -83,23 +83,38 @@ def get_all_alias(entity_list, parsed_list):
 
 
 def compare_entities(entity_list):
-
     # if two entities share an alias
     for a, b in combinations(entity_list, 2):
         share = [i for i in a if i in b]
         if len(share) > 0:
             if not is_name(share[0], a[0]):
-                print("Removed ", str(share[0]), "from ", a)
                 a.remove(str(share[0]))
             elif not is_name(share[0], b[0]):
-                print("Removed ", str(share[0]), "from ", b)
                 b.remove(str(share[0]))
 
 
 def coreference_resolution(entity_list, parsed_list):
-
     if len(parsed_list) == 0:
-        names_list = [['Darell', 'Arkady Darell'],  ['Seldon', 'Hari Seldon', 'Raven Seldon', 'Fiari Seldon', 'Seldon Hardin'],  ['Barr', 'Ducem Barr', 'Onum Barr'],  ['Bayta', 'Bayta Darell'],  ['Mallow', 'Hober Mallow'],  ['Fie'],  ['Gaal', 'Gaal Dornick'],  ['Hardin', 'Salvor Hardin'],  ['Toran', 'Toran Darell'],  ['Anthor', 'Pelleas Anthor'],  ['Stettin'],  ['Mis', 'Ebling Mis'],  ['Dorwin'],  ['Munn', 'Homir Munn', 'Flomir Munn'],  ['Channis', 'Bail Channis'],  ['Pritcher', 'Han Pritcher', 'Flan Pritcher'],  ['Arcadia', 'Arcadia Darell'],  ['Brodrig'],  ['Mule', 'The Mule'],  ['Speaker'],  ['Pirenne', 'Lewis Pirenne'],  ['Pappa'],  ['Sutt', 'Jorane Sutt'],  ['Randu'],  ['Indbur'],  ['Turbor', 'Jole Turbor'],  ['Magnifico', 'Magnifico Giganticus'],  ['Verisof'],  ['Wienis'],  ['Commdor', 'Commdor Asper'],  ['Jael', 'Ankor Jael'],  ['Sermak', 'Sef Sermak'],  ['Lepold'],  ['Forell', 'Sennett Forell'],  ['Mayor', 'Mayor Hardin'],  ['dryly'],  ['Kleise'],  ['Mamma'],  ['Chen', 'Linge Chen'],  ['Fara', 'Jord Fara'],  ['Lee', 'Yohan Lee', 'Lee Senter'],  ['Bort', 'Lewis Bort'],  ['Master'],  ['Pherl'],  ['Fran'],  ['Semic', 'Elvett Semic'],  ['Walto'],  ['Aporat', 'Theo Aporat'],  ['Sir'],  ['Gorov', 'Eskel Gorov'],  ['Fox'],  ['Elders'],  ['Palver', 'Preem Palver'],  ['Avakim'],  ['Advocate'],  ['Lameth'],  ['Fulham'],  ['Empire', 'Galactic Empire', 'Second Empire'],  ['Gorm', 'Les Gorm'],  ['Ponyets', 'Limmar Ponyets'],  ['Emperor'],  ['Riose', 'Bel Riose'],  ['Foundation',   'Second Foundation',   'Second Foundationer',   'First Foundation'],  ['Devers', 'Lathan Devers'],  ['Dad'],  ['Capsule'],  ['Iwo'],  ['Ovall', 'Ovall Gri'],  ['Hella'],  ['Commason', 'Jord Commason'],  ['Plan'],  ['Student'],  ['Meirus', 'Lev Meirus'],  ['Poochie']]
+        names_list = [['Darell', 'Arkady Darell'],
+                      ['Seldon', 'Hari Seldon', 'Raven Seldon', 'Fiari Seldon', 'Seldon Hardin'],
+                      ['Barr', 'Ducem Barr', 'Onum Barr'], ['Bayta', 'Bayta Darell'], ['Mallow', 'Hober Mallow'],
+                      ['Fie'], ['Gaal', 'Gaal Dornick'], ['Hardin', 'Salvor Hardin'], ['Toran', 'Toran Darell'],
+                      ['Anthor', 'Pelleas Anthor'], ['Stettin'], ['Mis', 'Ebling Mis'], ['Dorwin'],
+                      ['Munn', 'Homir Munn', 'Flomir Munn'], ['Channis', 'Bail Channis'],
+                      ['Pritcher', 'Han Pritcher', 'Flan Pritcher'], ['Arcadia', 'Arcadia Darell'], ['Brodrig'],
+                      ['Mule', 'The Mule'], ['Speaker'], ['Pirenne', 'Lewis Pirenne'], ['Pappa'],
+                      ['Sutt', 'Jorane Sutt'], ['Randu'], ['Indbur'], ['Turbor', 'Jole Turbor'],
+                      ['Magnifico', 'Magnifico Giganticus'], ['Verisof'], ['Wienis'], ['Commdor', 'Commdor Asper'],
+                      ['Jael', 'Ankor Jael'], ['Sermak', 'Sef Sermak'], ['Lepold'], ['Forell', 'Sennett Forell'],
+                      ['Mayor', 'Mayor Hardin'], ['dryly'], ['Kleise'], ['Mamma'], ['Chen', 'Linge Chen'],
+                      ['Fara', 'Jord Fara'], ['Lee', 'Yohan Lee', 'Lee Senter'], ['Bort', 'Lewis Bort'], ['Master'],
+                      ['Pherl'], ['Fran'], ['Semic', 'Elvett Semic'], ['Walto'], ['Aporat', 'Theo Aporat'], ['Sir'],
+                      ['Gorov', 'Eskel Gorov'], ['Fox'], ['Elders'], ['Palver', 'Preem Palver'], ['Avakim'],
+                      ['Advocate'], ['Lameth'], ['Fulham'], ['Empire', 'Galactic Empire', 'Second Empire'],
+                      ['Gorm', 'Les Gorm'], ['Ponyets', 'Limmar Ponyets'], ['Emperor'], ['Riose', 'Bel Riose'],
+                      ['Foundation', 'Second Foundation', 'Second Foundationer', 'First Foundation'],
+                      ['Devers', 'Lathan Devers'], ['Dad'], ['Capsule'], ['Iwo'], ['Ovall', 'Ovall Gri'], ['Hella'],
+                      ['Commason', 'Jord Commason'], ['Plan'], ['Student'], ['Meirus', 'Lev Meirus'], ['Poochie']]
     else:
         names_list = get_all_alias(entity_list, parsed_list)
 

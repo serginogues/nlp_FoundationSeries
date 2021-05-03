@@ -8,8 +8,6 @@ an edge between two characters exists if they are mentioned in the same paragrap
 the number of paragraphs in which this is the case.
 """
 
-def count_ngrams(iterable,n=2):
-    return Counter(zip(*[islice(iterable, i, None) for i in range(n)]))
 
 def entity_relationship(entity_list, text):
     """

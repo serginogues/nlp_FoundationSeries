@@ -1,8 +1,8 @@
 from preprocess import *
-from entity_identification import *
-from correference_resolution import *
-from entity_connections import *
-from visualization import network_graph
+from entity_identification import entity_identification
+from correference_resolution import coreference_resolution
+from entity_connections import entity_relationship
+from visualization import super_network
 
 """
 https://arxiv.org/pdf/1907.02704.pdf
@@ -40,14 +40,13 @@ if __name__ == '__main__':
     final_list = coreference_resolution(people_list, parsed_list)  # chronological sequence of unified character occurrences
     print("CR and entity extraction finished. Found:", len(final_list), "characters.")
     links_list = entity_relationship(final_list, FoundationTrilogy)
-    network_graph(links_list)
-
+    super_network(links_list)
 
     #ToDo:
-    # - https://www.snorkel.org/use-cases/spouse-demo
     # - co-reference handling (& pronoun handling and normalization of entities) before visualization.
     #   - resolve coreference cases like "Seldon" or "Foundation"
     # - measure the quality
     # - One or more visualizations. Word Cloud does not count as a visualization!
+    #   - Custom Mapping: https://melaniewalsh.github.io/Intro-Cultural-Analytics/Mapping/Custom-Maps.html
     # - Detecting anomalies gets you bonus points
     # - Creating a great video with audio also gets you bonus points
