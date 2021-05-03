@@ -1,12 +1,8 @@
 """
-Two steps:
-a) Detection of Character Occurrences
-b) Unification of Character Occurrences (alias resolution)
- - grouping proper nouns referring to the same character
+Detection of Character Occurrences
 """
 
 from utils import *
-from coreference import *
 
 honorific_words = ['Dr.', 'Prof.', 'Mr.', 'Ms.', 'Msr.', 'Jr.', 'Sr.', 'Lord']
 person_verbs_ = ['said', 'sniffed',  'met', 'greet', 'walked', 'respond', 'talk', 'think', 'hear', 'go', 'wait', 'pause', 'write', 'smile', 'answer', 'wonder', 'reply', 'read', 'sit', 'muttered', 'fumble', 'ask', 'sigh']
@@ -37,18 +33,17 @@ def entity_identification(parsed_list):
                         main_characters_.append(full_name[0])
                     else:
                         main_characters_.append(token.text)
-                    print("Person -", str(token), "- found in: ", str(doc))
-                elif detect_location(doc, token):
+                if detect_location(doc, token):
                     full_name = [x for x in doc.ents if str(token) in str(x) and len(x) > 1]
                     if len(full_name) > 0:
                         locations_.append(full_name[0])
                     else:
                         locations_.append(token.text)
-                    print("Location -", str(token), "- found in: ", str(doc))
 
     people_tuple_list = Counter(main_characters_).most_common(180)
-    people_tuple_list = [x for x in people_tuple_list if x[1] > 1]
+    people_tuple_list = [x[0] for x in people_tuple_list if int(x[1]) > 1]
     location_tuple_list = Counter(locations_).most_common(150)
+    location_tuple_list = [x[0] for x in location_tuple_list]
 
     return people_tuple_list, location_tuple_list
 
@@ -84,36 +79,6 @@ def detect_location(doc, token):
     m = matcher(doc)
     for match_id, start, end in m:
         span = doc[start: end]
-        if len([x for x in nlp(str(span)) if x.pos_ == "VERB" and str(x) in travel_to_verbs]) and str(token) in str(span):
+        if len([x for x in nlp(str(span)) if x.pos_ == "VERB" and str(x.lemma_) in travel_to_verbs]) and str(token) in str(span):
             return True
 
-    """matcher.add('location', [be_in_pattern])
-    m = matcher(doc)
-    for match_id, start, end in m:
-        span = doc[start: end]
-        if len([x for x in nlp(str(span)) if (x.pos_ == "VERB" or x.pos_ == "AUX") and x.lemma_ == 'be']) and str(token) in str(span):
-            return True"""
-
-
-def preprocess(text):
-    """
-    Remove unwanted characters + split by sentences + sentence tokenization + lemmatization + POS tagging
-    """
-    # 0 - preprocessing
-    text = re.sub(', ', ' ', str(text))  # removing new line characters
-    text = re.sub(',', ' ', str(text))
-    text = re.sub('\n ', '', str(text))
-    text = re.sub('\n', ' ', str(text))
-
-    # 1 - original sentence
-    sentences = sent_tokenize(text)
-    print("Number of sentences: ", len(sentences))
-    sentences = [re.sub(' +', ' ', sent) for sent in sentences]
-
-    # English tokenizer, tagger, parser and NER
-    parsed_list = []
-    for i in tqdm(range(len(sentences))):
-        parsed_list.append(nlp(sentences[i]))
-    print("Number of preprocessed sentences: ", len(parsed_list))
-
-    return parsed_list

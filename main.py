@@ -1,13 +1,20 @@
+from preprocess import *
 from entity_identification import *
+from correference_resolution import *
+from entity_connections import *
+from visualization import network_graph
 
 """
 https://arxiv.org/pdf/1907.02704.pdf
 1) The identification of characters. We distinguish two substeps:
     - Detect occurrences of characters in the narrative
         -  a character can appear under three forms in text: proper noun, nominal, and pronoun.
-    - Unify these occurrences, i.e. to determine which ones correspond to the same character.
-    In a text, the same character can appear under different names.
-    The output of this step takes the form of a chronological sequence of unified character occurrences.
+    - Unify these occurrences, i.e. to determine which ones correspond to the same character. 
+    In a text, the same character can appear under different names. 
+    As mentioned before, characters occurrences appear under three forms in text: proper nouns, nominals, and pronouns. 
+    Unifying these occurrences can be considered as a specific version of the coreference resolution problem, 
+    which consists in identifying sequences of expressions, called coreference chains, that represent the same concept.
+    - The output of this step takes the form of a chronological sequence of unified character occurrences.
 
 2) Detecting interactions between characters.
     - take into account conversations, and to consider that two characters interact when one talks to the other.
@@ -25,13 +32,21 @@ https://arxiv.org/pdf/1907.02704.pdf
         a partial integration, and producing a dynamic network.
 """
 
+
 if __name__ == '__main__':
 
     parsed_list = preprocess(FoundationTrilogy)
-    people_list, people_list_df = entity_identification(parsed_list)
+    people_list, location_list = entity_identification(parsed_list)
+    final_list = coreference_resolution(people_list, parsed_list)  # chronological sequence of unified character occurrences
+    print("CR and entity extraction finished. Found:", len(final_list), "characters.")
+    links_list = entity_relationship(final_list, FoundationTrilogy)
+    network_graph(links_list)
+
+
     #ToDo:
     # - https://www.snorkel.org/use-cases/spouse-demo
-    # - negation handling, co-reference & pronoun handling and normalization of entities before visualization.
+    # - co-reference handling (& pronoun handling and normalization of entities) before visualization.
+    #   - resolve coreference cases like "Seldon" or "Foundation"
     # - measure the quality
     # - One or more visualizations. Word Cloud does not count as a visualization!
     # - Detecting anomalies gets you bonus points
