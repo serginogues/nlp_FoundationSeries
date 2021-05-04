@@ -1,5 +1,5 @@
 from preprocess import *
-from entity_identification import entity_identification
+from ner import entity_identification
 from correference_resolution import coreference_resolution
 from entity_connections import entity_relationship
 from visualization import super_network

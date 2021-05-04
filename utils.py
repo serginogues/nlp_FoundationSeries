@@ -1,3 +1,7 @@
+"""
+Set of methods that could be useful at some point
+"""
+
 from config import *
 
 punctuation_tokens = {',', '.', '--', '-', '!', '?', ':', ';', '``', "''", '(', ')', '[', ']', '...'}
@@ -7,44 +11,33 @@ def dependency_graph(doc):
     """
     :param doc: doc = nlp(sentence)
     :return: saves render.html with the POS tagging and words relationship
+    Dependency grammar example:
+    TOM <-nsubj- CANCELED (root) --------dobj------------> FLIGHTS --nmod-> HOUSTON
+                                    [THE MORNING]                    [TO]
+    - CANCELED is the predicate (root)
+    - TOM is the subject (nsubj)
+    - FLIGHTS is the direct object (dobj)
+
+    Clausal Argument relations:
+        - NSUBJ - nominal subject
+        - DOBJ - direct object
+        - IOBJ - indirect object
+        - CCOMP - clausal complement
+        - XCOMP - open clausal complement
+
+    Nominal Modifier relations:
+        - NMOD - nominal modifier
+        - AMOD - adjective modifier
+        - NUMMOD - numeric modifier
+        - APPOS - positional modifier
+        - DET - Determiner
+        - CASE prep, etz
+
+    for token in doc:
+        print(token.text, token.lemma_, token.pos_, token.tag_, token.dep_)
     """
-    with open('render.html', 'w') as f:
+    with open('renders/render.html', 'w') as f:
         f.write(displacy.render(docs=doc, page=True, options=dict(compact=True)))
-
-
-def subtree_matcher(doc):
-    """
-    https://www.analyticsvidhya.com/blog/2019/09/introduction-information-extraction-python-spacy/?utm_source=blog&utm_medium=nlp-project-information-extraction
-    """
-    subjpass = 0
-
-    for i, tok in enumerate(doc):
-        # find dependency tag that contains the text "subjpass"
-        if tok.dep_.find("subjpass"):
-            subjpass = 1
-
-    x = ''
-    y = ''
-
-    # if subjpass == 1 then sentence is passive
-    if subjpass == 1:
-        for i, tok in enumerate(doc):
-            if tok.dep_.find("subjpass"):
-                y = tok.text
-
-            if tok.dep_.endswith("obj"):
-                x = tok.text
-
-    # if subjpass == 0 then sentence is not passive
-    else:
-        for i, tok in enumerate(doc):
-            if tok.dep_.endswith("subj"):
-                x = tok.text
-
-            if tok.dep_.endswith("obj"):
-                y = tok.text
-
-    return x, y
 
 
 def print_pos_tagging(doc):
@@ -58,8 +51,8 @@ def tokenize_sentence(sentence, n=1):
     :param n: n-gram tokenizer if n>1
     :return: token list
     """
-    tokenizer = RegexpTokenizer(r'\w+')  # TreebankWordTokenizer()
-    tokens = sorted(tokenizer.tokenize(sentence))
+    # tokenizer = RegexpTokenizer(r'\w+')  # TreebankWordTokenizer()
+    tokens = sorted(word_tokenize(sentence))
     tokens = [x for x in tokens if x not in punctuation_tokens]  # remove punctuation if left
 
     if n > 1:
@@ -77,21 +70,6 @@ def get_lexicon(sentences):
     all_doc_tokens = sum(doc_tokens, [])
     lexicon = sorted(set(all_doc_tokens))
     return lexicon
-
-
-"""def main_characters(sentences):
-    word_list = []
-    i = 0
-    for sent in sentences:
-        doc = nlp(sent)
-        names = [ent.text for ent in doc.ents if ent.label_ == 'PERSON']
-        word_list.append(names)
-        i = i + 1
-        print(i, " out of ", len(sentences))
-
-    names = [line for line in word_list for line in set(line)]
-    names_count = Counter(names).most_common(30)
-    # print(pd.DataFrame(names_count))"""
 
 
 def update_progress(progress):
@@ -132,29 +110,11 @@ def coreference(parsed):
     return cluster
 
 
-def check_results(people_tuple_list, location_tuple_list):
-    n = 0
-    for name in Target_people:
-        if len([x for x in people_tuple_list if str(x[0]) in name]) > 0:
-            n += 1
-        else:
-            print("Person -", name, "- not found")
-    print(str((n / len(people_tuple_list)) * 100), "% of people found")
+# people_list = ['Darell',  'Seldon',  'Barr',  'Bayta',  'Mallow',  'Fie',  'Gaal',  'Hardin',  'Toran',  'Anthor',  'Stettin',  'Mis',  'Dorwin',  'Munn',  'Channis',  'Pritcher',  'Arcadia',  'Brodrig',  'Mule',  'Speaker',  'Pirenne',  'Pappa',  'Sutt',  'Randu',  'Indbur',  'Turbor',  'Magnifico',  'Verisof',  'Wienis',  'Commdor',  'Jael',  'Sermak',  'Lepold',  'Forell',  'Mayor',  'dryly',  'Kleise',  'Mamma',  'Chen',  'Fara',  'Lee',  'Bort',  'Master',  'Pherl',  'Fran',  'Semic',  'Walto',  'Aporat',  'Sir',  'Gorov',  'Fox',  'Elders',  'Palver',  'Avakim',  'Advocate',  'Lameth',  'Fulham',  'Empire',  'Gorm',  'Ponyets',  'Emperor',  'Riose',  'Foundation',  'Devers',  'Dad',  'Capsule',  'Iwo',  'Ovall',  'Hella',  'Commason',  'Plan',  'Student',  'Meirus',  'Poochie']
+# location_list = ['Trantor',  'Kalgan',  'Anacreon',  'Terminus',  'Synnax',  'Haven',  'Arcturus',  'Ahctuwus',  'Askone',  'Radole',  'Dellcass',  'Neotrantor',  'Gentri',  'Rossem',  'Space under Foundation']
+# final_list = [['Darell', 'Arkady Darell'],  ['Seldon', 'Hari Seldon'],  ['Raven Seldon'],  ['Fiari Seldon'],  ['Seldon Hardin'],  ['Barr', 'Ducem Barr'],  ['Onum Barr'],  ['Bayta', 'Bayta Darell'],  ['Mallow', 'Hober Mallow'],  ['Fie'],  ['Gaal', 'Gaal Dornick'],  ['Hardin', 'Salvor Hardin'],  ['Toran', 'Toran Darell'],  ['Anthor', 'Pelleas Anthor'],  ['Stettin'],  ['Mis', 'Ebling Mis'],  ['Dorwin'],  ['Munn', 'Homir Munn'],  ['Flomir Munn'],  ['Channis', 'Bail Channis'],  ['Pritcher', 'Han Pritcher'],  ['Flan Pritcher'],  ['Arcadia', 'Arcadia Darell'],  ['Brodrig'],  ['Mule', 'The Mule'],  ['Speaker'],  ['Pirenne', 'Lewis Pirenne'],  ['Pappa'],  ['Sutt', 'Jorane Sutt'],  ['Randu'],  ['Indbur'],  ['Turbor', 'Jole Turbor'],  ['Magnifico', 'Magnifico Giganticus'],  ['Verisof'],  ['Wienis'],  ['Commdor', 'Commdor Asper'],  ['Jael', 'Ankor Jael'],  ['Sermak', 'Sef Sermak'],  ['Lepold'],  ['Forell', 'Sennett Forell'],  ['Mayor', 'Mayor Hardin'],  ['dryly'],  ['Kleise'],  ['Mamma'],  ['Chen', 'Linge Chen'],  ['Fara', 'Jord Fara'],  ['Lee', 'Yohan Lee'],  ['Lee Senter'],  ['Bort', 'Lewis Bort'],  ['Master'],  ['Pherl'],  ['Fran'],  ['Semic', 'Elvett Semic'],  ['Walto'],  ['Aporat', 'Theo Aporat'],  ['Sir'],  ['Gorov', 'Eskel Gorov'],  ['Fox'],  ['Elders'],  ['Palver', 'Preem Palver'],  ['Avakim'],  ['Advocate'],  ['Lameth'],  ['Fulham'],  ['Empire', 'Galactic Empire'],  ['Second Empire'],  ['Gorm', 'Les Gorm'],  ['Ponyets', 'Limmar Ponyets'],  ['Emperor'],  ['Riose', 'Bel Riose'],  ['Foundation', 'Second Foundation'],  ['Second Foundationer'],  ['First Foundation'],  ['Devers', 'Lathan Devers'],  ['Dad'],  ['Capsule'],  ['Iwo'],  ['Ovall', 'Ovall Gri'],  ['Hella'],  ['Commason', 'Jord Commason'],  ['Plan'],  ['Student'],  ['Meirus', 'Lev Meirus'],  ['Poochie']]
 
-    n = 0
-    for name in Target_locations:
-        if len([x for x in location_tuple_list if str(x[0]) in name]) > 0:
-            n += 1
-        else:
-            print("Location -", name, "- not found")
-    print(str((n / len(Target_locations)) * 100), "% of locations found")
-
-
-people_list = ['Darell',  'Seldon',  'Barr',  'Bayta',  'Mallow',  'Fie',  'Gaal',  'Hardin',  'Toran',  'Anthor',  'Stettin',  'Mis',  'Dorwin',  'Munn',  'Channis',  'Pritcher',  'Arcadia',  'Brodrig',  'Mule',  'Speaker',  'Pirenne',  'Pappa',  'Sutt',  'Randu',  'Indbur',  'Turbor',  'Magnifico',  'Verisof',  'Wienis',  'Commdor',  'Jael',  'Sermak',  'Lepold',  'Forell',  'Mayor',  'dryly',  'Kleise',  'Mamma',  'Chen',  'Fara',  'Lee',  'Bort',  'Master',  'Pherl',  'Fran',  'Semic',  'Walto',  'Aporat',  'Sir',  'Gorov',  'Fox',  'Elders',  'Palver',  'Avakim',  'Advocate',  'Lameth',  'Fulham',  'Empire',  'Gorm',  'Ponyets',  'Emperor',  'Riose',  'Foundation',  'Devers',  'Dad',  'Capsule',  'Iwo',  'Ovall',  'Hella',  'Commason',  'Plan',  'Student',  'Meirus',  'Poochie']
-location_list = ['Trantor',  'Kalgan',  'Anacreon',  'Terminus',  'Synnax',  'Haven',  'Arcturus',  'Ahctuwus',  'Askone',  'Radole',  'Dellcass',  'Neotrantor',  'Gentri',  'Rossem',  'Space under Foundation']
-final_list = [['Darell', 'Arkady Darell'],  ['Seldon', 'Hari Seldon'],  ['Raven Seldon'],  ['Fiari Seldon'],  ['Seldon Hardin'],  ['Barr', 'Ducem Barr'],  ['Onum Barr'],  ['Bayta', 'Bayta Darell'],  ['Mallow', 'Hober Mallow'],  ['Fie'],  ['Gaal', 'Gaal Dornick'],  ['Hardin', 'Salvor Hardin'],  ['Toran', 'Toran Darell'],  ['Anthor', 'Pelleas Anthor'],  ['Stettin'],  ['Mis', 'Ebling Mis'],  ['Dorwin'],  ['Munn', 'Homir Munn'],  ['Flomir Munn'],  ['Channis', 'Bail Channis'],  ['Pritcher', 'Han Pritcher'],  ['Flan Pritcher'],  ['Arcadia', 'Arcadia Darell'],  ['Brodrig'],  ['Mule', 'The Mule'],  ['Speaker'],  ['Pirenne', 'Lewis Pirenne'],  ['Pappa'],  ['Sutt', 'Jorane Sutt'],  ['Randu'],  ['Indbur'],  ['Turbor', 'Jole Turbor'],  ['Magnifico', 'Magnifico Giganticus'],  ['Verisof'],  ['Wienis'],  ['Commdor', 'Commdor Asper'],  ['Jael', 'Ankor Jael'],  ['Sermak', 'Sef Sermak'],  ['Lepold'],  ['Forell', 'Sennett Forell'],  ['Mayor', 'Mayor Hardin'],  ['dryly'],  ['Kleise'],  ['Mamma'],  ['Chen', 'Linge Chen'],  ['Fara', 'Jord Fara'],  ['Lee', 'Yohan Lee'],  ['Lee Senter'],  ['Bort', 'Lewis Bort'],  ['Master'],  ['Pherl'],  ['Fran'],  ['Semic', 'Elvett Semic'],  ['Walto'],  ['Aporat', 'Theo Aporat'],  ['Sir'],  ['Gorov', 'Eskel Gorov'],  ['Fox'],  ['Elders'],  ['Palver', 'Preem Palver'],  ['Avakim'],  ['Advocate'],  ['Lameth'],  ['Fulham'],  ['Empire', 'Galactic Empire'],  ['Second Empire'],  ['Gorm', 'Les Gorm'],  ['Ponyets', 'Limmar Ponyets'],  ['Emperor'],  ['Riose', 'Bel Riose'],  ['Foundation', 'Second Foundation'],  ['Second Foundationer'],  ['First Foundation'],  ['Devers', 'Lathan Devers'],  ['Dad'],  ['Capsule'],  ['Iwo'],  ['Ovall', 'Ovall Gri'],  ['Hella'],  ['Commason', 'Jord Commason'],  ['Plan'],  ['Student'],  ['Meirus', 'Lev Meirus'],  ['Poochie']]
-
-links_list = [[['Gaal', 'Gaal Dornick'], ['Seldon', 'Hari Seldon'], 24],
+"""links_list = [[['Gaal', 'Gaal Dornick'], ['Seldon', 'Hari Seldon'], 24],
  [['Empire', 'Galactic Empire'], ['Emperor'], 8],
  [['Empire', 'Galactic Empire'], ['Gaal', 'Gaal Dornick'], 1],
  [['Avakim'], ['Seldon', 'Hari Seldon'], 1],
@@ -449,5 +409,4 @@ links_list = [[['Gaal', 'Gaal Dornick'], ['Seldon', 'Hari Seldon'], 24],
  [['Seldon', 'Hari Seldon'], ['Darell', 'Arkady Darell'], 1],
  [['Munn', 'Homir Munn'], ['Stettin'], 1],
  [['Plan'], ['Student'], 1],
- [['Palver', 'Preem Palver'], ['Speaker'], 1]]
-
+ [['Palver', 'Preem Palver'], ['Speaker'], 1]]"""

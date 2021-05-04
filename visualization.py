@@ -1,15 +1,12 @@
 from utils import *
 from pandas import DataFrame
 import networkx
-import matplotlib.pyplot as plt
-from pyvis.network import Network
 from bokeh.io import output_notebook, show, save
 from bokeh.models import Range1d, Circle, ColumnDataSource, MultiLine, EdgesAndLinkedNodes, NodesAndLinkedEdges, LabelSet
 from bokeh.plotting import figure, from_networkx
 from bokeh.palettes import Blues8, Reds8, Purples8, Oranges8, Viridis8, Spectral8
 from bokeh.transform import linear_cmap
 from networkx.algorithms import community as commun
-import folium
 
 
 def preprocess_tuple(tuple_list):
@@ -24,15 +21,6 @@ def preprocess_tuple(tuple_list):
                     new_tuple.append(entity[0])
         new_list.append((new_tuple[0], new_tuple[1], connection[2]))
     return new_list
-
-
-def network_graph(tuple_list):
-    tuple_list = preprocess_tuple(tuple_list)
-    df = DataFrame(tuple_list, columns=['Source', 'Target', 'weights'])
-    G = networkx.from_pandas_edgelist(df, source='Source', target='Target', edge_attr='weights')
-    net = Network(notebook=True)
-    net.from_nx(G)
-    net.show("entity_network_graph.html")
 
 
 def super_network(tuple_list):
@@ -94,6 +82,7 @@ def super_network(tuple_list):
     plot = figure(tooltips=HOVER_TOOLTIPS,
                   tools="pan,wheel_zoom,save,reset", active_scroll='wheel_zoom',
                   x_range=Range1d(-10.1, 10.1), y_range=Range1d(-10.1, 10.1), title=title, height=800, width=1500)
+    plot.axis.visible = False
 
     # Create a network graph object
     # https://networkx.github.io/documentation/networkx-1.9/reference/generated/networkx.drawing.layout.spring_layout.html
@@ -119,11 +108,12 @@ def super_network(tuple_list):
 
     plot.renderers.append(network_graph)
 
-    #Add Labels
+    # Add Labels
     x, y = zip(*network_graph.layout_provider.graph_layout.values())
     node_labels = list(G.nodes())
     source = ColumnDataSource({'x': x, 'y': y, 'name': [node_labels[i] for i in range(len(x))]})
-    labels = LabelSet(x='x', y='y', text='name', source=source, background_fill_color='white', text_font_size='10px', background_fill_alpha=.7)
+    labels = LabelSet(x='x', y='y', text='name', source=source, background_fill_color='white', text_font_size='10px',
+                      background_fill_alpha=.7)
     plot.renderers.append(labels)
 
     show(plot)
@@ -131,4 +121,4 @@ def super_network(tuple_list):
 
 
 def mapping_character_location():
-    print("hey")
+    print("Not implemented")
