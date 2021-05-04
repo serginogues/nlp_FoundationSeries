@@ -1,7 +1,8 @@
 # nlp_FoundationSeries
 
-Rules-based NER solution for the extraction of the characters and locations from the Foundation trilogy books by Isaac Asimov.
+A Rule-Based Named Entity Recognition (NER) algorithm is proposed to extract all the characters, planets and their connections from the Isaac Asimov's first three Foundation books, collectively known as the Foundation Trilogy.
 
+The final goal is to answer the Who-Who and Who-Where questions by means of a Character network graph, which represents all character relationships in the novels, and a geo-mapping graph, that shows all character-planet relationships.
 [Interactive render made with Bokeh](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/character_network.html)
 
 ![alt text](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/bokeh_plot.png?raw=true)
