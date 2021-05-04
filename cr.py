@@ -1,10 +1,10 @@
 """
-Coreference resolution
+Coreference resolution model:
+https://neurosys.com/article/most-popular-frameworks-for-coreference-resolution/
+
+CR overview:
 https://neurosys.com/article/intro-to-coreference-resolution-in-nlp/
 Unification of Character Occurrences (alias resolution): grouping proper nouns referring to the same character
-
-Sherlock Holmes can also be called “Mr. Holmes” or “Sherlock”.
-“Mr. Holmes” can refer to both Sherlock Holmes and his brother Mycroft Holmes.
 """
 from utils import *
 
@@ -90,7 +90,7 @@ def compare_entities(entity_list):
     print("Name and surname alias resolution finished")
 
 
-def alias_resolution(entity_list, parsed_list):
+def get_full_named_entities(entity_list, parsed_list):
     names_list = get_all_alias(entity_list, parsed_list)
     compare_entities([x for x in names_list if len(x) > 1])
 

@@ -112,7 +112,7 @@ def coreference(parsed):
 
 # people_list = ['Darell',  'Seldon',  'Barr',  'Bayta',  'Mallow',  'Fie',  'Gaal',  'Hardin',  'Toran',  'Anthor',  'Stettin',  'Mis',  'Dorwin',  'Munn',  'Channis',  'Pritcher',  'Arcadia',  'Brodrig',  'Mule',  'Speaker',  'Pirenne',  'Pappa',  'Sutt',  'Randu',  'Indbur',  'Turbor',  'Magnifico',  'Verisof',  'Wienis',  'Commdor',  'Jael',  'Sermak',  'Lepold',  'Forell',  'Mayor',  'dryly',  'Kleise',  'Mamma',  'Chen',  'Fara',  'Lee',  'Bort',  'Master',  'Pherl',  'Fran',  'Semic',  'Walto',  'Aporat',  'Sir',  'Gorov',  'Fox',  'Elders',  'Palver',  'Avakim',  'Advocate',  'Lameth',  'Fulham',  'Empire',  'Gorm',  'Ponyets',  'Emperor',  'Riose',  'Foundation',  'Devers',  'Dad',  'Capsule',  'Iwo',  'Ovall',  'Hella',  'Commason',  'Plan',  'Student',  'Meirus',  'Poochie']
 # location_list = ['Trantor',  'Kalgan',  'Anacreon',  'Terminus',  'Synnax',  'Haven',  'Arcturus',  'Ahctuwus',  'Askone',  'Radole',  'Dellcass',  'Neotrantor',  'Gentri',  'Rossem',  'Space under Foundation']
-final_list = [['Arkady Darell'], ['Hari Seldon'], ['Raven Seldon'], ['Fiari Seldon'], ['Seldon Hardin'], ['Ducem Barr'], ['Onum Barr'], ['Bayta Darell'], ['Hober Mallow'], ['Fie'], ['Gaal Dornick'], ['Salvor Hardin'], ['Toran Darell'], ['Pelleas Anthor'], ['Stettin'], ['Ebling Mis'], ['Dorwin'], ['Homir Munn'], ['Flomir Munn'], ['Bail Channis'], ['Han Pritcher'], ['Flan Pritcher'], ['Arcadia Darell'], ['Brodrig'], ['The Mule'], ['Speaker'], ['Lewis Pirenne'], ['Pappa'], ['Jorane Sutt'], ['Randu'], ['Indbur'], ['Jole Turbor'], ['Magnifico Giganticus'], ['Verisof'], ['Wienis'], ['Commdor Asper'], ['Ankor Jael'], ['Sef Sermak'], ['Lepold'], ['Sennett Forell'], ['Mayor Hardin'], ['dryly'], ['Kleise'], ['Mamma'], ['Linge Chen'], ['Jord Fara'], ['Yohan Lee'], ['Lee Senter'], ['Lewis Bort'], ['Master'], ['Pherl'], ['Fran'], ['Elvett Semic'], ['Walto'], ['Theo Aporat'], ['Eskel Gorov'], ['Fox'], ['Elders'], ['Preem Palver'], ['Avakim'], ['Advocate'], ['Lameth'], ['Fulham'], ['Galactic Empire'], ['Second Empire'], ['Les Gorm'], ['Limmar Ponyets'], ['Emperor'], ['Bel Riose'], ['Second Foundation'], ['Second Foundationer'], ['First Foundation'], ['Lathan Devers'], ['Dad'], ['Capsule'], ['Iwo'], ['Ovall Gri'], ['Hella'], ['Jord Commason'], ['Plan'], ['Student'], ['Lev Meirus'], ['Poochie']]
+# final_list = [['Arkady Darell'], ['Hari Seldon'], ['Raven Seldon'], ['Fiari Seldon'], ['Seldon Hardin'], ['Ducem Barr'], ['Onum Barr'], ['Bayta Darell'], ['Hober Mallow'], ['Fie'], ['Gaal Dornick'], ['Salvor Hardin'], ['Toran Darell'], ['Pelleas Anthor'], ['Stettin'], ['Ebling Mis'], ['Dorwin'], ['Homir Munn'], ['Flomir Munn'], ['Bail Channis'], ['Han Pritcher'], ['Flan Pritcher'], ['Arcadia Darell'], ['Brodrig'], ['The Mule'], ['Speaker'], ['Lewis Pirenne'], ['Pappa'], ['Jorane Sutt'], ['Randu'], ['Indbur'], ['Jole Turbor'], ['Magnifico Giganticus'], ['Verisof'], ['Wienis'], ['Commdor Asper'], ['Ankor Jael'], ['Sef Sermak'], ['Lepold'], ['Sennett Forell'], ['Mayor Hardin'], ['dryly'], ['Kleise'], ['Mamma'], ['Linge Chen'], ['Jord Fara'], ['Yohan Lee'], ['Lee Senter'], ['Lewis Bort'], ['Master'], ['Pherl'], ['Fran'], ['Elvett Semic'], ['Walto'], ['Theo Aporat'], ['Eskel Gorov'], ['Fox'], ['Elders'], ['Preem Palver'], ['Avakim'], ['Advocate'], ['Lameth'], ['Fulham'], ['Galactic Empire'], ['Second Empire'], ['Les Gorm'], ['Limmar Ponyets'], ['Emperor'], ['Bel Riose'], ['Second Foundation'], ['Second Foundationer'], ['First Foundation'], ['Lathan Devers'], ['Dad'], ['Capsule'], ['Iwo'], ['Ovall Gri'], ['Hella'], ['Jord Commason'], ['Plan'], ['Student'], ['Lev Meirus'], ['Poochie']]
 
 """[[['Gaal Dornick'], ['Hari Seldon'], 2],
  [['Galactic Empire'], ['Emperor'], 44],
@@ -184,7 +184,7 @@ final_list = [['Arkady Darell'], ['Hari Seldon'], ['Raven Seldon'], ['Fiari Seld
  [['Lev Meirus'], ['Poochie'], 7],
  [['Mamma'], ['Pappa'], 18],
  [['Pappa'], ['Preem Palver'], 12]]"""
-links_list = [[['Gaal', 'Gaal Dornick'], ['Seldon', 'Hari Seldon'], 24],
+"""links_list = [[['Gaal', 'Gaal Dornick'], ['Seldon', 'Hari Seldon'], 24],
  [['Empire', 'Galactic Empire'], ['Emperor'], 8],
  [['Empire', 'Galactic Empire'], ['Gaal', 'Gaal Dornick'], 1],
  [['Avakim'], ['Seldon', 'Hari Seldon'], 1],
@@ -479,4 +479,4 @@ links_list = [[['Gaal', 'Gaal Dornick'], ['Seldon', 'Hari Seldon'], 24],
  [['Seldon', 'Hari Seldon'], ['Darell', 'Arkady Darell'], 1],
  [['Munn', 'Homir Munn'], ['Stettin'], 1],
  [['Plan'], ['Student'], 1],
- [['Palver', 'Preem Palver'], ['Speaker'], 1]]
+ [['Palver', 'Preem Palver'], ['Speaker'], 1]]"""
