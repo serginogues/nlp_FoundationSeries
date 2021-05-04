@@ -57,7 +57,7 @@ Search by the Foundation
 - people: First Foundation, Second Foundation, Toran Darell, Pelleas Anthor, Homir Munn, Elvett Semic, Jole Turbor, Arcadia Darell (Arkady), Lord Stettin, Callia, Preem Palver
 
 
-Related work
+<!--Related work
 https://www.analyticsvidhya.com/blog/2020/06/nlp-project-information-extraction/
 https://www.analyticsvidhya.com/blog/2019/10/how-to-build-knowledge-graph-text-using-spacy/?utm_source=blog&utm_medium=introduction-information-extraction-python-spacy
 https://medium.com/agatha-codes/using-textual-analysis-to-quantify-a-cast-of-characters-4f3baecdb5c
@@ -66,4 +66,4 @@ https://www.analyticsvidhya.com/blog/2020/07/part-of-speechpos-tagging-dependenc
 https://cogsci.mindmodeling.org/2012/papers/0096/paper0096.pdf
 https://github.com/isthatyoung/NLP-Characters-Relationships/blob/master/code/Preprocessing.py
 https://github.com/emdaniels/character-extraction/blob/master/README.md
-https://github.com/susanli2016/NLP-with-Python/blob/master/NER_NLTK_Spacy.ipynb
+https://github.com/susanli2016/NLP-with-Python/blob/master/NER_NLTK_Spacy.ipynb-->
