@@ -1,5 +1,5 @@
 from preprocess import *
-from ner import entity_identification
+from ner import named_entity_recognition
 from cr import alias_resolution
 from entity_connections import entity_relationship
 from visualization import super_network
@@ -36,12 +36,12 @@ https://arxiv.org/pdf/1907.02704.pdf
 if __name__ == '__main__':
 
     parsed_list = preprocess(FoundationTrilogy)
-    people_list, location_list = entity_identification(parsed_list)
+    people_list, location_list = named_entity_recognition(parsed_list)
     final_list = alias_resolution(people_list, parsed_list)  # chronological sequence of unified character occurrences
     print("CR and entity extraction finished. Found:", len(final_list), "characters.")
     print(final_list)
     links_list = entity_relationship(final_list, FoundationTrilogy)
-    super_network(links_list)
+    # super_network(links_list)
 
     #ToDo:
     # - co-reference handling (& pronoun handling and normalization of entities) before visualization.
@@ -49,5 +49,6 @@ if __name__ == '__main__':
     # - measure the quality
     # - One or more visualizations. Word Cloud does not count as a visualization!
     #   - Custom Mapping: https://melaniewalsh.github.io/Intro-Cultural-Analytics/Mapping/Custom-Maps.html
-    # - Detecting anomalies gets you bonus points
-    # - Creating a great video with audio also gets you bonus points
+    # - EXTRA bonus points
+    #   - Detecting anomalies gets you bonus points
+    #   - Creating a great video with audio also gets you bonus points

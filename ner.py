@@ -7,7 +7,7 @@ from utils import *
 honorific_words = ['Dr.', 'Prof.', 'Mr.', 'Ms.', 'Msr.', 'Jr.', 'Sr.', 'Lord', 'Sir', 'Professor', 'Doctor', 'King']
 person_verbs_ = ['said', 'sniffed',  'met', 'greet', 'walked', 'respond', 'talk', 'think', 'hear', 'go', 'wait', 'pause', 'write', 'smile', 'answer', 'wonder', 'reply', 'read', 'sit', 'muttered', 'fumble', 'ask', 'sigh']
 person_verbs = [lemmatization(w, 'v') for w in person_verbs_]
-location_name = ['planet', 'kingdom', 'world', 'region', 'location', 'republic']
+location_name = ['planet', 'kingdom', 'world', 'region', 'location', 'republic', 'street', 'neighborhood', 'realm']
 location_name_pattern = [{'POS': 'NOUN'}, {'LOWER': 'of'}, {'POS': 'PROPN'}]
 travel_to_verbs_ = ['go', 'travel', 'move', 'exiled']
 travel_to_verbs = [lemmatization(w, 'v') for w in travel_to_verbs_]
@@ -16,7 +16,7 @@ be_in_pattern = [{'POS': 'AUX'}, {'LOWER': 'in'}, {'POS': 'PROPN'}]
 be_on_pattern = [{'POS': 'AUX'}, {'LOWER': 'on'}, {'POS': 'PROPN'}]
 
 
-def entity_identification(parsed_list):
+def named_entity_recognition(parsed_list):
     """
     :return: chronological sequence of unified character and location occurrences
     """
@@ -27,13 +27,13 @@ def entity_identification(parsed_list):
         doc = parsed_list[i]
         for token in doc:
             if token.pos_ == 'PROPN' and str(token) not in honorific_words:
-                if detect_main_character(doc, token):
+                if person_recognition(doc, token):
                     full_name = [x for x in doc.ents if str(token) in str(x) and len(x) > 1]
                     if len(full_name) > 0:
                         main_characters_.append(full_name[0])
                     else:
                         main_characters_.append(token.text)
-                if detect_location(doc, token):
+                if location_recognition(doc, token):
                     full_name = [x for x in doc.ents if str(token) in str(x) and len(x) > 1]
                     if len(full_name) > 0:
                         locations_.append(full_name[0])
@@ -48,7 +48,7 @@ def entity_identification(parsed_list):
     return people_tuple_list, location_tuple_list
 
 
-def detect_main_character(doc, token):
+def person_recognition(doc, token):
     """
     :return: True if @token has person behaviour
     """
@@ -61,7 +61,7 @@ def detect_main_character(doc, token):
     return False
 
 
-def detect_location(doc, token):
+def location_recognition(doc, token):
     """
     1 - if sentence has PERSON, and within its coreferences in the sentence there is a location_noun e.g. 'planet'
     2 - if the sentence is of the form "VERB + to + PERSON" -> Person is a candidate of location

@@ -99,18 +99,11 @@ def alias_resolution(entity_list, parsed_list):
         if len(entity) == 1:
             final_list.append([entity[0]])
         elif len(entity) == 2:
-            final_list.append([entity[0], entity[1]])
+            final_list.append([entity[1]])  # only full name is considered, since it includes the abbreviation
         else:
-            # resolve "Foundation" alias
-            if "Foundation" in entity:
-                final_list.append([entity[0], entity[3]])
-                final_list.append([entity[1]])
-                final_list.append([entity[2]])
-            else:
-                final_list.append([entity[0], entity[1]])
-                for i, name in enumerate(entity):
-                    if i != 0 and i != 1:
-                        final_list.append([name])
+            for i, name in enumerate(entity):
+                if i != 0:
+                    final_list.append([name])
 
     return final_list
 

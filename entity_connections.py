@@ -19,13 +19,19 @@ def first_or_second(entity1, entity, count, connection_list):
     else:
         if count < 15 and entity1 != entity:
             # second
-            conn = [x for x in connection_list if entity1 in x and entity[0] in x]
-            if any(conn):
-                conn[0][2] += 1
-            else:
+            a = False
+            b = False
+            for link in connection_list:
+                for i, ent in enumerate(link):
+                    if i != 2 and entity1[0] == ent[0]:
+                        a = True
+                    if i != 2 and entity[0] == ent[0]:
+                        b = True
+                if a and b:
+                    link[2] += 1
+                    break
+            if not a or not b:
                 connection_list.append([entity1, entity, 1])
-
-            # print("found link between ", entity1, "and ", entity[0], "in sentence ", " ".join(token_list[i-20:i+20]))
         # first
         entity1 = entity
         count = 0
@@ -75,10 +81,13 @@ def entity_relationship(entity_list, text):
 
         #ToDo: Coreference resolution
         # Example: token = 'Seldon', get correct candidate from entity_list
-        # https://towardsdatascience.com/most-popular-coreference-resolution-frameworks-574ba8a8cc2d
-        entity = coreference_resolution(entity, token_list[i-10:i+10])
-        previous_entity, count, connection_list = first_or_second(previous_entity, entity, count, connection_list)
+        # https://towardsdatascience.com/how-to-make-an-effective-coreference-resolution-model-55875d2b5f19
+        # https://neurosys.com/article/most-popular-frameworks-for-coreference-resolution/
+        if len(entity) > 0:
+            entity = coreference_resolution(entity, token_list[i-10:i+10])
+            previous_entity, count, connection_list = first_or_second(previous_entity, entity, count, connection_list)
         count += 1
         i += 1
+        print(i, "out of ", len(token_list))
 
     return connection_list
