@@ -2,6 +2,8 @@
 
 Rules-based NER solution for the extraction of the characters and locations from the Foundation trilogy books by Isaac Asimov.
 
+For an interactive render made with Bokeh see [Github](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/character_network.html)
+
 ![alt text](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/bokeh_plot.png?raw=true)
 
 https://asimov.fandom.com/wiki/Foundation_trilogy
