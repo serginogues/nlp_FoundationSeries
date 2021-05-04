@@ -2,7 +2,7 @@
 
 Rules-based NER solution for the extraction of the characters and locations from the Foundation trilogy books by Isaac Asimov.
 
-![Alt text](relative/path/to/bokeh_plot.png?raw=true "Title")
+![alt text](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/bokeh_plot.png?raw=true)
 
 https://asimov.fandom.com/wiki/Foundation_trilogy
 FOUNDATION
