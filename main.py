@@ -1,6 +1,6 @@
 from preprocess import *
 from ner import entity_identification
-from correference_resolution import coreference_resolution
+from cr import alias_resolution
 from entity_connections import entity_relationship
 from visualization import super_network
 
@@ -37,8 +37,9 @@ if __name__ == '__main__':
 
     parsed_list = preprocess(FoundationTrilogy)
     people_list, location_list = entity_identification(parsed_list)
-    final_list = coreference_resolution(people_list, parsed_list)  # chronological sequence of unified character occurrences
+    final_list = alias_resolution(people_list, parsed_list)  # chronological sequence of unified character occurrences
     print("CR and entity extraction finished. Found:", len(final_list), "characters.")
+    print(final_list)
     links_list = entity_relationship(final_list, FoundationTrilogy)
     super_network(links_list)
 

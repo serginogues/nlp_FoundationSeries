@@ -66,4 +66,5 @@ https://www.analyticsvidhya.com/blog/2020/07/part-of-speechpos-tagging-dependenc
 https://cogsci.mindmodeling.org/2012/papers/0096/paper0096.pdf
 https://github.com/isthatyoung/NLP-Characters-Relationships/blob/master/code/Preprocessing.py
 https://github.com/emdaniels/character-extraction/blob/master/README.md
-https://github.com/susanli2016/NLP-with-Python/blob/master/NER_NLTK_Spacy.ipynb-->
+https://github.com/susanli2016/NLP-with-Python/blob/master/NER_NLTK_Spacy.ipynb
+https://neurosys.com/article/intro-to-coreference-resolution-in-nlp/-->
