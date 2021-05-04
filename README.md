@@ -7,35 +7,51 @@ For an interactive render made with Bokeh see [character network link](https://g
 ![alt text](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/bokeh_plot.png?raw=true)
 
 https://asimov.fandom.com/wiki/Foundation_trilogy
+
 FOUNDATION
 1 The Psychohistorians
+
 - locations: Synnax, Trantor, Terminus
 - People: Gaal Dornick, Hari Seldon, Galactic Empire, Foundation
+
 2 The Encyclopedists
+
 - locations: Anacreon, Terminus
-- people: Anselm Haut Rodric, Salvor Hardin,The Mayor, (Dr. Bor Alurin),
+- people: Anselm Haut Rodric, Salvor Hardin,The Mayor, (Dr. Bor Alurin)
+
 3 The Mayors
+
 - locations: Terminus, Four Kingdoms (Anacreon, Smyrno, Konom and Daribow)
 - people: Salvor Hardin, Prince Regent Wienis
+
 4 The Traders
+
 - locations: Askone, Terminus
 - people: Limmar Ponyets, Eskel Gorov, The Grand Master, Pherl
+
 5 The Merchant Princes
+
 - locations: Republic of Korell, Terminus
 - people: Hober Mallow, Commdor Asper Argo, Commdora Licia Argo, Viceroy, Jord Parma
 
 FOUNDATION AND EMPIRE
+
 - locations: Trantor
 - people: Bel Riose, Ducem Barr, Onum Barr (father), Lathan Devers, Cleon II, Ammel Brodrig
+
 The Mule
+
 - locations: Trantor, Terminus, Great Library
 - people: Indbur III, Mule, Magnifico Giganticus (Mule), Toran Darell, Bayta Darell, Ebling Mis, Second Foundation
 
 SECOND FOUNDATION
 Search by the Mule
+
 - locations: Tazenda, Rossem
 - people: Bayta Darell, the Mule, Second Foundation, Han Pritcher, Foundation, Bail Channis, The First Speaker
+
 Search by the Foundation
+
 - locations: Kalgan, Terminus, Trantor
 - people: First Foundation, Second Foundation, Toran Darell, Pelleas Anthor, Homir Munn, Elvett Semic, Jole Turbor, Arcadia Darell (Arkady), Lord Stettin, Callia, Preem Palver
 
