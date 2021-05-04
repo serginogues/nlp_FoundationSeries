@@ -75,6 +75,7 @@ def entity_relationship(entity_list, text):
 
         #ToDo: Coreference resolution
         # Example: token = 'Seldon', get correct candidate from entity_list
+        # https://towardsdatascience.com/most-popular-coreference-resolution-frameworks-574ba8a8cc2d
         entity = coreference_resolution(entity, token_list[i-10:i+10])
         previous_entity, count, connection_list = first_or_second(previous_entity, entity, count, connection_list)
         count += 1
