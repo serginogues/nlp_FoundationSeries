@@ -181,7 +181,7 @@ links_list2 = [[['Gaal Dornick'], ['Hari Seldon'], 2],
  [['Mamma'], ['Pappa'], 18],
  [['Pappa'], ['Preem Palver'], 12]]
 
-links_list = [[['Gaal', 'Gaal Dornick'], ['Seldon', 'Hari Seldon'], 24],
+links_list1 = [[['Gaal', 'Gaal Dornick'], ['Seldon', 'Hari Seldon'], 24],
  [['Empire', 'Galactic Empire'], ['Emperor'], 8],
  [['Empire', 'Galactic Empire'], ['Gaal', 'Gaal Dornick'], 1],
  [['Avakim'], ['Seldon', 'Hari Seldon'], 1],

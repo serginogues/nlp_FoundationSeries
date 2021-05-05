@@ -8,6 +8,7 @@ The final goal is to answer the Who-Who and Who-Where questions by means of a Ch
 ![alt text](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/bokeh_plot.png?raw=true)
 
 (https://asimov.fandom.com/wiki/Foundation_trilogy)
+
 FOUNDATION
 1 The Psychohistorians
 

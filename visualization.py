@@ -4,7 +4,7 @@ import networkx
 from bokeh.io import output_notebook, show, save
 from bokeh.models import Range1d, Circle, ColumnDataSource, MultiLine, EdgesAndLinkedNodes, NodesAndLinkedEdges, LabelSet
 from bokeh.plotting import figure, from_networkx
-from bokeh.palettes import Blues8, Reds8, Purples8, Oranges8, Viridis8, Spectral8
+from bokeh.palettes import Blues8, Reds8, Purples8, Oranges8, Viridis8, Spectral11
 from bokeh.transform import linear_cmap
 from networkx.algorithms import community as commun
 
@@ -12,14 +12,7 @@ from networkx.algorithms import community as commun
 def preprocess_tuple(tuple_list):
     new_list = []
     for connection in tuple_list:
-        new_tuple = []
-        for i, entity in enumerate(connection):
-            if i != 2:
-                if len(entity) > 1:
-                    new_tuple.append(entity[1])
-                else:
-                    new_tuple.append(entity[0])
-        new_list.append((new_tuple[0], new_tuple[1], connection[2]))
+        new_list.append((str(connection[0]), str(connection[1]), connection[2]))
     return new_list
 
 
@@ -27,14 +20,12 @@ def super_network(tuple_list):
     """
     https://melaniewalsh.github.io/Intro-Cultural-Analytics/Network-Analysis/Making-Network-Viz-with-Bokeh.html
     """
-
     tuple_list = preprocess_tuple(tuple_list)
     df = DataFrame(tuple_list, columns=['Source', 'Target', 'Weight'])
     G = networkx.from_pandas_edgelist(df, source='Source', target='Target', edge_attr='Weight')
 
     # Calculate communities
     communities = commun.greedy_modularity_communities(G)
-    print(communities)
     # Create empty dictionaries
     modularity_class = {}
     modularity_color = {}
@@ -43,7 +34,7 @@ def super_network(tuple_list):
         # For each member of the community, add their community number and a distinct color
         for name in community:
             modularity_class[name] = community_number
-            modularity_color[name] = Spectral8[community_number]
+            modularity_color[name] = Spectral11[community_number]
 
     # Add modularity class and color as attributes from the network above
     networkx.set_node_attributes(G, modularity_class, 'modularity_class')
