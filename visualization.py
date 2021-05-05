@@ -34,6 +34,7 @@ def super_network(tuple_list):
 
     # Calculate communities
     communities = commun.greedy_modularity_communities(G)
+    print(communities)
     # Create empty dictionaries
     modularity_class = {}
     modularity_color = {}
@@ -122,3 +123,5 @@ def super_network(tuple_list):
 
 def mapping_character_location():
     print("Not implemented")
+
+

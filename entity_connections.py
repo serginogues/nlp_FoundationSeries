@@ -10,7 +10,14 @@ the number of paragraphs in which this is the case.
 """
 
 
-def first_or_second(entity1, entity, count, connection_list):
+def family_links(entity1, entity2):
+    """
+    :return: True if entity1 and 2 share the same surname
+    """
+    print("hey")
+
+
+def first_or_second(entity1, entity, count, connection_list, span):
     # found entity
     # first or second entity?
     if entity1 is None:
@@ -32,6 +39,8 @@ def first_or_second(entity1, entity, count, connection_list):
                     break
             if not a or not b:
                 connection_list.append([entity1, entity, 1])
+            #print("******Found connection between -", entity1, "- and -", entity, "*****************")
+            #print("Sentence: \n", span)
         # first
         entity1 = entity
         count = 0
@@ -39,13 +48,23 @@ def first_or_second(entity1, entity, count, connection_list):
     return entity1, count, connection_list
 
 
-def entity_relationship(entity_list, text):
+def find_entity_links(entity_list, text):
     """
     For each entity
         For each sentence in text
             if entity is in sentence
     :return: a list of tuples
     """
+    connection_list = []
+
+    # family connections
+    for subset in combinations(entity_list, 2):
+        name1 = str(subset[0][0]).split(" ")
+        name2 = str(subset[1][0]).split(" ")
+        if len(name1) > 1 and len(name2) > 1 and name1[1] == name2[1]:
+            connection_list.append([subset[0], subset[1], 1])
+
+
     # 0 - preprocessing
     text = re.sub(', ', ' ', str(text))  # removing new line characters
     text = re.sub(',', ' ', str(text))
@@ -56,13 +75,10 @@ def entity_relationship(entity_list, text):
 
     token_list = word_tokenize(text)
     token_list = [x for x in token_list if str(x) not in punctuation_tokens]
-    connection_list = []
     count = 0
     previous_entity = None
-    i = 0
-    while i < len(token_list):
+    for i in tqdm(range(len(token_list))):
         token = token_list[i]
-
         entity = []
         for ent in entity_list:
             for alias in ent:
@@ -85,9 +101,15 @@ def entity_relationship(entity_list, text):
         # https://neurosys.com/article/most-popular-frameworks-for-coreference-resolution/
         if len(entity) > 0:
             entity = coreference_resolution(entity, token_list[i-10:i+10])
-            previous_entity, count, connection_list = first_or_second(previous_entity, entity, count, connection_list)
+            previous_entity, count, connection_list = first_or_second(previous_entity, entity, count, connection_list, " ".join(token_list[i-10:i+20]))
         count += 1
-        i += 1
-        print(i, "out of ", len(token_list))
+
+    for i, name in enumerate(entity_list):
+        conn = [x for x in connection_list if name in x]
+        print(i, "-", name[0], len(conn), "list: ", conn)
+
+    def takethird(elem):
+        return elem[2]
+    connection_list.sort(key=takethird, reverse=True)
 
     return connection_list

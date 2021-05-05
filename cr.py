@@ -105,6 +105,7 @@ def get_full_named_entities(entity_list, parsed_list):
                 if i != 0:
                     final_list.append([name])
 
+    print("CR and entity extraction finished. Found:", len(final_list), "characters.")
     return final_list
 
 
