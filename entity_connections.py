@@ -90,6 +90,7 @@ def token_is_candidate(token):
     else:
         return False
 
+
 def find_entity_links(entity_list, parsed_list):
     """
     For each entity
