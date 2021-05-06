@@ -10,6 +10,7 @@ The final goal is to answer the Who-Who and Who-Where questions by means of a Ch
 (https://asimov.fandom.com/wiki/Foundation_trilogy)
 
 FOUNDATION
+
 1 The Psychohistorians
 
 - locations: Synnax, Trantor, Terminus
@@ -46,6 +47,7 @@ The Mule
 - people: Indbur III, Mule, Magnifico Giganticus (Mule), Toran Darell, Bayta Darell, Ebling Mis, Second Foundation
 
 SECOND FOUNDATION
+
 Search by the Mule
 
 - locations: Tazenda, Rossem

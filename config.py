@@ -6,7 +6,7 @@ from tqdm import tqdm
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk import ngrams, PorterStemmer, WordNetLemmatizer
 from collections import Counter
-from itertools import combinations, permutations
+from itertools import combinations, permutations, islice
 
 import spacy
 from spacy import displacy
