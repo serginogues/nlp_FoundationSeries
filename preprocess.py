@@ -3,7 +3,7 @@ from utils import *
 
 def preprocess(text):
     """
-    Remove unwanted characters + split by sentences + sentence tokenization + lemmatization + POS tagging
+    Remove unwanted characters + split by sentences + sentence tokenization + parsing + lemmatization + POS tagging
     """
     # 0 - preprocessing
     text = re.sub(', ', ' ', str(text))  # removing new line characters

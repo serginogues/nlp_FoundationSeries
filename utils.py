@@ -1,10 +1,8 @@
 """
-Set of methods that could be useful at some point
+Set of methods that could be useful at some point and some other deprecated
 """
 
 from config import *
-
-punctuation_tokens = {',', '.', '--', '-', '!', '?', ':', ';', '``', "''", '(', ')', '[', ']', '...'}
 
 
 def dependency_graph(doc):
@@ -94,7 +92,6 @@ def lemmatization(word, _pos="a"):
     :param _pos: "a" == adjective, "n" == noun
     :return: lema of word
     """
-    lemmatizer = WordNetLemmatizer()
     return lemmatizer.lemmatize(word, pos=_pos)
 
 
@@ -128,3 +125,22 @@ def first_or_second(entity1, entity, count, connection_list, span):
         count = 0
 
     return entity1, count, connection_list
+
+
+def all_mentions(doc):
+    """All the "mentions" in the given text:"""
+    if doc._.has_coref:
+        for cluster in doc._.coref_clusters:
+            return cluster.mentions
+    else:
+        return None
+
+
+def pronoun_references(doc):
+    """Pronouns and their references:"""
+    list = []
+    for token in doc:
+        # if token.pos_ == 'PRON' and token._.in_coref:
+        for cluster in token._.coref_clusters:
+            list.append((token.text, cluster.main.text))
+    return list

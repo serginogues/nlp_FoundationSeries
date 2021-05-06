@@ -1,12 +1,8 @@
+"""
+Given a text and a list of entities (post NER) find all connections between them
+"""
 from config import *
 from cr import coreference_resolution
-
-"""
-https://dh2016.adho.org/abstracts/297
-The first network is based on co-occurrences of characters in the same window of text: 
-an edge between two characters exists if they are mentioned in the same paragraph and the weight of the edge is 
-the number of paragraphs in which this is the case.
-"""
 
 
 def family_links(entity_list, connection_list):

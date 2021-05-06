@@ -1,31 +1,8 @@
 """
-Coreference resolution model:
-https://neurosys.com/article/most-popular-frameworks-for-coreference-resolution/
-
-CR overview:
-https://neurosys.com/article/intro-to-coreference-resolution-in-nlp/
+Coreference resolution model
 Unification of Character Occurrences (alias resolution): grouping proper nouns referring to the same character
 """
 from utils import *
-
-
-def all_mentions(doc):
-    """All the "mentions" in the given text:"""
-    if doc._.has_coref:
-        for cluster in doc._.coref_clusters:
-            return cluster.mentions
-    else:
-        return None
-
-
-def pronoun_references(doc):
-    """Pronouns and their references:"""
-    list = []
-    for token in doc:
-        # if token.pos_ == 'PRON' and token._.in_coref:
-        for cluster in token._.coref_clusters:
-            list.append((token.text, cluster.main.text))
-    return list
 
 
 def similar_names(alias, name):
