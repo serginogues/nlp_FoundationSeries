@@ -1,3 +1,4 @@
+import os
 import re
 import json
 import numpy as np
@@ -11,12 +12,11 @@ import spacy
 from spacy import displacy
 from spacy.matcher import Matcher
 import neuralcoref
-
+import logging
 
 # PREPROCESS PARAMETERS:
 nlp = spacy.load("en_core_web_sm")
 matcher = Matcher(nlp.vocab)
-neuralcoref.add_to_pipe(nlp)
 lemmatizer = WordNetLemmatizer()
 # import nltk
 # nltk.download('wordnet', quiet=True)
@@ -37,13 +37,25 @@ be_in_pattern = [{'POS': 'AUX'}, {'LOWER': 'in'}, {'POS': 'PROPN'}]
 be_on_pattern = [{'POS': 'AUX'}, {'LOWER': 'on'}, {'POS': 'PROPN'}]
 
 
+# COREFERENCE RESOLUTION
+from allennlp_models.pretrained import load_predictor
+logging.getLogger('allennlp.common.params').disabled = True
+logging.getLogger('allennlp.nn.initializers').disabled = True
+logging.getLogger('allennlp.modules.token_embedders.embedding').setLevel(logging.INFO)
+logging.getLogger('urllib3.connectionpool').disabled = True
+predictor = load_predictor("coref-spanbert")
+
+
+"""coref = neuralcoref.NeuralCoref(nlp.vocab, greedyness=0.55)
+nlp.add_pipe(coref, name='neuralcoref')"""
+# neuralcoref.add_to_pipe(nlp)  #, conv_dict=conv_dict, greedyness=0.5) conv_dict = {'Mule': ['man']}
+
+
 # MAIN PARAMETERS:
 with open("FoundationTrilogy.txt", "r", encoding="utf-8") as f:
     FoundationTrilogy = f.read()
-PREPROCESS = False
-NER = False
-LINKS = True
-
+NER = True
+LINKS = False
 
 # ALREADY COMPUTED OUTPUT VECTORS:
 parsed_list = []

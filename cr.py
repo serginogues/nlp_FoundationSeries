@@ -86,5 +86,6 @@ def get_full_named_entities(entity_list, parsed_list):
     return final_list
 
 
-def coreference_resolution(entity_list, span):
+def coreference_resolution(entity_list, text):
+    predictor.coref_resolved(text)
     return entity_list[0]

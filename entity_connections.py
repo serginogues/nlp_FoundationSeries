@@ -66,7 +66,7 @@ def solve_coreferences(candidates, token_list, entity_list, pos_current_token):
             # Example: token = 'Seldon', get correct candidate from entity_list
             # https://towardsdatascience.com/how-to-make-an-effective-coreference-resolution-model-55875d2b5f19
             # https://neurosys.com/article/most-popular-frameworks-for-coreference-resolution/
-            entity = coreference_resolution(candidates, token_list[pos_current_token - 30:pos_current_token + 30])
+            entity = coreference_resolution(candidates, token_list[pos_current_token - 100:pos_current_token + 100])
     else:
         entity = candidates[0]
 
@@ -110,16 +110,15 @@ def find_entity_links(entity_list, parsed_list):
                 entity = solve_coreferences(entity, token_list, entity_list, i)
 
                 # find possible entities within the next 35 words
-                candidates = [[i, x] for i, x in enumerate(token_list[i+1:i+35]) if token_is_candidate(x)]
-                #ToDo: check this works and deletes duplicates
-                candidates = list(set([x[1].text for x in candidates]))
+                candidates = [x for x in token_list[i+1:i+35] if token_is_candidate(x)]
+                candidates = list(set(candidates))
 
                 # if any of the candidates corresponds to an entity, add connection
                 for cand in candidates:
-                    entity2 = entity_from_token(entity_list, cand[1])
+                    entity2 = entity_from_token(entity_list, cand)
                     if len(entity2) > 0:
                         # Solve coreferences if more than one candidate
-                        entity2 = solve_coreferences(entity2, token_list, entity_list, cand[0])
+                        entity2 = solve_coreferences(entity2, token_list, entity_list, i)
                         connection_list = link_entities(connection_list, entity2, entity[0])
 
     connection_list = print_results_and_sort(entity_list, connection_list)

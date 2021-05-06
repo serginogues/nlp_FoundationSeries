@@ -5,11 +5,7 @@ def preprocess(text):
     """
     Remove unwanted characters + split by sentences + sentence tokenization + parsing + lemmatization + POS tagging
     """
-    # 0 - preprocessing
-    text = re.sub(', ', ' ', str(text))  # removing new line characters
-    text = re.sub(',', ' ', str(text))
-    text = re.sub('\n ', '', str(text))
-    text = re.sub('\n', ' ', str(text))
+    text = remove_from_text(text)
 
     # 1 - original sentence
     sentences = sent_tokenize(text)
@@ -17,14 +13,27 @@ def preprocess(text):
     sentences = [re.sub(' +', ' ', sent) for sent in sentences]
 
     # English tokenizer, tagger, parser and NER
-    parsed_list = []
+    doc_list = []
     for i in tqdm(range(len(sentences))):
-        parsed_list.append(nlp(sentences[i]))
-    print("Number of preprocessed sentences: ", len(parsed_list))
+        doc_list.append(nlp(sentences[i]))
+    print("Number of preprocessed sentences: ", len(doc_list))
 
-    return parsed_list
-
-
+    return doc_list
 
 
+def remove_from_text(text):
+    # 0 - preprocessing
+    text = re.sub(', ', ' ', str(text))  # removing new line characters
+    text = re.sub(',', '', str(text))
+    text = re.sub('\n ', '', str(text))
+    text = re.sub('\n', '', str(text))
+
+    return text
+
+
+def split_by_num_charcacters(text, n=500000):
+    """
+    https://stackoverflow.com/questions/9475241/split-string-every-nth-character
+    """
+    return [text[i:i+n] for i in range(0, len(text), n)]
 

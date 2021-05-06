@@ -46,7 +46,7 @@ def ner_person(doc, token):
         return True
     else:
         for i, word in enumerate(doc):
-            if str(word) in honorific_words and i < len(doc)-1 and doc[i+1] == token:
+            if str(word) in honorific_words and i < len(doc) - 1 and doc[i + 1] == token:
                 return True
     return False
 
@@ -72,3 +72,24 @@ def ner_location(doc, token):
         if len([x for x in nlp(str(span)) if x.pos_ == "VERB" and str(x.lemma_) in travel_to_verbs]) and str(token) in str(span):
             return True
 
+
+def ner_event(doc):
+    subject = ""
+    direct_object = ""
+    indirect_object = ""
+    verb = ""
+    # get token dependencies
+    for word in doc:
+        # subject would be
+        if word.dep_ == "nsubj":
+            subject = word.orth_
+        # iobj for indirect object
+        elif word.dep_ == "iobj":
+            indirect_object = word.orth_
+        # dobj for direct object
+        elif word.dep_ == "dobj":
+            direct_object = word.orth_
+        elif word.dep_ == 'ROOT':
+            verb = word
+    if str(subject) != "" and str(verb) != "" and str(direct_object) != "":
+        print("----------Event---------\n - '", doc.text, "'\n - Who? ", subject, "\n - What?: ", verb, "\n - vs Who? ", direct_object, "\n - indirect object: ", indirect_object)
