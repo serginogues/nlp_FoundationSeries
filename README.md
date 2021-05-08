@@ -1,15 +1,18 @@
-# nlp_FoundationSeries
+# Text Mining The Foundation Trilogy
 
-A Rule-Based Named Entity Recognition (NER) algorithm is proposed to extract all the characters, planets and their connections from the Isaac Asimov's first three Foundation books, collectively known as the Foundation Trilogy.
+### Author: Sergi Nogues Farres
 
-The final goal is to answer the Who-Who and Who-Where questions by means of a Character network graph, which represents all character relationships in the novels, and a geo-mapping graph, that shows all character-planet relationships.
-[Interactive render made with Bokeh](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/character_network.html)
+A Rule-Based Named Entity Recognition (NER) model to extract all the key entities and their connections from the Isaac Asimov's first three Foundation books, collectively known as the Foundation Trilogy.
 
-![alt text](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/bokeh_plot.png?raw=true)
+[Interactive Character Network](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/character_network.html)
 
-(https://asimov.fandom.com/wiki/Foundation_trilogy)
+<!--![alt text](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/bokeh_plot.png?raw=true)-->
 
-FOUNDATION
+[About The Foundation Trilogy](https://asimov.fandom.com/wiki/Foundation_trilogy)
+
+
+
+<!--FOUNDATION
 
 1 The Psychohistorians
 
@@ -58,8 +61,7 @@ Search by the Foundation
 - locations: Kalgan, Terminus, Trantor
 - people: First Foundation, Second Foundation, Toran Darell, Pelleas Anthor, Homir Munn, Elvett Semic, Jole Turbor, Arcadia Darell (Arkady), Lord Stettin, Callia, Preem Palver
 
-
-<!--Related work
+Related work
 https://www.analyticsvidhya.com/blog/2020/06/nlp-project-information-extraction/
 https://www.analyticsvidhya.com/blog/2019/10/how-to-build-knowledge-graph-text-using-spacy/?utm_source=blog&utm_medium=introduction-information-extraction-python-spacy
 https://medium.com/agatha-codes/using-textual-analysis-to-quantify-a-cast-of-characters-4f3baecdb5c
@@ -71,9 +73,9 @@ https://github.com/emdaniels/character-extraction/blob/master/README.md
 https://github.com/susanli2016/NLP-with-Python/blob/master/NER_NLTK_Spacy.ipynb
 https://neurosys.com/article/most-popular-frameworks-for-coreference-resolution/
 https://neurosys.com/article/intro-to-coreference-resolution-in-nlp/
-https://lvngd.com/blog/coreference-resolution-python-spacy-neuralcoref/-->
+https://lvngd.com/blog/coreference-resolution-python-spacy-neuralcoref/
 
-<!--https://arxiv.org/pdf/1907.02704.pdf
+https://arxiv.org/pdf/1907.02704.pdf
 1) The identification of characters. We distinguish two substeps:
     - Detect occurrences of characters in the narrative
         -  a character can appear under three forms in text: proper noun, nominal, and pronoun.
