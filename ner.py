@@ -1,8 +1,8 @@
 """
 Rule-Based Named Entity Recognition model for the detection of character occurrences
 """
-
-from utils import *
+from config import tqdm, Counter, honorific_words, person_verbs, matcher, location_name_pattern, location_name, \
+    travel_to_pattern, travel_to_verbs, nlp, NER
 
 
 def get_full_name(doc, token):
@@ -17,25 +17,37 @@ def named_entity_recognition(sentence_list):
     """
     :return: chronological sequence of unified character and location occurrences
     """
-    # 3 - NER
-    main_characters_ = []
-    locations_ = []
-    for i in tqdm(range(len(sentence_list))):
-        doc = sentence_list[i]
-        for token in doc:
-            if token.pos_ == 'PROPN' and str(token) not in honorific_words:
-                if ner_person(doc, token):
-                    main_characters_.append(get_full_name(doc, token))
+    if NER:
+        main_characters_ = []
+        locations_ = []
+        for i in tqdm(range(len(sentence_list))):
+            doc = sentence_list[i]
+            for token in doc:
+                if token.pos_ == 'PROPN' and str(token) not in honorific_words:
+                    if ner_person(doc, token):
+                        main_characters_.append(get_full_name(doc, token))
 
-                if ner_location(doc, token):
-                    locations_.append(get_full_name(doc, token))
+                    if ner_location(doc, token):
+                        locations_.append(get_full_name(doc, token))
 
-    people_tuple_list = Counter(main_characters_).most_common(180)
-    people_tuple_list = [x[0] for x in people_tuple_list if int(x[1]) > 1]
-    location_tuple_list = Counter(locations_).most_common(150)
-    location_tuple_list = [x[0] for x in location_tuple_list]
+        people_list = Counter(main_characters_).most_common(180)
+        people_list = [x[0] for x in people_list if int(x[1]) > 1]
+        location_list = Counter(locations_).most_common(150)
+        location_list = [x[0] for x in location_list]
+    else:
+        location_list = ['Trantor', 'Kalgan', 'Terminus', 'Anacreon', 'Synnax', 'Haven', 'Arcturus', 'Ahctuwus',
+                         'Askone', 'Radole', 'Terminus City', 'Terminus City', 'Dellcass', 'Neotrantor', 'Gentri',
+                         'Rossem', 'Space under Foundation']
+        people_list = ['Darell', 'Seldon', 'Barr', 'Bayta', 'Mallow', 'Fie', 'Gaal', 'Hardin', 'Toran', 'Anthor',
+                       'Stettin', 'Mis', 'Dorwin', 'Munn', 'Channis', 'Arcadia', 'Pritcher', 'Brodrig', 'Mule',
+                       'Speaker', 'Pirenne', 'Pappa', 'Sutt', 'Callia', 'Randu', 'Indbur', 'Turbor', 'Magnifico',
+                       'Verisof', 'Wienis', 'Jael', 'Sermak', 'Lepold', 'Forell', 'Mayor', 'dryly', 'Kleise', 'Mamma',
+                       'Chen', 'Fara', 'Lee', 'Bort', 'Master', 'Pherl', 'Fran', 'Semic', 'Walto', 'Aporat', 'Gorov',
+                       'Fox', 'Elders', 'Palver', 'Avakim', 'Advocate', 'Lameth', 'Fulham', 'Empire', 'Gorm', 'Ponyets',
+                       'Emperor', 'Riose', 'Foundation', 'Devers', 'Dad', 'Capsule', 'Iwo', 'Ovall', 'Hella',
+                       'Commason', 'Plan', 'Student', 'Meirus', 'Poochie']
 
-    return people_tuple_list, location_tuple_list
+    return people_list, location_list
 
 
 def ner_person(doc, token):
@@ -69,7 +81,8 @@ def ner_location(doc, token):
     m = matcher(doc)
     for match_id, start, end in m:
         span = doc[start: end]
-        if len([x for x in nlp(str(span)) if x.pos_ == "VERB" and str(x.lemma_) in travel_to_verbs]) and str(token) in str(span):
+        if len([x for x in nlp(str(span)) if x.pos_ == "VERB" and str(x.lemma_) in travel_to_verbs]) and str(
+                token) in str(span):
             return True
 
 
@@ -92,4 +105,5 @@ def ner_event(doc):
         elif word.dep_ == 'ROOT':
             verb = word
     if str(subject) != "" and str(verb) != "" and str(direct_object) != "":
-        print("----------Event---------\n - '", doc.text, "'\n - Who? ", subject, "\n - What?: ", verb, "\n - vs Who? ", direct_object, "\n - indirect object: ", indirect_object)
+        print("----------Event---------\n - '", doc.text, "'\n - Who? ", subject, "\n - What?: ", verb, "\n - vs Who? ",
+              direct_object, "\n - indirect object: ", indirect_object)

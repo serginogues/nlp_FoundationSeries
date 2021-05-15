@@ -1,4 +1,4 @@
-from utils import *
+from config import sent_tokenize, re, tqdm, nlp
 
 
 def preprocess(text):
@@ -9,7 +9,6 @@ def preprocess(text):
 
     # 1 - original sentence
     sentences = sent_tokenize(text)
-    print("Number of sentences: ", len(sentences))
     sentences = [re.sub(' +', ' ', sent) for sent in sentences]
 
     # English tokenizer, tagger, parser and NER
@@ -22,8 +21,11 @@ def preprocess(text):
 
 
 def remove_from_text(text):
+    """
+    Remove new line characters and commas
+    """
     # 0 - preprocessing
-    text = re.sub(', ', ' ', str(text))  # removing new line characters
+    text = re.sub(', ', ' ', str(text))
     text = re.sub(',', '', str(text))
     text = re.sub('\n ', '', str(text))
     text = re.sub('\n', '', str(text))

@@ -1,11 +1,9 @@
-from utils import *
 from pandas import DataFrame
 import networkx
-from bokeh.io import output_notebook, show, save
-from bokeh.models import Range1d, Circle, ColumnDataSource, MultiLine, EdgesAndLinkedNodes, NodesAndLinkedEdges, LabelSet
+from bokeh.io import show, save
+from bokeh.models import Range1d, Circle, ColumnDataSource, MultiLine, NodesAndLinkedEdges, LabelSet
 from bokeh.plotting import figure, from_networkx
-from bokeh.palettes import Blues8, Reds8, Purples8, Oranges8, Viridis8, Spectral11
-from bokeh.transform import linear_cmap
+from bokeh.palettes import Blues8, Spectral11
 from networkx.algorithms import community as commun
 
 

@@ -2,7 +2,7 @@
 Set of methods that could be useful at some point and some other deprecated
 """
 
-from config import *
+from config import displacy, spacy, word_tokenize, punctuation_tokens, ngrams, PorterStemmer, lemmatizer
 
 
 def dependency_graph(doc):
@@ -105,26 +105,6 @@ def coreference(parsed):
     if len(cluster) > 0:
         cluster = cluster[0].mentions
     return cluster
-
-
-def first_or_second(entity1, entity, count, connection_list, span):
-    """
-    Deprecated
-    """
-    # found entity
-    # first or second entity?
-    if entity1 is None:
-        # first
-        entity1 = entity
-    else:
-        if count < 35:
-            # second
-            connection_list = check_exist(connection_list, entity1, entity)
-        # first
-        entity1 = entity
-        count = 0
-
-    return entity1, count, connection_list
 
 
 def all_mentions(doc):
