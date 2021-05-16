@@ -1,9 +1,21 @@
 from config import FoundationTrilogy, VISUALIZE
 from preprocess import preprocess
 from ner import named_entity_recognition
-from NE_complete_names import get_full_named_entities
+from ne_complete_names import get_full_named_entities
 from entity_connections import find_entity_links
 from visualization import super_network
+
+"""
+*********PIPELINE*********
+0 - preprocess.py           - preprocess()
+1 - ner.py                  - named_entity_recognition()
+2 - ne_complete_names.py    - get_full_named_entities()
+3 - CR + ALIAS RESOLUTION
+4 - CR + ENTITY RELATIONS
+5 - NORMALIZATION
+6 - VISUALIZATION
+7 - QUALITY VALIDATION
+"""
 
 if __name__ == '__main__':
 
@@ -15,7 +27,8 @@ if __name__ == '__main__':
 
     # Up to here the code works perfect
     #TODO:
-    # - Alias resolution ("Seldon" or "Foundation"): inference? see course 5
+    # - Alias resolution - pattern: PERSON + ["known as" OR ", "
+    # - Entity Relations (ideas in course 5 diapo 34)
     # - Coreferences for entity connection
     # - Use normalization of extracted entities before visualization
     # - Visualization: Custom Mapping with https://melaniewalsh.github.io/Intro-Cultural-Analytics/Mapping/Custom-Maps.html

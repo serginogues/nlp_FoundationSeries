@@ -3,7 +3,7 @@ First, entities are found in ner.py
 In this section the complete name of every person NE (found during ner.py) is found
 #TODO: do inference and alias resolution during this step?
 """
-from config import Counter, combinations, FULL_NAMES
+from config import Counter, combinations, FULL_NAMES, honorific_words, tqdm
 
 
 def similar_names(alias, name):
@@ -18,21 +18,26 @@ def similar_names(alias, name):
 
 def get_all_alias(entity_list, parsed_list):
     """
-    For all parsed sentences, compares all NE in entity_list with all tokens
-    and returns a list with the complete name of the entities in entity_list.
+    Gets name and surname of NE
     """
+    print("Start GET_FULL_NAMES")
     names_list = []
-    for name in entity_list:
+    for nn in tqdm(range(len(entity_list))):
+        name = entity_list[nn]
         alias_list = []
         for doc in parsed_list:
-            for ent in doc.ents:
-                # TODO: do not use SpaCy NER, use NPROP instead
-                if str(ent) != name and similar_names(str(ent), name):
-                    if len(ent) == 2 and "'" not in str(ent):
-                        alias_list.append(str(ent))
+            for i, token in enumerate(doc):
+                if i < len(doc)-1 and token.pos_ == "PROPN" and doc[i+1].pos_ == "PROPN":
+                    ent = str(token) + " " + str(doc[i+1])
+                    if ent != name and similar_names(ent, name):
+                        alias_list.append(ent)
 
         alias_list = Counter(alias_list).most_common(6)
         alias_list = [x[0] for x in alias_list if int(x[1]) > 1]
+        for alias in alias_list:
+            if any([w for w in honorific_words if w in alias.split(" ")[0]]):
+                alias_list.remove(alias)
+
         alias_list.insert(0, name)
         names_list.append(alias_list)
 

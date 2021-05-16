@@ -17,6 +17,7 @@ def named_entity_recognition(sentence_list):
     """
     :return: chronological sequence of unified character and location occurrences
     """
+    print("Start NER")
     if NER:
         main_characters_ = []
         locations_ = []
@@ -38,14 +39,14 @@ def named_entity_recognition(sentence_list):
         location_list = ['Trantor', 'Kalgan', 'Terminus', 'Anacreon', 'Synnax', 'Haven', 'Arcturus', 'Ahctuwus',
                          'Askone', 'Radole', 'Terminus City', 'Terminus City', 'Dellcass', 'Neotrantor', 'Gentri',
                          'Rossem', 'Space under Foundation']
-        people_list = ['Darell', 'Seldon', 'Barr', 'Bayta', 'Mallow', 'Fie', 'Gaal', 'Hardin', 'Toran', 'Anthor',
-                       'Stettin', 'Mis', 'Dorwin', 'Munn', 'Channis', 'Arcadia', 'Pritcher', 'Brodrig', 'Mule',
-                       'Speaker', 'Pirenne', 'Pappa', 'Sutt', 'Callia', 'Randu', 'Indbur', 'Turbor', 'Magnifico',
-                       'Verisof', 'Wienis', 'Jael', 'Sermak', 'Lepold', 'Forell', 'Mayor', 'dryly', 'Kleise', 'Mamma',
-                       'Chen', 'Fara', 'Lee', 'Bort', 'Master', 'Pherl', 'Fran', 'Semic', 'Walto', 'Aporat', 'Gorov',
-                       'Fox', 'Elders', 'Palver', 'Avakim', 'Advocate', 'Lameth', 'Fulham', 'Empire', 'Gorm', 'Ponyets',
-                       'Emperor', 'Riose', 'Foundation', 'Devers', 'Dad', 'Capsule', 'Iwo', 'Ovall', 'Hella',
-                       'Commason', 'Plan', 'Student', 'Meirus', 'Poochie']
+        people_list = ['Darell', 'Seldon', 'Barr', 'Bayta', 'Mallow', 'Fie', 'Hardin', 'Toran', 'Gaal', 'Anthor',
+                       'Stettin', 'Mis', 'Dorwin', 'Channis', 'Munn', 'Pritcher', 'Mule', 'Speaker', 'Arcadia',
+                       'Brodrig', 'Pirenne', 'Sutt', 'Pappa', 'Randu', 'Magnifico', 'Indbur', 'Turbor', 'Verisof',
+                       'Wienis', 'Ponyets', 'Jael', 'Forell', 'Sermak', 'Lepold', 'Gorov', 'Callia', 'Mayor', 'Fara',
+                       'Master', 'Riose', 'Fran', 'Kleise', 'Mamma', 'Lee', 'Bort', 'Pherl', 'Chen', 'Walto', 'Aporat',
+                       'Fox', 'Elders', 'Student', 'Semic', 'Avakim', 'Advocate', 'Lameth', 'Fulham', 'Empire', 'Orsy',
+                       'Foundation', 'Capsule', 'Iwo', 'Mangin', 'Ovall', 'Hella', 'Commason', 'Plan', 'Meirus',
+                       'Poochie', 'Palver']
 
     return people_list, location_list
 
@@ -87,6 +88,9 @@ def ner_location(doc, token):
 
 
 def ner_event(doc):
+    """
+    Fact analyses
+    """
     subject = ""
     direct_object = ""
     indirect_object = ""
