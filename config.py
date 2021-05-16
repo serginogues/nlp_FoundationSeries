@@ -3,7 +3,6 @@ import re
 import json
 import numpy as np
 import logging
-logging.basicConfig(level=logging.CRITICAL)
 import pandas as pd
 from tqdm import tqdm
 from nltk.tokenize import sent_tokenize, word_tokenize
@@ -13,10 +12,12 @@ from itertools import combinations, permutations, islice
 import spacy
 from spacy import displacy
 from spacy.matcher import Matcher
-
 from allennlp_models.pretrained import load_predictor
+
+logging.basicConfig(level=logging.CRITICAL)
 print("Start CONFIG")
 
+#region params
 # PREPROCESS PARAMETERS:
 nlp = spacy.load("en_core_web_sm")
 matcher = Matcher(nlp.vocab)
@@ -45,13 +46,13 @@ logging.getLogger('allennlp.nn.initializers').disabled = True
 logging.getLogger('allennlp.modules.token_embedders.embedding').setLevel(logging.CRITICAL)
 logging.getLogger('urllib3.connectionpool').disabled = True
 predictor = load_predictor("coref-spanbert")
-
+#endregion
 
 # MAIN PARAMETERS:
 with open("FoundationTrilogy.txt", "r", encoding="utf-8") as f:
     FoundationTrilogy = f.read()
 
-STAGE = 2
+STAGE = 3
 
 PREPROCESS = True
 NER = True
@@ -59,11 +60,10 @@ FULL_NAMES = True
 LINKS = True
 VISUALIZE = True
 if STAGE == 2:
-    # at Full names
+    # noinspection PyRedeclaration
     NER = False
-
 elif STAGE == 3:
-    # at CR + Alias Resolution
-    PREPROCESS, NER, FULL_NAMES = False, False, False
+    # noinspection PyRedeclaration
+    NER, FULL_NAMES = False, False
 
 
