@@ -2,7 +2,8 @@
 Rule-Based Named Entity Recognition model for the detection of character occurrences
 """
 from config import tqdm, Counter, honorific_words, person_verbs, matcher, location_name_pattern, location_name, \
-    travel_to_pattern, travel_to_verbs, nlp, NER
+    travel_to_pattern, travel_to_verbs, nlp, STAGE
+from utils import get_ents_from_doc
 
 
 def get_full_name(doc, token):
@@ -18,13 +19,14 @@ def named_entity_recognition(sentence_list):
     :return: chronological sequence of unified character and location occurrences
     """
     print("Start NER")
-    if NER:
+    if STAGE == 0:
         main_characters_ = []
         locations_ = []
         for i in tqdm(range(len(sentence_list))):
             doc = sentence_list[i]
             for token in doc:
-                if token.pos_ == 'PROPN' and str(token) not in honorific_words:
+                ents = get_ents_from_doc(doc)
+                if any(ents):
                     if ner_person(doc, token):
                         main_characters_.append(get_full_name(doc, token))
 
@@ -90,6 +92,8 @@ def ner_location(doc, token):
 def ner_event(doc):
     """
     Fact analyses
+    Most events are build around patterns of the form: <OBJECT> <VERB> <SUBJECT>
+    #TODO: see course 5 slide 35
     """
     subject = ""
     direct_object = ""

@@ -1,14 +1,14 @@
-from config import sent_tokenize, re, tqdm, nlp, PREPROCESS
+from config import sent_tokenize, re, tqdm, nlp, STAGE, FoundationTrilogy
 
 
-def preprocess(text):
+def preprocess():
     """
     Remove unwanted characters + split by sentences + sentence tokenization + parsing + lemmatization + POS tagging
     """
     print("Start PREPROCESS")
     doc_list = []
-    if PREPROCESS:
-        text = remove_from_text(text)
+    if STAGE < 3:
+        text = remove_from_text(FoundationTrilogy)
 
         # 1 - original sentence
         sentences = sent_tokenize(text)

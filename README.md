@@ -74,6 +74,7 @@ https://github.com/susanli2016/NLP-with-Python/blob/master/NER_NLTK_Spacy.ipynb
 https://neurosys.com/article/most-popular-frameworks-for-coreference-resolution/
 https://neurosys.com/article/intro-to-coreference-resolution-in-nlp/
 https://lvngd.com/blog/coreference-resolution-python-spacy-neuralcoref/
+https://towardsdatascience.com/how-to-make-an-effective-coreference-resolution-model-55875d2b5f19
 
 https://arxiv.org/pdf/1907.02704.pdf
 1) The identification of characters. We distinguish two substeps:

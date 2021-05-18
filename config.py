@@ -8,28 +8,27 @@ from tqdm import tqdm
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk import ngrams, PorterStemmer, WordNetLemmatizer
 from collections import Counter
-from itertools import combinations, permutations, islice
+from itertools import combinations, permutations, islice, tee
 import spacy
 from spacy import displacy
 from spacy.matcher import Matcher
-from allennlp_models.pretrained import load_predictor
+import neuralcoref
 
 logging.basicConfig(level=logging.CRITICAL)
 print("Start CONFIG")
 
-#region params
+# region params
 # PREPROCESS PARAMETERS:
 nlp = spacy.load("en_core_web_sm")
 matcher = Matcher(nlp.vocab)
 lemmatizer = WordNetLemmatizer()
-# import nltk
-# nltk.download('wordnet', quiet=True)
 punctuation_tokens = {',', '.', '--', '-', '!', '?', ':', ';', '``', "''", '(', ')', '[', ']', '...'}
 
-
 # NER PARAMETERS:
-honorific_words = ['Dr.', 'Prof.', 'Mr.', 'Ms.', 'Msr.', 'Jr.', 'Sr.', 'Lord', 'Sir', 'Professor', 'Doctor', 'King', 'Commdor', 'Lady']
-person_verbs_ = ['said', 'sniffed',  'met', 'greet', 'walked', 'respond', 'talk', 'think', 'hear', 'go', 'wait', 'pause', 'write', 'smile', 'answer', 'wonder', 'reply', 'read', 'sit', 'muttered', 'fumble', 'ask', 'sigh']
+honorific_words = ['Dr.', 'Prof.', 'Mr.', 'Ms.', 'Msr.', 'Jr.', 'Sr.', 'Lord', 'Sir', 'Professor', 'Doctor', 'King',
+                   'Commdor', 'Lady', 'Captain', 'Colonel', 'Miss', 'General', 'Mayor']
+person_verbs_ = ['said', 'sniffed', 'met', 'greet', 'walked', 'respond', 'talk', 'think', 'hear', 'go', 'wait', 'pause',
+                 'write', 'smile', 'answer', 'wonder', 'reply', 'read', 'sit', 'muttered', 'fumble', 'ask', 'sigh']
 person_verbs = [lemmatizer.lemmatize(w, pos='v') for w in person_verbs_]
 location_name = ['planet', 'kingdom', 'world', 'region', 'location', 'republic', 'street', 'neighborhood', 'realm']
 location_name_pattern = [{'POS': 'NOUN'}, {'LOWER': 'of'}, {'POS': 'PROPN'}]
@@ -39,31 +38,21 @@ travel_to_pattern = [{'POS': 'VERB'}, {'LOWER': 'to'}, {'POS': 'PROPN'}]
 be_in_pattern = [{'POS': 'AUX'}, {'LOWER': 'in'}, {'POS': 'PROPN'}]
 be_on_pattern = [{'POS': 'AUX'}, {'LOWER': 'on'}, {'POS': 'PROPN'}]
 
-
 # COREFERENCE RESOLUTION
-logging.getLogger('allennlp.common.params').disabled = True
-logging.getLogger('allennlp.nn.initializers').disabled = True
-logging.getLogger('allennlp.modules.token_embedders.embedding').setLevel(logging.CRITICAL)
-logging.getLogger('urllib3.connectionpool').disabled = True
-predictor = load_predictor("coref-spanbert")
-#endregion
+neuralcoref.add_to_pipe(nlp)
+
+# LINKS
+LAST_MALLOW = "Hober Mallow"
+LAST_FOUNDATION = "First Foundation"
 
 # MAIN PARAMETERS:
 with open("FoundationTrilogy.txt", "r", encoding="utf-8") as f:
     FoundationTrilogy = f.read()
 
-STAGE = 3
-
-PREPROCESS = True
-NER = True
-FULL_NAMES = True
-LINKS = True
-VISUALIZE = True
-if STAGE == 2:
-    # noinspection PyRedeclaration
-    NER = False
-elif STAGE == 3:
-    # noinspection PyRedeclaration
-    NER, FULL_NAMES = False, False
-
-
+"""
+**Label - STAGE**
+0 - NER
+1 - Find full names after NER
+2 - CR + Entity Relations
+"""
+STAGE = 2

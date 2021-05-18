@@ -2,7 +2,8 @@
 Set of methods that could be useful at some point and some other deprecated
 """
 
-from config import displacy, spacy, word_tokenize, punctuation_tokens, ngrams, PorterStemmer, lemmatizer
+from config import displacy, spacy, word_tokenize, punctuation_tokens, ngrams, PorterStemmer, lemmatizer, tee, \
+    honorific_words, LAST_MALLOW, LAST_FOUNDATION
 
 
 def dependency_graph(doc):
@@ -124,3 +125,93 @@ def pronoun_references(doc):
         for cluster in token._.coref_clusters:
             list.append((token.text, cluster.main.text))
     return list
+
+
+def pairwise(iterable):
+    "s -> (s0,s1), (s1,s2), (s2, s3), ..."
+    a, b = tee(iterable)
+    next(b, None)
+    return zip(a, b)
+
+
+def is_candidate(token):
+    return token.pos_ == 'PROPN' and str(token) not in honorific_words
+
+
+def get_ents_from_doc(doc):
+    """
+    Return full named ents in doc
+    :param doc:
+    :return:
+    """
+    ents = []
+    for pair in pairwise(doc):
+        if is_candidate(pair[0]) and is_candidate(pair[1]):
+            ents.append(" ".join([pair[0].text, pair[1].text]))
+        elif is_candidate(pair[0]):
+            ents.append(pair[0].text)
+        elif is_candidate(pair[1]):
+            ents.append(pair[1].text)
+    ents = list(set(ents))
+    return ents
+
+
+def solve_ambiguity_names(list, word):
+    """
+    There are some alias used for important characters in the text which can directly be solved without context
+    """
+    if word == 'Seldon':
+        return ['Hari Seldon']
+    elif word == 'Barr':
+        # Ducem Bar is always explicitly written as 'Ducem Bar'
+        return ['Onum Barr']
+    elif word == 'Darell':
+        # Darell alone is always referring to Dr.Darell
+        return []
+    elif word == 'Mallow':
+        return [LAST_MALLOW]
+    elif word == 'Foundation':
+        return [LAST_FOUNDATION]
+    else:
+        return [list[0]]
+
+
+def entity_from_token(entity_list, text):
+    if len(text.split(" ")) > 1:
+        return [x[0] for x in entity_list if x[0] == text]
+    else:
+        # text can be name or surname
+        if not name_is_discardable(text):
+            candidates = []
+            [candidates.append(x[0][0]) for x in [(ent, ent[0].split(" ")) for ent in entity_list] if x[1][0] == text]
+            [candidates.append(x[0][0]) for x in [(ent, ent[0].split(" ")) for ent in entity_list] if len(x[1]) > 1 and x[1][1] == text]
+            if len(candidates) > 1:
+                candidates = solve_ambiguity_names(candidates, text)
+
+            if any(candidates):
+                return candidates
+            else:
+                return []
+        else:
+            return []
+
+
+def find_entities_in_doc(doc, entity_list):
+    """
+    :param text: sentence string
+    :param entity_list: [['Hari Seldon'], ['Raven Seldon']]
+    """
+    list = [x for x in [entity_from_token(entity_list, word) for word in get_ents_from_doc(doc)] if x != []]
+    return list
+
+
+def name_is_discardable(text):
+    """
+    Some fictional characters have names which could be normal words like 'First Foundation' the word 'First'
+    """
+    discardable_names = ['Trader', 'Field', 'First', 'Grand', 'Master', 'Galactic', 'Second', 'Personal']
+    list = text.split(" ")
+    if any(list) and list[0] in discardable_names:
+        return True
+    else:
+        return False
