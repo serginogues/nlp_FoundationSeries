@@ -20,11 +20,11 @@ if __name__ == '__main__':
 
     text = FoundationTrilogy
 
-    parsed_list = preprocess(text)  # vector of preprocessed sentences
+    parsed_list = preprocess(text, False)  # vector of preprocessed sentences
 
     people_list, location_list, unclassified = named_entity_recognition(parsed_list, False)
 
-    people_list = normalize_list(people_list, unclassified, False)
+    people_list = normalize_list(people_list, unclassified, True)
 
     # Up to here the code works perfect
     #TODO:

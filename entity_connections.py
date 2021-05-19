@@ -66,7 +66,7 @@ def entity_links(entity_list, parsed_list, STAGE=True):
                 # get list of person entities from ents_list
                 candidates = []
                 for ent in ents_list:
-                    candidates += [x for x in entity_list for w in x if w == ent]
+                    candidates += [x[0] for x in entity_list for name in x if name == ent]
                 for a, b in combinations(candidates, 2):
                     connection_list = link_entities(connection_list, a, b)
     else:
