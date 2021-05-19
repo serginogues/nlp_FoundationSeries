@@ -2,7 +2,7 @@
 Rule-Based Named Entity Recognition model for the detection of character occurrences
 """
 from config import tqdm, Counter, honorific_words, person_verbs, matcher, location_name_pattern, location_name, \
-    travel_to_pattern, travel_to_verbs, nlp, STAGE
+    travel_to_pattern, travel_to_verbs, nlp, STAGE, punctuation_tokens
 from utils import get_ents_from_doc
 
 
@@ -24,31 +24,186 @@ def named_entity_recognition(sentence_list):
         locations_ = []
         for i in tqdm(range(len(sentence_list))):
             doc = sentence_list[i]
-            for token in doc:
-                ents = get_ents_from_doc(doc)
-                if any(ents):
+            ents = get_ents_from_doc(doc)
+            if any(ents):
+                for name in ents:
+                    list_ = [x for x in doc for y in name.split(" ") if str(x) == y]
+                    if len(list_) > 1:
+                        token = list_[1]
+                    else:
+                        token = list_[0]
                     if ner_person(doc, token):
-                        main_characters_.append(get_full_name(doc, token))
+                        main_characters_.append(name)
 
                     if ner_location(doc, token):
-                        locations_.append(get_full_name(doc, token))
+                        locations_.append(name)
 
-        people_list = Counter(main_characters_).most_common(180)
-        people_list = [x[0] for x in people_list if int(x[1]) > 1]
-        location_list = Counter(locations_).most_common(150)
-        location_list = [x[0] for x in location_list]
+        location_list = list(set(locations_))
+        people_list = list(set([x for x in main_characters_ if len(x) > 2]))
+        # people_list = Counter(people_list).most_common(2000)
+        # people_list = [x[0] for x in people_list if int(x[1]) > 1]
+        for ent in people_list:
+            if any([x for x in punctuation_tokens if x in ent]):
+                people_list.remove(ent)
+        # TODO: normalization of entities with levenstein Soft-Idf
+        # https://medium.com/enigma-engineering/improving-entity-resolution-with-soft-tf-idf-algorithm-42e323565e60
+
     else:
-        location_list = ['Trantor', 'Kalgan', 'Terminus', 'Anacreon', 'Synnax', 'Haven', 'Arcturus', 'Ahctuwus',
-                         'Askone', 'Radole', 'Terminus City', 'Terminus City', 'Dellcass', 'Neotrantor', 'Gentri',
-                         'Rossem', 'Space under Foundation']
-        people_list = ['Darell', 'Seldon', 'Barr', 'Bayta', 'Mallow', 'Fie', 'Hardin', 'Toran', 'Gaal', 'Anthor',
-                       'Stettin', 'Mis', 'Dorwin', 'Channis', 'Munn', 'Pritcher', 'Mule', 'Speaker', 'Arcadia',
-                       'Brodrig', 'Pirenne', 'Sutt', 'Pappa', 'Randu', 'Magnifico', 'Indbur', 'Turbor', 'Verisof',
-                       'Wienis', 'Ponyets', 'Jael', 'Forell', 'Sermak', 'Lepold', 'Gorov', 'Callia', 'Mayor', 'Fara',
-                       'Master', 'Riose', 'Fran', 'Kleise', 'Mamma', 'Lee', 'Bort', 'Pherl', 'Chen', 'Walto', 'Aporat',
-                       'Fox', 'Elders', 'Student', 'Semic', 'Avakim', 'Advocate', 'Lameth', 'Fulham', 'Empire', 'Orsy',
-                       'Foundation', 'Capsule', 'Iwo', 'Mangin', 'Ovall', 'Hella', 'Commason', 'Plan', 'Meirus',
-                       'Poochie', 'Palver']
+        location_list = ['Kalgan', 'Neotrantor', 'Synnax', 'Trantor', 'Rossem', 'Space', 'Terminus', 'Arcturus',
+                         'Radole', 'Dellcass', 'Haven', 'Anacreon', 'Askone', 'Ahctuwus', 'Gentri']
+        people_list = ['Star',
+                       'Elders',
+                       'Fran',
+                       'Bayta',
+                       'Transmitter',
+                       'Whew',
+                       'Crast',
+                       'Dagobert IX',
+                       'Senter',
+                       'Han',
+                       'Hella',
+                       'Magnifico',
+                       'Elvett',
+                       'Asper',
+                       'Barr',
+                       'Erlking',
+                       'Pelleas Anthor',
+                       'Commissioners',
+                       'Poochie',
+                       'Empire',
+                       'chauffeur',
+                       'Cleon II',
+                       'Bel',
+                       'Bel Riose',
+                       'Privy Secretary',
+                       'Ovall',
+                       'Channis',
+                       'Asper Argo',
+                       'Brodrig',
+                       'Fulham',
+                       'First Speaker',
+                       'Lepold',
+                       'Darell',
+                       'Juddee',
+                       'Gorm',
+                       'Fox',
+                       'Speaker',
+                       'Haut Rodric',
+                       'Radolian',
+                       'Ducem Barr',
+                       'Pritcher',
+                       'Flan',
+                       'Bail Channis',
+                       'Grand Master',
+                       'Emperor',
+                       'Ponyets',
+                       'Lewis',
+                       'Argo',
+                       'Twer',
+                       'Haven',
+                       'Second Foundation',
+                       'Lieutenant Dirige',
+                       'Hotel',
+                       'Sammin',
+                       'Dixyl',
+                       'Lee Senter',
+                       'Wienis',
+                       'Linge Chen',
+                       'Councilman',
+                       'Master',
+                       'Homir Munn',
+                       'Palver',
+                       'Indbur',
+                       'Anthor',
+                       'Amann',
+                       'Hober Mallow',
+                       'Mule',
+                       'Meirus',
+                       'Supervisor',
+                       'Walto',
+                       'Munn',
+                       'Callia',
+                       'Sutt',
+                       'Pherl',
+                       'Fleadquarters',
+                       'Jole Turbor',
+                       'Flober Mallow',
+                       'Kalganese',
+                       'Elvett Semic',
+                       'Forell',
+                       'Ebling Mis',
+                       'Verisof',
+                       'Kleise',
+                       'Dirige',
+                       'Galactography',
+                       'Student',
+                       'Randu',
+                       'Tomaz Sutt',
+                       'Yate Fulham',
+                       'Arcadia',
+                       'Capsule',
+                       'Devers',
+                       'Seldon',
+                       'Pirenne',
+                       'Sermak',
+                       'Advocate',
+                       'Aporat',
+                       'Board',
+                       'Lathan Devers',
+                       'Hardin',
+                       'Gaal',
+                       'Bort',
+                       'Turbor',
+                       'Korell',
+                       'Foundation',
+                       'Jaim Twer',
+                       'Space',
+                       'Personal Capsule',
+                       'Dornick',
+                       'Rodric',
+                       'Jael',
+                       'Lundin Crast',
+                       'Semic',
+                       'Dad',
+                       'Uncle Homir',
+                       'Mamma',
+                       'Homir',
+                       'Tippellum',
+                       'Commissioner',
+                       'Askonian',
+                       'Chairman',
+                       'Salvor',
+                       'Dorwin',
+                       'Mallow',
+                       'Sennett Forell',
+                       'Twice Pritcher',
+                       'Pappa',
+                       'Mangin',
+                       'Fara',
+                       'Avakim',
+                       'Les Gorm',
+                       'Siwennian',
+                       'Commason',
+                       'Hari Seldon',
+                       'Far Star',
+                       'First',
+                       'Jerril',
+                       'Lameth',
+                       'Mis',
+                       'Salvor Hardin',
+                       'Chen',
+                       'Toran',
+                       'Stettin',
+                       'Luxor Hotel',
+                       'Riose',
+                       'Orsy',
+                       'Gorov',
+                       'Lee',
+                       'Fie',
+                       'Secretary',
+                       'End',
+                       'native',
+                       'Iwo']
 
     return people_list, location_list
 

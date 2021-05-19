@@ -48,3 +48,116 @@ def print_results_and_sort(entity_list, connection_list):
     connection_list.sort(key=takethird, reverse=True)
 
     return connection_list
+
+
+def similar_names(alias, name):
+    """
+    Returns true if one word contains the other or viceversa
+    """
+    if alias in name or name in alias:
+        return True
+    else:
+        return False
+
+
+def get_all_alias(entity_list, parsed_list):
+    """
+    Gets name and surname of NE
+    """
+    print("Start GET_FULL_NAMES")
+    names_list = []
+    for nn in tqdm(range(len(entity_list))):
+        name = entity_list[nn]
+        alias_list = []
+        for doc in parsed_list:
+            for i, token in enumerate(doc):
+                if i < len(doc) - 1 and token.pos_ == "PROPN" and doc[i + 1].pos_ == "PROPN":
+                    ent = str(token) + " " + str(doc[i + 1])
+                    if ent != name and similar_names(ent, name):
+                        alias_list.append(ent)
+
+        alias_list = Counter(alias_list).most_common(6)
+        alias_list = [x[0] for x in alias_list if int(x[1]) > 1]
+        for alias in alias_list:
+            if any([w for w in honorific_words if w in alias.split(" ")[0]]):
+                alias_list.remove(alias)
+
+        alias_list.insert(0, name)
+        names_list.append(alias_list)
+
+    return names_list
+
+
+def compare_entities(entity_list):
+    """
+    If two entities share an alias
+    """
+    for a, b in combinations(entity_list, 2):
+        share = [i for i in a if i in b]  # a list of entities sharing the same name or surname
+        if len(share) > 0:
+            if not is_name(share[0], a[0]):
+                a.remove(str(share[0]))
+            elif not is_name(share[0], b[0]):
+                b.remove(str(share[0]))
+
+
+def get_full_named_entities(entity_list, parsed_list):
+    """
+    Once entities are found by ,
+    :param entity_list: list of found entities belonging to 'person' category
+    :param parsed_list: list of parsed sentences from Spacy
+    """
+    if STAGE == 1:
+        names_list = get_all_alias(entity_list, parsed_list)
+        compare_entities([x for x in names_list if len(x) > 1])
+
+        final_list = []
+        for entity in names_list:
+            if len(entity) == 1:
+                final_list.append([entity[0]])
+            elif len(entity) == 2:
+                if entity[0] == entity[1].split(" ")[0] or entity[0] == entity[1].split(" ")[1]:
+                    final_list.append([entity[1]])  # only full name is considered, since it includes the abbreviation
+                else:
+                    # error
+                    final_list.append([entity[0]])
+            else:
+                list = []
+                for i, name in enumerate(entity):
+                    if i != 0 and (entity[0] == entity[i].split(" ")[0] or entity[0] == entity[i].split(" ")[1]):
+                        list.append([name])
+                if list == []:
+                    final_list.append([entity[0]])
+                else:
+                    [final_list.append(x) for x in list]
+
+        # get rid of names including punctuation tokens
+        # remove wrong full names
+        list = ['Seldon', 'Extinguishing', 'Foundation', 'Field']
+        for ent in final_list:
+            if any([x for x in punctuation_tokens if x in ent[0]]):
+                final_list.remove(ent)
+            name = ent[0].split(" ")
+            if len(name) == 2 and name[0] in list:
+                print(ent)
+                final_list.remove(ent)
+
+    else:
+        final_list = [['Arkady Darell'], ['Hari Seldon'], ['Seldon Crisis'], ['Raven Seldon'], ['Ducem Barr'],
+                      ['Onum Barr'], ['Bayta Darell'], ['Hober Mallow'], ['Trader Mallow'], ['Flober Mallow'], ['Fie'],
+                      ['Salvor Hardin'], ['Toran Darell'], ['Gaal Dornick'], ['Pelleas Anthor'], ['Stettin'],
+                      ['Ebling Mis'], ['Dorwin'], ['Bail Channis'], ['Homir Munn'], ['Flomir Munn'], ['Han Pritcher'],
+                      ['Flan Pritcher'], ['General Pritcher'], ['Mule'], ['First Speaker'], ['Arcadia Darell'],
+                      ['Brodrig'], ['Pirenne'], ['Jorane Sutt'], ['Tomaz Sutt'], ['Pappa'], ['Randu'],
+                      ['Magnifico Giganticus'], ['Indbur'], ['Jole Turbor'], ['Poly Verisof'], ['Wienis'],
+                      ['Limmar Ponyets'], ['Ankor Jael'], ['Sennett Forell'], ['Sef Sermak'], ['Lepold I'],
+                      ['Eskel Gorov'], ['Callia'], ['Mayor Hardin'], ['Jord Fara'], ['Grand Master'], ['Master Trader'],
+                      ['Bel Riose'], ['Fran'], ['Kleise'], ['Mamma'], ['Yohan Lee'], ['Lee Senter'], ['Lewis Bort'],
+                      ['Pherl'], ['Linge Chen'], ['Walto'], ['Theo Aporat'], ['Fox'], ['Elders'], ['Student'],
+                      ['Elvett Semic'], ['Avakim'], ['Advocate'], ['Lameth'], ['Yate Fulham'], ['Galactic Empire'],
+                      ['Second Empire'], ['First Empire'], ['Orsy'], ['Second Foundation'], ['First Foundation'],
+                      ['Encyclopedia Foundation'], ['Personal Capsule'], ['Iwo'], ['Mangin'], ['Ovall Gri'], ['Hella'],
+                      ['Jord Commason'], ['Plan'], ['Lev Meirus'], ['Poochie'], ['Preem Palver']]
+
+    print("NER finished:", len(final_list), "'person' entities found")
+    return final_list

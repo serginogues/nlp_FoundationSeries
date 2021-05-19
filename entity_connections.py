@@ -1,8 +1,8 @@
 """
 Given a text and a list of entities (post NER) find all connections between them
 """
-from config import STAGE, combinations, LAST_MALLOW, LAST_FOUNDATION
-from utils import find_entities_in_doc, pairwise
+from config import STAGE, combinations
+from utils import get_ents_from_doc, pairwise
 
 
 def alias_resolution(list):
@@ -52,37 +52,21 @@ def link_entities(connection_list, entity1, entity):
     return connection_list
 
 
-def find_entity_links_and_events(entity_list, parsed_list):
+def entity_links(entity_list, parsed_list):
     """
     Two entities are considered to have a link if they appear in a range of two consecutive sentences.
     :return: a list of tuples
     """
     if STAGE == 2:
-        global LAST_MALLOW
-        global LAST_FOUNDATION
-        mallow_list = ['Hober Mallow', 'Trader Mallow', 'Flober Mallow']
-        foundation_list = ['Second Foundation', 'First Foundation']
         connection_list = []
         # connection_list = family_links(entity_list, connection_list)
         for pair in pairwise(parsed_list):
-            list = find_entities_in_doc(pair[0], entity_list) + find_entities_in_doc(pair[1], entity_list)
-            if any(list):
-                for duo in pairwise(list):
-                    if duo[0][0] in mallow_list:
-                        LAST_MALLOW = duo[0][0]
-                    elif duo[1][0] in mallow_list:
-                        LAST_MALLOW = duo[1][0]
-                    elif duo[0][0] in foundation_list:
-                        LAST_FOUNDATION = duo[0][0]
-                    elif duo[1][0] in foundation_list:
-                        LAST_FOUNDATION = duo[1][0]
+            ents_list = get_ents_from_doc(pair[0]) + get_ents_from_doc(pair[1])
+            if any(ents_list):
+                # get list of person entities from ents_list
 
-                    # if 'see context mallow' or 'see context foundation' get latest
-                    connection_list = link_entities(connection_list, duo[0], duo[1])
-
-        """def takethird(elem):
-            return elem[2]
-        connection_list = connection_list.sort(key=takethird, reverse=True)"""
+                for a, b in combinations(ents_list, 2):
+                    connection_list = link_entities(connection_list, a, b)
     else:
         connection_list = [[['Hari Seldon'], ['Gaal Dornick'], 52],
                            [['Encyclopedia Foundation'], ['Gaal Dornick'], 1],

@@ -3,7 +3,7 @@ Set of methods that could be useful at some point and some other deprecated
 """
 
 from config import displacy, spacy, word_tokenize, punctuation_tokens, ngrams, PorterStemmer, lemmatizer, tee, \
-    honorific_words, LAST_MALLOW, LAST_FOUNDATION
+    honorific_words, combinations
 
 
 def dependency_graph(doc):
@@ -169,9 +169,9 @@ def solve_ambiguity_names(list, word):
         # Darell alone is always referring to Dr.Darell
         return []
     elif word == 'Mallow':
-        return [LAST_MALLOW]
+        return []
     elif word == 'Foundation':
-        return [LAST_FOUNDATION]
+        return []
     else:
         return [list[0]]
 
@@ -196,6 +196,10 @@ def entity_from_token(entity_list, text):
             return []
 
 
+def entity_from_word(entity_list, word):
+    word = ""
+
+
 def find_entities_in_doc(doc, entity_list):
     """
     :param text: sentence string
@@ -214,4 +218,28 @@ def name_is_discardable(text):
     if any(list) and list[0] in discardable_names:
         return True
     else:
+        return False
+
+
+def is_name(alias, name, parsed=False):
+    """
+    len(alias) == 2 and len(
+    Case 1:
+        Name = Bayta
+        alias = Bayta Darell
+        return True because Name is the name of alias
+    Case 2:
+        Name = Darell
+        alias = Bayta Darell
+        return False because Name is the surname of alias
+    """
+    if parsed:
+        for i, word in enumerate(alias):
+            if i == 0 and str(word) == name:
+                return True
+        return False
+    else:
+        for i, word in enumerate(alias.split(" ")):
+            if len(alias.split(" ")) > 1 and i == 0 and str(word) == name:
+                return True
         return False
