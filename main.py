@@ -1,4 +1,4 @@
-from config import STAGE, FoundationTrilogy
+from config import FoundationTrilogy
 from preprocess import preprocess
 from ner import named_entity_recognition
 from entity_connections import entity_links
@@ -22,9 +22,9 @@ if __name__ == '__main__':
 
     parsed_list = preprocess(text)  # vector of preprocessed sentences
 
-    people_list, location_list, unclassified = named_entity_recognition(parsed_list)
+    people_list, location_list, unclassified = named_entity_recognition(parsed_list, False)
 
-    people_list = normalize_list(people_list, unclassified)
+    people_list = normalize_list(people_list, unclassified, False)
 
     # Up to here the code works perfect
     #TODO:
@@ -39,8 +39,7 @@ if __name__ == '__main__':
 
     links_list = entity_links(people_list, parsed_list)
 
-    if STAGE > 6:
-        super_network(links_list)
+    super_network(links_list)
 
     # TODO: EXTRA bonus points
     #   - Detecting anomalies gets you bonus points

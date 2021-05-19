@@ -1,7 +1,7 @@
 """
 Given a text and a list of entities (post NER) find all connections between them
 """
-from config import STAGE, combinations
+from config import combinations
 from utils import get_ents_from_doc, pairwise
 
 
@@ -52,12 +52,12 @@ def link_entities(connection_list, entity1, entity):
     return connection_list
 
 
-def entity_links(entity_list, parsed_list):
+def entity_links(entity_list, parsed_list, STAGE=True):
     """
     Two entities are considered to have a link if they appear in a range of two consecutive sentences.
     :return: a list of tuples
     """
-    if STAGE == 2:
+    if STAGE:
         connection_list = []
         # connection_list = family_links(entity_list, connection_list)
         for pair in pairwise(parsed_list):

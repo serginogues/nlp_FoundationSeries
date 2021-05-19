@@ -1,13 +1,13 @@
-from config import sent_tokenize, re, tqdm, nlp, STAGE
+from config import sent_tokenize, re, tqdm, nlp
 
 
-def preprocess(text):
+def preprocess(text, STAGE=True):
     """
     Remove unwanted characters + split by sentences + sentence tokenization + parsing + lemmatization + POS tagging
     """
     print("Start PREPROCESS")
     doc_list = []
-    if STAGE < 3 and STAGE != 1:
+    if STAGE:
         sentences = get_sentences(text)
         for i in tqdm(range(len(sentences))):
             doc_list.append(nlp(sentences[i]))

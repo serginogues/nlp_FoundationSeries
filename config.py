@@ -45,11 +45,3 @@ neuralcoref.add_to_pipe(nlp)
 # MAIN PARAMETERS:
 with open("FoundationTrilogy.txt", "r", encoding="utf-8") as f:
     FoundationTrilogy = f.read()
-
-"""
-**Label - STAGE**
-0 - NER
-1 - Normalization of NER entities
-2 - Person Entity Links
-"""
-STAGE = 1
