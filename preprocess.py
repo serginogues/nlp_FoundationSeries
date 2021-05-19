@@ -7,7 +7,7 @@ def preprocess(text):
     """
     print("Start PREPROCESS")
     doc_list = []
-    if STAGE < 3:
+    if STAGE < 3 and STAGE != 1:
         sentences = get_sentences(text)
         for i in tqdm(range(len(sentences))):
             doc_list.append(nlp(sentences[i]))

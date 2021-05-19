@@ -64,8 +64,10 @@ def entity_links(entity_list, parsed_list):
             ents_list = get_ents_from_doc(pair[0]) + get_ents_from_doc(pair[1])
             if any(ents_list):
                 # get list of person entities from ents_list
-
-                for a, b in combinations(ents_list, 2):
+                candidates = []
+                for ent in ents_list:
+                    candidates += [x for x in entity_list for w in x if w == ent]
+                for a, b in combinations(candidates, 2):
                     connection_list = link_entities(connection_list, a, b)
     else:
         connection_list = [[['Hari Seldon'], ['Gaal Dornick'], 52],

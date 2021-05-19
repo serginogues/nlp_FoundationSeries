@@ -52,4 +52,4 @@ with open("FoundationTrilogy.txt", "r", encoding="utf-8") as f:
 1 - Normalization of NER entities
 2 - Person Entity Links
 """
-STAGE = 2
+STAGE = 1
