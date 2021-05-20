@@ -20,11 +20,11 @@ if __name__ == '__main__':
 
     text = FoundationTrilogy
 
-    parsed_list = preprocess(text, True)  # vector of preprocessed sentences
+    parsed_list = preprocess(text, False)  # vector of preprocessed sentences
 
     people_list, location_list, unclassified = named_entity_recognition(parsed_list, False)
 
-    people_list = normalize_list(people_list, unclassified, True)
+    people_list = normalize_list(people_list, unclassified, False)
 
     # Up to here the code works perfect
     #TODO:
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     #   how they work or what the quality is. So, the need to measure that by a small (50-100) random manual validations.
     #   - Also incorporate multi-juror validation and calculate a kappa distance in the above
 
-    links_list = entity_links(people_list, parsed_list)
+    links_list = entity_links(people_list, parsed_list, False)
 
     super_network(links_list)
 

@@ -52,7 +52,7 @@ def link_entities(connection_list, entity1, entity):
     return connection_list
 
 
-def entity_links(entity_list, parsed_list, STAGE=False):
+def entity_links(entity_list, parsed_list, STAGE=True):
     """
     Two entities are considered to have a link if they appear in a range of two consecutive sentences.
     :return: a list of tuples
