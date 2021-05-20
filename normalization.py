@@ -4,7 +4,7 @@ https://hpi.de/fileadmin/user_upload/fachgebiete/naumann/folien/SS13/DPDC/DPDC_1
 https://github.com/kvpradap/py_stringmatching
 https://python.hotexamples.com/es/examples/py_stringmatching.utils/-/sim_check_for_none/python-sim_check_for_none-function-examples.html
 """
-from config import combinations, tqdm
+from config import combinations
 from utils import is_name
 import collections
 import math
@@ -34,15 +34,7 @@ def normalize_list(entity_list, unclassified, STAGE=True):
                     copy_list.remove(b)
 
         # Do a second normalization of entities sharing surname
-        import copy
-        normalized_del = copy.copy(normalized)
-        for j in tqdm(range(len(copy_list))):
-            ent = copy_list[j]
-            i_list = [i for i, pair in enumerate(normalized_del) for name in pair for w in name.split(" ") if w == ent]
-            if len(i_list) > 0:
-                normalized[i_list[0]].append(ent)
-            else:
-                normalized.append([ent])
+        [normalized.append([ent]) for ent in copy_list]
 
         # if unclassified contains words in normalized, add it to tuple
         for i, tu in enumerate(normalized):
@@ -60,27 +52,39 @@ def normalize_list(entity_list, unclassified, STAGE=True):
                 if a and b:
                     [normalized.remove(x) for x in normalized if x[0] == a[0]]
                     [normalized.remove(x) for x in normalized if x[0] == b[0]]
-                    normalized.append([ent])
+                    normalized.append([ent, a[0], b[0]])
+
+        for a, b in combinations([[i, x] for i, x in enumerate(normalized) if len(x) == 1], 2):
+            if a[1][0] in b[1][0] or b[1][0] in a[1][0]:
+                [normalized.remove(x) for x in normalized if x[0] == a[1][0]]
+                [normalized.remove(x) for x in normalized if x[0] == b[1][0]]
+                normalized.append([a[1][0], a[1][0]])
+                normalized[-1] = list(set(normalized[-1]))
+
+        [normalized[i].remove(w) for i, x in enumerate(normalized) for w in x if w == 'Seldon']
+        [normalized[i].append('Seldon') for i, x in enumerate(normalized) if x[0] == 'Hari Seldon']
+
+
     else:
-        normalized = [['Hardin',
-                       'Salvor Hardin',
+        normalized = [['Salvor Hardin',
                        'Salvor',
+                       'Hardin',
+                       'Salvor FHardin',
                        'Hardin Building',
-                       'Hardin dryly',
-                       'Salvor FHardin'],
+                       'Hardin dryly'],
                       ['Lieutenant Dirige', 'Dirige'],
                       ['Twice Pritcher', 'Pritcher'],
                       ['Tinter', 'Lieutenant Tinter'],
                       ['Personal Capsule', 'Capsule'],
-                      ['Semic', 'Elvett', 'Elvett Semic'],
-                      ['Argo', 'Asper', 'Asper Argo'],
+                      ['Elvett Semic', 'Elvett', 'Semic'],
+                      ['Argo', 'Asper Argo', 'Asper'],
                       ['Privy Secretary', 'Secretary'],
                       ['Master', 'Grand Master', 'Master Trader'],
                       ['Lee Senter', 'Senter', 'Lee'],
-                      ['Forell', 'Korell', 'Sennett Forell'],
+                      ['Korell', 'Sennett Forell', 'Forell'],
                       ['Mis', 'Ebling Mis'],
-                      ['Fara', 'Star', 'Far Star'],
-                      ['Hober Mallow', 'Flober Mallow', 'Mallow', 'Mallow Hall'],
+                      ['Far Star', 'Fara', 'Star'],
+                      ['Mallow', 'Hober Mallow', 'Flober Mallow', 'Mallow Hall'],
                       ['Flan', 'Fran'],
                       ['Second Foundation',
                        'Foundation',
@@ -93,9 +97,7 @@ def normalize_list(entity_list, unclassified, STAGE=True):
                        'Foundation Fleet'],
                       ['Channis', 'Bail Channis', 'Channis taut'],
                       ['Linge Chen', 'Chen'],
-                      ['Commissioner', 'Commissioners', 'Commason', 'Commissioner Linge'],
-                      ['Haut Rodric'],
-                      ['Homir'],
+                      ['Commissioners', 'Commissioner', 'Commason', 'Commissioner Linge'],
                       ['Gorov'],
                       ['Indbur', 'Indbur III'],
                       ['Pirenne'],
@@ -103,24 +105,17 @@ def normalize_list(entity_list, unclassified, STAGE=True):
                       ['Meirus'],
                       ['Pherl'],
                       ['Whew'],
-                      ['Munn'],
                       ['Callia'],
                       ['Board'],
-                      ['Hari Seldon'],
+                      ['Hari Seldon', 'Seldon'],
                       ['Lepold'],
                       ['Amann'],
-                      ['Homir Munn'],
                       ['Lameth'],
-                      ['Yate Fulham'],
-                      ['First Speaker'],
                       ['Dixyl'],
                       ['Siwennian'],
                       ['Bort'],
                       ['End'],
-                      ['Crast'],
                       ['Dad'],
-                      ['Uncle Homir'],
-                      ['Rodric'],
                       ['Empire'],
                       ['Tippellum'],
                       ['Lewis', 'Lewis Pirenne'],
@@ -128,44 +123,31 @@ def normalize_list(entity_list, unclassified, STAGE=True):
                       ['Fie'],
                       ['Randu'],
                       ['Verisof'],
-                      ['Turbor'],
                       ['Student'],
-                      ['Jole Turbor'],
                       ['Jerril'],
                       ['Orsy'],
                       ['Bayta', 'Bayta Darell'],
                       ['Ovall'],
                       ['Avakim'],
-                      ['Tomaz Sutt'],
                       ['Aporat'],
-                      ['Twer'],
                       ['Cleon II'],
                       ['Toran', 'Toran Darell'],
                       ['Fleadquarters'],
                       ['Magnifico', 'Magnifico Giganticus'],
-                      ['Hotel'],
                       ['Stettin'],
-                      ['Lundin Crast'],
                       ['Elders'],
-                      ['Sutt'],
                       ['Haven'],
-                      ['Bel'],
-                      ['Barr'],
                       ['Wienis'],
                       ['Councilman'],
                       ['Hella'],
                       ['Pappa'],
-                      ['Lathan Devers'],
                       ['Supervisor'],
-                      ['Riose'],
                       ['Chairman'],
                       ['Poochie'],
                       ['Dorwin'],
                       ['Han'],
-                      ['Ducem Barr'],
                       ['Fox'],
                       ['Darell'],
-                      ['Anthor'],
                       ['First',
                        'First Theorem',
                        'First Minister',
@@ -179,15 +161,10 @@ def normalize_list(entity_list, unclassified, STAGE=True):
                       ['Mangin'],
                       ['Brodrig'],
                       ['Askonian'],
-                      ['Pelleas Anthor'],
                       ['Walto'],
-                      ['Speaker'],
                       ['Space', 'Space Route'],
-                      ['Fulham'],
                       ['Galactography'],
-                      ['Gorm'],
-                      ['Seldon',
-                       'Seldon Historical',
+                      ['Seldon Historical',
                        'Seldon Commission',
                        'Seldon Fable',
                        'Seldon Plan',
@@ -197,24 +174,35 @@ def normalize_list(entity_list, unclassified, STAGE=True):
                       ['Iwo', 'Iwo Lyon'],
                       ['Mamma'],
                       ['Arcadia', 'Arcadia Palver', 'Arcadia Darell'],
-                      ['Bel Riose'],
                       ['Transmitter'],
-                      ['Les Gorm'],
-                      ['Jaim Twer'],
                       ['Palver'],
                       ['Dagobert IX'],
                       ['Radolian'],
                       ['Mule'],
                       ['Erlking'],
                       ['Advocate'],
-                      ['Devers'],
                       ['Jael'],
-                      ['Luxor Hotel'],
                       ['Kleise'],
                       ['Sermak'],
                       ['Emperor'],
                       ['Kalganese'],
-                      ['Gaal Dornick']]
+                      ['Gaal Dornick', 'Gaal', 'Dornick'],
+                      ['Haut Rodric'],
+                      ['Homir'],
+                      ['Munn'],
+                      ['Yate Fulham'],
+                      ['First Speaker'],
+                      ['Crast'],
+                      ['Turbor'],
+                      ['Tomaz Sutt'],
+                      ['Twer'],
+                      ['Hotel'],
+                      ['Bel'],
+                      ['Barr'],
+                      ['Lathan Devers'],
+                      ['Riose'],
+                      ['Anthor'],
+                      ['Gorm']]
 
     print("NER and NORMALIZATION finished:", len(normalized), "'person' entities found")
     return normalized
