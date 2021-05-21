@@ -1,0 +1,212 @@
+Mule,Second Foundation,154,8918
+Second Foundation,Hari Seldon,136,1401
+First,Second Foundation,90,11765
+First,First Speaker,89,12792
+Toran,Bayta,81,8288
+Empire,Second Foundation,74,1886
+Empire,Hari Seldon,58,730
+Seldon Historical,Hari Seldon,57,27
+Magnifico,Bayta,54,8991
+Anthor,Darell,51,14515
+Mule,Channis,49,12462
+Mule,Twice Pritcher,43,9210
+Second Foundation,Channis,43,12485
+Salvor Hardin,Second Foundation,42,999
+Magnifico,Toran,41,8991
+Hari Seldon,Gaal Dornick,39,6
+Mule,First,38,12417
+Twice Pritcher,Channis,38,12827
+Twice Pritcher,Second Foundation,36,8609
+Mule,Bayta,35,8882
+Mule,Magnifico,34,8991
+Homir,Munn,34,14857
+Mallow,Second Foundation,33,3993
+Han,Twice Pritcher,33,8581
+Second Foundation,Mis,33,9226
+Darell,Arcadia,33,14309
+Empire,First,32,1911
+Mule,Toran,32,8543
+Mule,Hari Seldon,31,9920
+Jael,Mallow,29,5398
+Toran,Second Foundation,29,8253
+Salvor Hardin,Pirenne,28,941
+Toran,Mis,27,10648
+First,Hari Seldon,26,296
+Salvor Hardin,Lee Senter,25,1917
+Salvor Hardin,Wienis,25,2576
+Second Foundation,Bayta,25,8413
+Fie,Second Foundation,25,8730
+Mule,Mis,25,9786
+Twice Pritcher,Flan,24,8740
+Bayta,Mis,24,9628
+Indbur,Mis,23,9231
+Mamma,Pappa,23,16256
+Magnifico,Mis,22,9669
+Munn,Darell,22,14858
+Empire,Emperor,21,136
+Second Foundation,Haven,21,8276
+First,Channis,21,12472
+Arcadia,Callia,21,15663
+Salvor Hardin,Hari Seldon,20,1768
+Salvor Hardin,Sermak,20,1964
+Mule,Fie,20,9547
+Anthor,Munn,20,14894
+Munn,Second Foundation,19,15045
+Anthor,Second Foundation,19,15101
+Board,Salvor Hardin,18,998
+Riose,Bel,18,6016
+Barr,Riose,18,6057
+Brodrig,Emperor,18,6614
+Mule,Randu,18,8544
+Darell,Kleise,18,14873
+Munn,Arcadia,18,15344
+Korell,Second Foundation,17,4404
+Mule,Haven,17,8246
+Homir,Second Foundation,17,15435
+Verisof,Salvor Hardin,16,2192
+Second Foundation,Seldon Historical,16,8518
+Mule,Empire,16,11951
+First,Student,16,14616
+Darell,Second Foundation,16,15044
+Pappa,Arcadia,16,16251
+Empire,Barr,15,4860
+Salvor Hardin,Mallow,15,5424
+Barr,Second Foundation,15,7021
+Flan,Second Foundation,15,8414
+Munn,Mule,15,15045
+Stettin,Second Foundation,15,15087
+Stettin,Callia,15,15520
+Hari Seldon,Emperor,14,408
+Mallow,Hari Seldon,14,3988
+Second Foundation,Randu,14,8414
+Twice Pritcher,Mis,14,9372
+First Speaker,Student,14,14616
+Darell,Turbor,14,14858
+Darell,Elvett Semic,14,14858
+Homir,Arcadia,14,15374
+Board,Pirenne,13,993
+Dorwin,Salvor Hardin,13,1293
+Barr,Emperor,13,5046
+Korell,Mallow,13,5601
+Riose,Emperor,13,6209
+Twice Pritcher,Bayta,13,9949
+Mule,First Speaker,13,12793
+Arcadia,Second Foundation,13,15662
+Wienis,Lepold,12,2234
+Twer,Mallow,12,4250
+Empire,Riose,12,6015
+Indbur,Second Foundation,12,8597
+Hari Seldon,Mis,12,9275
+End,Far Star,12,12877
+First Speaker,Channis,12,14103
+Second Foundation,First Speaker,12,14239
+Fie,Hari Seldon,11,854
+Second Foundation,Lepold,11,2526
+Master,Second Foundation,11,3455
+Pherl,Master,11,3655
+Bayta,Haven,11,8279
+Bayta,Hari Seldon,11,8402
+Fie,Channis,11,13146
+Munn,Turbor,11,14857
+Turbor,Second Foundation,11,15044
+Far Star,Hari Seldon,10,1386
+Sermak,Lee Senter,10,1962
+Wienis,Second Foundation,10,2287
+Salvor Hardin,Lepold,10,2636
+Riose,Second Foundation,10,6263
+Mule,Indbur,10,9589
+Darell,Bayta,10,14309
+Stettin,Homir,10,15744
+Mule,Arcadia,10,15750
+Salvor Hardin,Emperor,9,1048
+Salvor Hardin,Empire,9,1293
+Salvor Hardin,Far Star,9,1399
+Toran,Dad,9,8296
+Randu,Flan,9,8382
+Twice Pritcher,Fie,9,8745
+Arcadia,Hari Seldon,9,14409
+Anthor,Arcadia,9,15278
+Poochie,Callia,9,15532
+Board,Emperor,8,1048
+Salvor Hardin,Haut Rodric,8,1066
+Pirenne,Haut Rodric,8,1102
+Second Foundation,Far Star,8,1401
+Ponyets,Master,8,3455
+Master,Mallow,8,3990
+Barr,Brodrig,8,7408
+Barr,Hari Seldon,8,7570
+Barr,Korell,8,8149
+Twice Pritcher,Toran,8,9210
+Randu,Mangin,8,9519
+Randu,Haven,8,9896
+Mule,Seldon Historical,8,11777
+Homir,Darell,8,14858
+First,Callia,8,15520
+Mule,Homir,8,15572
+Anthor,Elvett Semic,8,16589
+Commissioners,Hari Seldon,7,408
+Board,Second Foundation,7,993
+Pirenne,Second Foundation,7,993
+Commissioners,Second Foundation,7,1717
+Second Foundation,Emperor,7,2436
+Gorov,Ponyets,7,3450
+Gorov,Master,7,3455
+Space,Second Foundation,7,4041
+Riose,Hari Seldon,7,6222
+Mule,Flan,7,9478
+Mule,Darell,7,14310
+Elvett Semic,Munn,7,14857
+Elvett Semic,Turbor,7,14857
+Mule,Stettin,7,15087
+Stettin,First,7,15088
+Munn,Fie,7,15133
+Second Foundation,Callia,7,15548
+Munn,Hari Seldon,7,15572
+Homir,Callia,7,15710
+Stettin,Munn,7,16007
+Avakim,Gaal Dornick,6,462
+Pirenne,Emperor,6,1004
+Lee Senter,Hari Seldon,6,1949
+Verisof,Second Foundation,6,2192
+Bort,Sermak,6,2667
+Far Star,Mallow,6,4255
+Mallow,Fie,6,4323
+Barr,Mallow,6,4891
+Empire,Bel,6,6016
+Siwennian,Barr,6,6152
+Siwennian,Riose,6,6152
+Toran,Hari Seldon,6,8414
+Indbur,Hari Seldon,6,8727
+Magnifico,Second Foundation,6,9004
+Randu,Mis,6,9999
+Seldon Historical,Arcadia,6,14583
+First Speaker,Hari Seldon,6,14609
+Kleise,Second Foundation,6,15044
+First,Meirus,6,15523
+Anthor,Fie,6,15923
+Stettin,Arcadia,6,15977
+Palver,Arcadia,6,16415
+Darell,Lieutenant Dirige,6,16596
+Anthor,Turbor,6,17635
+Supervisor,Gaal Dornick,5,86
+Gaal Dornick,Linge Chen,5,543
+Board,Dorwin,5,1293
+Dorwin,Pirenne,5,1293
+Dorwin,Empire,5,1293
+Dorwin,Emperor,5,1294
+Bort,Second Foundation,5,2714
+Argo,Mallow,5,4528
+Riose,Brodrig,5,6644
+Toran,Haven,5,8304
+Randu,Toran,5,8348
+Toran,Flan,5,8365
+Empire,Bayta,5,8412
+Twice Pritcher,Indbur,5,8605
+Haven,Mis,5,10198
+Mule,Commissioners,5,10998
+First,Fie,5,12545
+Anthor,Kleise,5,14873
+Mule,Callia,5,15548
+Meirus,Second Foundation,5,15558
+Arcadia,Fie,5,16818
+Anthor,Hari Seldon,5,17509

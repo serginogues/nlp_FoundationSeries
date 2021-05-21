@@ -18,6 +18,7 @@ from visualization import super_network
 
 if __name__ == '__main__':
 
+    # text = FoundationTrilogy[:-1200000]
     text = FoundationTrilogy
 
     parsed_list = preprocess(text, False)  # vector of preprocessed sentences
@@ -26,7 +27,8 @@ if __name__ == '__main__':
 
     people_list = normalize_list(people_list, unclassified, False)
 
-    # Up to here the code works perfect
+    people_links, location_links = entity_links(people_list, location_list, parsed_list, False)
+
     #TODO:
     # - Coreferences for entity connection
     # - Visualization:
@@ -37,9 +39,8 @@ if __name__ == '__main__':
     #   how they work or what the quality is. So, the need to measure that by a small (50-100) random manual validations.
     #   - Also incorporate multi-juror validation and calculate a kappa distance in the above
 
-    links_list = entity_links(people_list, parsed_list, False)
 
-    super_network(links_list)
+    super_network(people_links)
 
     # TODO: EXTRA bonus points
     #   - Detecting anomalies gets you bonus points

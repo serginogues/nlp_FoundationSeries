@@ -4,7 +4,16 @@ validation set by manually validating a small random subset
 (50-100 data points).
 Do this with different judges (ask friends or family for help) and calculate kappa distance.
 About Kappa: https://stats.stackexchange.com/questions/82162/cohens-kappa-in-plain-english
+https://stats.stackexchange.com/questions/271980/compute-cohens-kappa-in-multi-label-classification
+https://stackoverflow.com/questions/57256287/calculate-kappa-score-for-multi-label-image-classifcation
 """
+
+import krippendorff
+
+reliability_data = [[predictions], [y_test]]
+
+print(krippendorff.alpha(reliability_data=reliability_data,
+                         level_of_measurement='nominal'))
 
 DATASET = ["""The mayor chuckled. "Got in first, did you? All right. By the way," he observed, and added 
 softly, "Ambassador Verisof is returning to Terminus. Temporarily, I hope." 

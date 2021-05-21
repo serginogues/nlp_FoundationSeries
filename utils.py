@@ -184,7 +184,8 @@ def entity_from_token(entity_list, text):
         if not name_is_discardable(text):
             candidates = []
             [candidates.append(x[0][0]) for x in [(ent, ent[0].split(" ")) for ent in entity_list] if x[1][0] == text]
-            [candidates.append(x[0][0]) for x in [(ent, ent[0].split(" ")) for ent in entity_list] if len(x[1]) > 1 and x[1][1] == text]
+            [candidates.append(x[0][0]) for x in [(ent, ent[0].split(" ")) for ent in entity_list] if
+             len(x[1]) > 1 and x[1][1] == text]
             if len(candidates) > 1:
                 candidates = solve_ambiguity_names(candidates, text)
 
@@ -243,3 +244,28 @@ def is_name(alias, name, parsed=False):
             if len(alias.split(" ")) > 1 and i == 0 and str(word) == name:
                 return True
         return False
+
+
+def write_list(name, list):
+    with open('data_outputs/' + name + '.txt', 'w+') as f:
+        f.seek(0)
+        f.truncate()
+        for item in list:
+            a = ",".join([str(x) for x in item])
+            f.write('%s\n' % a)
+
+
+def read_list(name):
+    """
+    Reads strings. Need to cast to type afterwards
+    """
+    list = []
+    with open('data_outputs/' + name + '.txt', 'r') as f:
+        for line in f:
+            item = line[:-1]
+            a = [x for x in item.split(',')]
+            if name == 'people_links':
+                list.append([a[0], a[1], int(a[2]), int(a[3])])
+            if name == 'location_links':
+                list.append([a[0], a[1], int(a[2])])
+    return list

@@ -6,5 +6,4 @@ neuralcoref
 itertools
 networkx
 bokeh
-allennlp
 

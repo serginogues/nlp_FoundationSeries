@@ -1,0 +1,1177 @@
+Terminus,Gaal Dornick,10
+Trantor,Gaal Dornick,10
+Trantor,Gaal Dornick,11
+Trantor,Empire,16
+Trantor,Haut Rodric,16
+Trantor,Empire,17
+Trantor,Haut Rodric,17
+Trantor,Seldon Historical,27
+Trantor,Hari Seldon,27
+Trantor,Gaal Dornick,28
+Trantor,Seldon Historical,28
+Trantor,Hari Seldon,28
+Trantor,Gaal Dornick,29
+Trantor,Space,42
+Trantor,Empire,135
+Trantor,Empire,136
+Trantor,Emperor,136
+Trantor,Empire,137
+Trantor,Emperor,137
+Trantor,Jerril,208
+Trantor,Gaal Dornick,260
+Trantor,Hari Seldon,260
+Trantor,Gaal Dornick,261
+Trantor,Hari Seldon,261
+Trantor,Gaal Dornick,321
+Trantor,Gaal Dornick,368
+Trantor,Empire,369
+Trantor,Gaal Dornick,369
+Synnax,Hari Seldon,418
+Trantor,Avakim,452
+Trantor,Emperor,479
+Trantor,Emperor,480
+Trantor,Gaal Dornick,489
+Trantor,Hari Seldon,489
+Trantor,Hari Seldon,490
+Trantor,Hari Seldon,579
+Trantor,Commissioners,768
+Trantor,Linge Chen,824
+Trantor,Fie,837
+Trantor,Emperor,837
+Trantor,Emperor,838
+Terminus,Hari Seldon,843
+Terminus,Linge Chen,843
+Terminus,Hari Seldon,844
+Terminus,Linge Chen,844
+Trantor,Gaal Dornick,872
+Terminus,Hari Seldon,911
+Terminus,Hari Seldon,912
+Terminus,Gaal Dornick,916
+Terminus,Hari Seldon,922
+Terminus,Far Star,923
+Terminus,Hari Seldon,935
+Terminus,Hari Seldon,936
+Terminus,Salvor Hardin,941
+Terminus,Pirenne,941
+Trantor,Salvor Hardin,941
+Trantor,Pirenne,941
+Terminus,Board,994
+Terminus,Pirenne,994
+Terminus,Second Foundation,994
+Terminus,Board,998
+Terminus,Salvor Hardin,998
+Terminus,Board,999
+Terminus,Salvor Hardin,999
+Terminus,Second Foundation,999
+Terminus,Pirenne,1005
+Terminus,Emperor,1005
+Anacreon,Emperor,1012
+Anacreon,Empire,1016
+Terminus,Pirenne,1034
+Terminus,Board,1048
+Terminus,Salvor Hardin,1048
+Terminus,Emperor,1048
+Terminus,Salvor Hardin,1049
+Terminus,Emperor,1049
+Anacreon,Emperor,1051
+Anacreon,Pirenne,1052
+Anacreon,Salvor Hardin,1066
+Anacreon,Haut Rodric,1066
+Anacreon,Salvor Hardin,1067
+Anacreon,Haut Rodric,1067
+Anacreon,Salvor Hardin,1109
+Anacreon,Pirenne,1109
+Anacreon,Haut Rodric,1109
+Anacreon,Haut Rodric,1110
+Terminus,Emperor,1157
+Anacreon,Pirenne,1159
+Anacreon,Haut Rodric,1159
+Anacreon,Emperor,1159
+Anacreon,Board,1160
+Anacreon,Pirenne,1160
+Anacreon,Haut Rodric,1160
+Anacreon,Emperor,1160
+Anacreon,Board,1161
+Anacreon,Emperor,1161
+Terminus,Salvor Hardin,1171
+Terminus,Salvor Hardin,1175
+Anacreon,Salvor Hardin,1175
+Anacreon,Salvor Hardin,1176
+Anacreon,Salvor Hardin,1189
+Anacreon,Haut Rodric,1194
+Anacreon,Emperor,1194
+Anacreon,Pirenne,1195
+Anacreon,Haut Rodric,1195
+Anacreon,Emperor,1195
+Anacreon,Salvor Hardin,1196
+Anacreon,Pirenne,1196
+Anacreon,Pirenne,1234
+Anacreon,Salvor Hardin,1240
+Anacreon,Salvor Hardin,1241
+Terminus,Salvor Hardin,1284
+Terminus,Salvor Hardin,1285
+Terminus,Board,1293
+Terminus,Dorwin,1293
+Terminus,Salvor Hardin,1293
+Terminus,Pirenne,1293
+Terminus,Empire,1293
+Terminus,Board,1294
+Terminus,Dorwin,1294
+Terminus,Salvor Hardin,1294
+Terminus,Pirenne,1294
+Terminus,Emperor,1294
+Terminus,Empire,1294
+Anacreon,Board,1294
+Anacreon,Dorwin,1294
+Anacreon,Salvor Hardin,1294
+Anacreon,Pirenne,1294
+Anacreon,Emperor,1294
+Anacreon,Empire,1294
+Anacreon,Salvor Hardin,1295
+Anacreon,Emperor,1295
+Terminus,Board,1344
+Terminus,Salvor Hardin,1344
+Terminus,Board,1345
+Terminus,Salvor Hardin,1345
+Terminus,Second Foundation,1345
+Terminus,Salvor Hardin,1346
+Terminus,Second Foundation,1346
+Terminus,Second Foundation,1347
+Anacreon,Salvor Hardin,1466
+Anacreon,Salvor Hardin,1467
+Anacreon,Dorwin,1467
+Arcturus,Dorwin,1516
+Ahctuwus,Salvor Hardin,1526
+Anacreon,Board,1589
+Anacreon,Second Foundation,1589
+Anacreon,Chairman,1589
+Anacreon,Salvor Hardin,1589
+Anacreon,Pirenne,1589
+Anacreon,Lewis,1589
+Anacreon,Board,1590
+Anacreon,Second Foundation,1590
+Anacreon,Chairman,1590
+Anacreon,Pirenne,1590
+Anacreon,Lewis,1590
+Anacreon,Board,1601
+Terminus,Board,1608
+Terminus,Dorwin,1608
+Terminus,Board,1609
+Terminus,Yate Fulham,1609
+Anacreon,Salvor Hardin,1622
+Anacreon,Pirenne,1622
+Anacreon,Salvor Hardin,1623
+Anacreon,Pirenne,1623
+Anacreon,Empire,1630
+Anacreon,Dorwin,1630
+Anacreon,Salvor Hardin,1630
+Anacreon,Emperor,1630
+Anacreon,Empire,1631
+Anacreon,Dorwin,1631
+Anacreon,Emperor,1631
+Anacreon,Pirenne,1634
+Anacreon,Pirenne,1635
+Anacreon,Empire,1638
+Terminus,Salvor Hardin,1665
+Anacreon,Salvor Hardin,1665
+Anacreon,Haut Rodric,1683
+Anacreon,Haut Rodric,1684
+Terminus,Commissioners,1717
+Terminus,Second Foundation,1717
+Terminus,Hari Seldon,1717
+Trantor,Commissioners,1717
+Trantor,Second Foundation,1717
+Trantor,Hari Seldon,1717
+Terminus,Commissioners,1718
+Terminus,Second Foundation,1718
+Terminus,Hari Seldon,1718
+Trantor,Commissioners,1718
+Trantor,Second Foundation,1718
+Trantor,Hari Seldon,1718
+Anacreon,Hari Seldon,1777
+Anacreon,Hari Seldon,1778
+Terminus,Lee Senter,1813
+Terminus,Lee Senter,1826
+Anacreon,Far Star,1834
+Anacreon,Hari Seldon,1834
+Anacreon,Far Star,1835
+Anacreon,Hari Seldon,1835
+Terminus,Empire,1886
+Terminus,Second Foundation,1886
+Terminus,Empire,1887
+Terminus,Second Foundation,1887
+Anacreon,Salvor Hardin,1908
+Anacreon,Hari Seldon,1908
+Anacreon,Salvor Hardin,1909
+Anacreon,Hari Seldon,1909
+Anacreon,Empire,1911
+Anacreon,First,1911
+Anacreon,Empire,1912
+Anacreon,First,1912
+Anacreon,Salvor Hardin,1913
+Terminus,Empire,1936
+Terminus,Empire,1937
+Terminus,Second Foundation,1948
+Terminus,Hari Seldon,1948
+Terminus,Salvor Hardin,1949
+Terminus,Second Foundation,1949
+Terminus,Lee Senter,1949
+Terminus,Hari Seldon,1949
+Terminus,Sermak,1994
+Terminus,Sermak,1995
+Terminus,Sermak,1999
+Terminus,Sermak,2000
+Terminus,Empire,2008
+Terminus,Empire,2009
+Terminus,Salvor Hardin,2052
+Terminus,Verisof,2170
+Terminus,Verisof,2171
+Anacreon,Verisof,2191
+Anacreon,Verisof,2192
+Anacreon,Salvor Hardin,2192
+Anacreon,Second Foundation,2192
+Anacreon,Salvor Hardin,2193
+Anacreon,Second Foundation,2193
+Anacreon,Second Foundation,2195
+Terminus,Second Foundation,2198
+Terminus,Verisof,2202
+Terminus,Salvor Hardin,2202
+Anacreon,Verisof,2202
+Anacreon,Salvor Hardin,2202
+Anacreon,Wienis,2233
+Anacreon,Wienis,2234
+Anacreon,Lepold,2234
+Terminus,Wienis,2245
+Anacreon,Wienis,2245
+Terminus,Wienis,2246
+Anacreon,Wienis,2246
+Anacreon,Second Foundation,2290
+Anacreon,Second Foundation,2291
+Anacreon,Second Foundation,2292
+Terminus,Verisof,2309
+Terminus,Salvor Hardin,2309
+Anacreon,Salvor Hardin,2342
+Anacreon,Salvor Hardin,2375
+Anacreon,Verisof,2376
+Anacreon,Salvor Hardin,2376
+Terminus,Hari Seldon,2393
+Anacreon,Verisof,2399
+Anacreon,Verisof,2423
+Anacreon,Empire,2432
+Anacreon,Empire,2433
+Anacreon,Second Foundation,2435
+Anacreon,Second Foundation,2436
+Anacreon,Emperor,2436
+Anacreon,Emperor,2437
+Anacreon,Second Foundation,2528
+Anacreon,Second Foundation,2529
+Anacreon,Second Foundation,2537
+Terminus,Wienis,2553
+Terminus,Second Foundation,2553
+Anacreon,Wienis,2553
+Anacreon,Second Foundation,2553
+Terminus,Second Foundation,2554
+Anacreon,Second Foundation,2554
+Anacreon,Lepold,2559
+Anacreon,Lepold,2574
+Anacreon,Wienis,2575
+Anacreon,Second Foundation,2579
+Anacreon,Lepold,2579
+Anacreon,Second Foundation,2580
+Anacreon,Lepold,2580
+Anacreon,Empire,2637
+Anacreon,Lepold,2637
+Anacreon,Empire,2638
+Anacreon,Second Foundation,2694
+Anacreon,Second Foundation,2715
+Anacreon,Empire,2742
+Anacreon,Bort,2742
+Anacreon,Salvor Hardin,2742
+Anacreon,Second Foundation,2742
+Anacreon,Empire,2743
+Anacreon,Salvor Hardin,2743
+Anacreon,Second Foundation,2743
+Anacreon,Lepold,2743
+Anacreon,Bort,2776
+Anacreon,Second Foundation,2776
+Anacreon,Bort,2777
+Anacreon,Second Foundation,2777
+Anacreon,Sermak,2818
+Anacreon,Space,2818
+Space,Sermak,2818
+Anacreon,Sermak,2819
+Anacreon,Space,2819
+Space,Sermak,2819
+Anacreon,Lee Senter,2834
+Anacreon,Salvor Hardin,2855
+Anacreon,Sermak,2855
+Anacreon,Lee Senter,2855
+Anacreon,Salvor Hardin,2856
+Anacreon,Sermak,2856
+Anacreon,Lee Senter,2856
+Anacreon,Hari Seldon,2883
+Anacreon,Lee Senter,2884
+Anacreon,Hari Seldon,2884
+Anacreon,Empire,2910
+Anacreon,Empire,2911
+Anacreon,Empire,2912
+Anacreon,Second Foundation,2912
+Anacreon,Salvor Hardin,2918
+Anacreon,Lepold,2918
+Anacreon,Verisof,2919
+Anacreon,Salvor Hardin,2919
+Anacreon,Lepold,2919
+Anacreon,Salvor Hardin,2947
+Anacreon,Lepold,2947
+Anacreon,Lepold,2948
+Anacreon,Wienis,2948
+Anacreon,Emperor,2948
+Anacreon,Salvor Hardin,2973
+Anacreon,Wienis,2973
+Anacreon,Salvor Hardin,2974
+Terminus,Salvor Hardin,2992
+Anacreon,Salvor Hardin,3002
+Anacreon,Salvor Hardin,3003
+Terminus,Salvor Hardin,3016
+Anacreon,Wienis,3062
+Anacreon,Wienis,3121
+Space,Salvor Hardin,3130
+Space,Salvor Hardin,3131
+Anacreon,Salvor Hardin,3145
+Anacreon,Second Foundation,3145
+Anacreon,Salvor Hardin,3146
+Anacreon,Aporat,3157
+Anacreon,Aporat,3158
+Anacreon,Wienis,3158
+Space,Fie,3228
+Anacreon,Aporat,3241
+Anacreon,Aporat,3242
+Anacreon,Second Foundation,3252
+Anacreon,Second Foundation,3253
+Anacreon,Aporat,3257
+Anacreon,Wienis,3257
+Terminus,Salvor Hardin,3261
+Terminus,Wienis,3261
+Terminus,Salvor Hardin,3262
+Terminus,Wienis,3262
+Terminus,Salvor Hardin,3293
+Anacreon,Salvor Hardin,3293
+Terminus,Salvor Hardin,3294
+Terminus,Wienis,3294
+Anacreon,Salvor Hardin,3294
+Anacreon,Wienis,3294
+Terminus,Salvor Hardin,3296
+Terminus,Wienis,3297
+Anacreon,Hari Seldon,3310
+Anacreon,Wienis,3311
+Anacreon,Lepold,3311
+Terminus,Wienis,3312
+Terminus,Second Foundation,3312
+Terminus,Lepold,3312
+Anacreon,Wienis,3312
+Anacreon,Second Foundation,3312
+Anacreon,Lepold,3312
+Terminus,Second Foundation,3313
+Terminus,Hari Seldon,3313
+Anacreon,Second Foundation,3313
+Anacreon,Hari Seldon,3313
+Terminus,Second Foundation,3377
+Terminus,Salvor Hardin,3378
+Askone,Gorm,3424
+Askone,Gorm,3425
+Askone,Gorov,3450
+Askone,Ponyets,3450
+Askone,Gorm,3450
+Askone,Gorov,3451
+Askone,Ponyets,3479
+Askone,Askonian,3490
+Askone,Board,3535
+Anacreon,Sermak,4039
+Anacreon,Sermak,4040
+Anacreon,Space,4040
+Space,Sermak,4040
+Space,Second Foundation,4041
+Terminus,Personal Capsule,4829
+Terminus,Second Foundation,4829
+Terminus,Personal Capsule,4830
+Terminus,Second Foundation,4830
+Terminus,Far Star,5240
+Terminus,Mallow,5240
+Terminus,Far Star,5241
+Askone,Salvor Hardin,5356
+Askone,Second Foundation,5357
+Terminus,Mallow,5515
+Terminus,Mallow,5546
+Terminus,Mallow,5547
+Terminus,Second Foundation,5995
+Terminus,Empire,5996
+Terminus,Hari Seldon,5996
+Terminus,Empire,6015
+Terminus,Riose,6015
+Anacreon,Second Foundation,6745
+Terminus,Barr,7804
+Terminus,Barr,7805
+Trantor,Barr,7949
+Trantor,Emperor,7950
+Trantor,Barr,7953
+Trantor,Barr,7991
+Trantor,Barr,8028
+Trantor,Barr,8029
+Trantor,Commissioners,8039
+Trantor,Barr,8112
+Haven,Mule,8246
+Haven,Second Foundation,8276
+Haven,Bayta,8279
+Haven,Bayta,8280
+Haven,Toran,8304
+Haven,Second Foundation,8304
+Haven,Second Foundation,8305
+Kalgan,Second Foundation,8555
+Kalgan,Mule,8559
+Haven,Flan,8568
+Kalgan,Second Foundation,8660
+Kalgan,Second Foundation,8661
+Kalgan,Second Foundation,8664
+Kalgan,Mule,8671
+Haven,Han,8747
+Haven,Twice Pritcher,8747
+Haven,Han,8748
+Haven,Twice Pritcher,8748
+Kalgan,Han,8748
+Kalgan,Twice Pritcher,8748
+Kalgan,Haven,8748
+Kalgan,Han,8749
+Kalgan,Twice Pritcher,8749
+Kalgan,Mule,8751
+Kalgan,Mule,8752
+Kalgan,Empire,8755
+Kalgan,Empire,8756
+Terminus,Salvor Hardin,8789
+Terminus,Second Foundation,8789
+Terminus,Salvor Hardin,8790
+Terminus,Second Foundation,8790
+Terminus,Mallow,8790
+Haven,Second Foundation,8799
+Kalgan,Mule,9077
+Kalgan,Second Foundation,9077
+Kalgan,Mule,9078
+Kalgan,Second Foundation,9078
+Kalgan,Bayta,9205
+Kalgan,Second Foundation,9205
+Kalgan,Mule,9210
+Kalgan,Twice Pritcher,9210
+Kalgan,Toran,9210
+Kalgan,Mule,9211
+Kalgan,Magnifico,9211
+Kalgan,Twice Pritcher,9211
+Kalgan,Toran,9211
+Kalgan,Han,9356
+Kalgan,Twice Pritcher,9356
+Kalgan,Indbur,9356
+Kalgan,Han,9357
+Kalgan,Twice Pritcher,9357
+Kalgan,Twice Pritcher,9361
+Kalgan,Twice Pritcher,9362
+Haven,Mule,9418
+Haven,Mule,9419
+Haven,Flan,9451
+Radole,Flan,9452
+Radole,Haven,9452
+Haven,Flan,9452
+Radole,Iwo,9453
+Radole,Iwo,9454
+Haven,Flan,9456
+Haven,Iwo,9457
+Kalgan,Mule,9488
+Kalgan,Mule,9489
+Haven,Mule,9508
+Kalgan,Mule,9528
+Kalgan,Mule,9529
+Kalgan,Mangin,9529
+Kalgan,Randu,9533
+Kalgan,Fie,9533
+Kalgan,Fie,9534
+Kalgan,Fie,9544
+Kalgan,Fie,9545
+Haven,Personal Capsule,9556
+Haven,Personal Capsule,9557
+Kalgan,Randu,9558
+Kalgan,Mule,9559
+Kalgan,Randu,9559
+Kalgan,Mangin,9563
+Radole,Mule,9585
+Radole,Mule,9586
+Radole,Second Foundation,9586
+Terminus,Second Foundation,9625
+Terminus,Mis,9625
+Terminus,Second Foundation,9626
+Terminus,Mis,9626
+Haven,Randu,9896
+Haven,Randu,9897
+Terminus,Indbur,9922
+Terminus,Second Foundation,9922
+Terminus,Indbur,9923
+Terminus,Randu,9925
+Kalgan,Second Foundation,9929
+Terminus,Indbur,9932
+Terminus,Randu,9932
+Terminus,Randu,9933
+Terminus,Mis,10019
+Terminus,Bayta,10020
+Terminus,Mule,10045
+Terminus,Magnifico,10045
+Terminus,Toran,10045
+Terminus,Mule,10046
+Terminus,Second Foundation,10047
+Terminus,Hari Seldon,10047
+Haven,Mule,10051
+Haven,Mule,10052
+Haven,Second Foundation,10052
+Haven,Second Foundation,10053
+Haven,Bayta,10054
+Haven,Second Foundation,10056
+Haven,Juddee,10057
+Haven,Second Foundation,10057
+Kalgan,Mule,10123
+Kalgan,Mule,10124
+Haven,Randu,10195
+Haven,Randu,10196
+Haven,Randu,10198
+Haven,Mis,10198
+Haven,Mis,10199
+Haven,Second Foundation,10305
+Haven,Second Foundation,10306
+Haven,Mule,10316
+Haven,Mule,10317
+Haven,Mule,10318
+Haven,Mule,10319
+Haven,Randu,10320
+Haven,Randu,10321
+Haven,Mis,10324
+Kalgan,Mule,10442
+Kalgan,Mule,10443
+Haven,Mis,10684
+Haven,Bayta,10684
+Haven,Bayta,10685
+Haven,Randu,10706
+Haven,Mule,10707
+Haven,Second Foundation,10707
+Haven,Bayta,10709
+Haven,Second Foundation,10709
+Haven,Bayta,10710
+Haven,Second Foundation,10710
+Terminus,Mule,10716
+Terminus,Bayta,10716
+Terminus,Haven,10716
+Haven,Mule,10716
+Haven,Bayta,10716
+Terminus,Mule,10717
+Terminus,Bayta,10717
+Terminus,Haven,10717
+Haven,Mule,10717
+Haven,Bayta,10717
+Haven,Toran,10737
+Trantor,Toran,10778
+Haven,Mule,10916
+Dellcass,Empire,10919
+Dellcass,First,10919
+Dellcass,Empire,10920
+Dellcass,First,10920
+Neotrantor,Dagobert IX,10943
+Neotrantor,Emperor,10943
+Neotrantor,Empire,10944
+Neotrantor,Dagobert IX,10944
+Neotrantor,Empire,10945
+Neotrantor,Commissioners,10947
+Neotrantor,Commissioners,10948
+Neotrantor,Commissioners,10949
+Trantor,Commissioners,10962
+Neotrantor,Commissioners,10962
+Neotrantor,Commissioners,10963
+Anacreon,Second Foundation,11056
+Trantor,Toran,11070
+Trantor,Mis,11070
+Trantor,Bayta,11092
+Haven,Bayta,11210
+Trantor,Toran,11271
+Neotrantor,Lee Senter,11311
+Trantor,Lee Senter,11350
+Trantor,Lee Senter,11353
+Trantor,Lee Senter,11377
+Neotrantor,Lee Senter,11387
+Neotrantor,Lee Senter,11388
+Haven,Mule,11439
+Haven,Second Foundation,11439
+Haven,Mule,11440
+Haven,Second Foundation,11440
+Haven,Mis,11440
+Neotrantor,Mule,11477
+Trantor,Mule,11477
+Neotrantor,Mule,11478
+Trantor,Mule,11478
+Kalgan,Second Foundation,11517
+Trantor,Mule,11518
+Trantor,Bayta,11518
+Trantor,Second Foundation,11518
+Kalgan,Mule,11518
+Kalgan,Bayta,11518
+Kalgan,Second Foundation,11518
+Trantor,Mule,11519
+Trantor,Bayta,11519
+Haven,Second Foundation,11523
+Haven,Second Foundation,11524
+Haven,Bayta,11529
+Haven,Toran,11533
+Haven,Second Foundation,11533
+Haven,Second Foundation,11534
+Neotrantor,Mule,11539
+Neotrantor,Toran,11539
+Neotrantor,Mule,11540
+Kalgan,Second Foundation,11573
+Kalgan,Second Foundation,11574
+Trantor,Toran,11780
+Trantor,Bayta,11780
+Trantor,Mis,11780
+Trantor,Mis,11781
+Haven,Second Foundation,12077
+Haven,Second Foundation,12078
+Neotrantor,Mule,12079
+Neotrantor,Haven,12079
+Haven,Mule,12079
+Neotrantor,Mule,12080
+Neotrantor,Toran,12080
+Neotrantor,Bayta,12108
+Haven,Toran,12123
+Haven,Toran,12124
+Neotrantor,Mule,12132
+Neotrantor,Magnifico,12132
+Neotrantor,Twice Pritcher,12132
+Neotrantor,Mule,12133
+Neotrantor,Magnifico,12133
+Kalgan,Second Foundation,12211
+Kalgan,Second Foundation,12218
+Kalgan,Han,12219
+Kalgan,Twice Pritcher,12219
+Kalgan,Second Foundation,12219
+Terminus,Haven,12250
+Terminus,Haven,12251
+Neotrantor,Haven,12251
+Kalgan,Second Foundation,12263
+Kalgan,Second Foundation,12264
+Neotrantor,Bayta,12313
+Terminus,Mule,12428
+Kalgan,Mule,12471
+Kalgan,First,12471
+Kalgan,First,12472
+Kalgan,Channis,12472
+Kalgan,Second Foundation,12508
+Kalgan,Second Foundation,12518
+Kalgan,Fie,12519
+Kalgan,Second Foundation,12519
+Kalgan,Twice Pritcher,12595
+Kalgan,Channis,12596
+Kalgan,Second Foundation,12708
+Trantor,Mule,12802
+Trantor,First,12802
+Trantor,Second Foundation,12802
+Trantor,First,12803
+Trantor,Second Foundation,12803
+Trantor,Channis,12903
+Trantor,Channis,12904
+Trantor,Empire,12906
+Trantor,Hari Seldon,12909
+Trantor,Hari Seldon,12910
+Trantor,Channis,12925
+Trantor,Channis,12926
+Trantor,End,12938
+Trantor,Far Star,12938
+Trantor,Mule,12939
+Kalgan,Second Foundation,12975
+Kalgan,Second Foundation,12976
+Anacreon,First,13011
+Anacreon,Second Foundation,13011
+Anacreon,First,13012
+Rossem,Second Foundation,13160
+Rossem,Empire,13161
+Rossem,Hari Seldon,13163
+Rossem,Empire,13201
+Rossem,Empire,13202
+Rossem,Elders,13258
+Rossem,Elders,13280
+Gentri,Mule,13301
+Gentri,Second Foundation,13301
+Gentri,Twice Pritcher,13302
+Gentri,Second Foundation,13302
+Rossem,Mule,13328
+Rossem,Elders,13328
+Rossem,Elders,13329
+Rossem,Elders,13355
+Rossem,Elders,13356
+Rossem,Channis,13504
+Kalgan,Mule,13701
+Kalgan,Mule,13981
+Kalgan,Second Foundation,13981
+Kalgan,Channis,13981
+Kalgan,Channis,13982
+Rossem,Mule,14079
+Rossem,Channis,14079
+Rossem,Mule,14080
+Rossem,Channis,14080
+Rossem,Channis,14087
+Kalgan,First,14131
+Kalgan,Second Foundation,14155
+Kalgan,First,14156
+Kalgan,Second Foundation,14156
+Rossem,First,14176
+Rossem,First Speaker,14176
+Rossem,Second Foundation,14182
+Rossem,Mule,14193
+Rossem,First,14193
+Rossem,First Speaker,14193
+Rossem,Second Foundation,14198
+Kalgan,First,14208
+Kalgan,Channis,14208
+Kalgan,Han,14208
+Kalgan,Twice Pritcher,14208
+Kalgan,First Speaker,14208
+Kalgan,Han,14209
+Kalgan,Twice Pritcher,14209
+Kalgan,Channis,14209
+Kalgan,Second Foundation,14217
+Kalgan,Mule,14218
+Kalgan,Second Foundation,14218
+Kalgan,Mule,14219
+Kalgan,Second Foundation,14220
+Rossem,Second Foundation,14225
+Rossem,Second Foundation,14226
+Kalgan,Second Foundation,14230
+Kalgan,Second Foundation,14231
+Rossem,Second Foundation,14234
+Rossem,Channis,14234
+Rossem,Second Foundation,14235
+Rossem,Channis,14235
+Rossem,Mule,14238
+Rossem,Second Foundation,14238
+Rossem,Second Foundation,14239
+Rossem,Mule,14239
+Rossem,First,14239
+Rossem,Channis,14239
+Rossem,First Speaker,14239
+Rossem,Second Foundation,14240
+Rossem,First,14240
+Rossem,Channis,14240
+Rossem,First Speaker,14240
+Rossem,Fie,14240
+Rossem,Fie,14241
+Rossem,Second Foundation,14241
+Rossem,First,14243
+Rossem,First Speaker,14243
+Rossem,Second Foundation,14243
+Rossem,Channis,14243
+Rossem,Second Foundation,14244
+Rossem,First,14246
+Rossem,First,14247
+Rossem,Second Foundation,14249
+Rossem,Channis,14249
+Kalgan,Second Foundation,14249
+Kalgan,Channis,14249
+Rossem,Second Foundation,14250
+Kalgan,Second Foundation,14250
+Kalgan,Mule,14260
+Kalgan,Mule,14261
+Rossem,Hari Seldon,14275
+Rossem,Second Foundation,14275
+Rossem,Channis,14275
+Rossem,Second Foundation,14276
+Rossem,Channis,14276
+Rossem,Second Foundation,14279
+Rossem,Channis,14279
+Rossem,Second Foundation,14280
+Kalgan,Mule,14311
+Kalgan,Darell,14311
+Kalgan,Hari Seldon,14311
+Kalgan,Darell,14312
+Kalgan,Hari Seldon,14312
+Terminus,Empire,14360
+Terminus,Second Foundation,14360
+Terminus,Hari Seldon,14360
+Terminus,Salvor Hardin,14361
+Terminus,Second Foundation,14361
+Terminus,Mallow,14361
+Terminus,Empire,14361
+Terminus,Personal Capsule,14464
+Trantor,Empire,14913
+Trantor,Empire,14914
+Trantor,First,14914
+Anacreon,Anthor,14976
+Kalgan,Mule,15085
+Kalgan,Mule,15086
+Kalgan,Second Foundation,15086
+Kalgan,Mule,15087
+Kalgan,Stettin,15087
+Kalgan,Second Foundation,15087
+Kalgan,Mule,15088
+Kalgan,Stettin,15088
+Kalgan,First,15088
+Terminus,Homir,15225
+Terminus,Munn,15225
+Space,Second Foundation,15309
+Kalgan,Second Foundation,15377
+Kalgan,Munn,15378
+Kalgan,Second Foundation,15378
+Space,Homir,15390
+Space,Arcadia,15391
+Kalgan,Mule,15394
+Kalgan,Mule,15395
+Kalgan,Arcadia,15398
+Kalgan,Second Foundation,15420
+Trantor,Empire,15452
+Trantor,First,15452
+Trantor,Darell,15457
+Trantor,Bayta,15457
+Trantor,Mule,15458
+Trantor,Darell,15458
+Trantor,Bayta,15458
+Space,Second Foundation,15486
+Kalgan,Space,15486
+Kalgan,Second Foundation,15486
+Space,Second Foundation,15487
+Kalgan,Space,15487
+Kalgan,Second Foundation,15487
+Trantor,Hari Seldon,15493
+Kalgan,Hari Seldon,15493
+Kalgan,Hari Seldon,15494
+Kalgan,Second Foundation,15499
+Kalgan,Second Foundation,15500
+Kalgan,Mule,15502
+Kalgan,Empire,15505
+Kalgan,Mule,15506
+Kalgan,Empire,15506
+Kalgan,Mule,15512
+Kalgan,First,15512
+Kalgan,Second Foundation,15512
+Kalgan,Mule,15513
+Kalgan,First,15513
+Kalgan,Second Foundation,15513
+Kalgan,Fie,15514
+Kalgan,Fie,15515
+Kalgan,Anthor,15648
+Kalgan,Second Foundation,15649
+Space,Second Foundation,15650
+Space,Homir,15651
+Kalgan,Mule,15734
+Kalgan,Empire,15734
+Kalgan,Arcadia,15735
+Kalgan,Mule,15771
+Kalgan,Hari Seldon,15771
+Kalgan,Mule,15772
+Kalgan,Empire,15773
+Kalgan,Empire,15774
+Kalgan,Callia,15774
+Kalgan,Mule,15787
+Kalgan,Second Foundation,15867
+Kalgan,Darell,15877
+Space,Callia,16043
+Kalgan,Arcadia,16114
+Kalgan,Callia,16114
+Terminus,Second Foundation,16175
+Trantor,Second Foundation,16180
+Trantor,Arcadia,16215
+Trantor,Arcadia,16216
+Trantor,Pappa,16254
+Trantor,Mamma,16255
+Trantor,Mamma,16256
+Trantor,Pappa,16256
+Trantor,Arcadia,16261
+Trantor,Arcadia,16285
+Trantor,Mamma,16305
+Trantor,Pappa,16305
+Trantor,Mamma,16306
+Trantor,Pappa,16306
+Trantor,Mamma,16350
+Trantor,Pappa,16350
+Trantor,Arcadia,16350
+Trantor,Mamma,16351
+Trantor,Pappa,16351
+Trantor,Pappa,16389
+Trantor,Palver,16389
+Kalgan,Pappa,16389
+Kalgan,Palver,16389
+Trantor,Palver,16390
+Kalgan,Palver,16390
+Kalgan,Arcadia,16478
+Kalgan,Palver,16479
+Kalgan,Arcadia,16479
+Trantor,Second Foundation,16501
+Kalgan,Second Foundation,16522
+Kalgan,Mule,16523
+Kalgan,First,16523
+Terminus,Darell,16528
+Terminus,Arcadia,16528
+Terminus,Darell,16529
+Terminus,Arcadia,16529
+Kalgan,Lieutenant Dirige,16602
+Kalgan,Darell,16603
+Kalgan,Darell,16604
+Kalgan,Lieutenant Dirige,16604
+Kalgan,Lieutenant Dirige,16605
+Kalgan,Lieutenant Dirige,16618
+Kalgan,Lieutenant Dirige,16619
+Kalgan,Mule,16625
+Kalgan,Lieutenant Dirige,16625
+Kalgan,Second Foundation,16625
+Kalgan,Mule,16626
+Kalgan,Second Foundation,16626
+Trantor,Darell,16640
+Trantor,Lieutenant Dirige,16640
+Trantor,Darell,16641
+Trantor,Lieutenant Dirige,16641
+Trantor,Anthor,16672
+Trantor,Arcadia,16672
+Trantor,Darell,16673
+Trantor,Arcadia,16673
+Trantor,Darell,16680
+Trantor,Anthor,16681
+Trantor,Seldon Historical,16705
+Trantor,Hari Seldon,16705
+Trantor,Anthor,16716
+Space,Anthor,16717
+Trantor,Arcadia,16751
+Trantor,Anthor,16751
+Trantor,Second Foundation,16751
+Trantor,Anthor,16752
+Trantor,Arcadia,16752
+Kalgan,Munn,16765
+Kalgan,Mule,16766
+Kalgan,Munn,16766
+Kalgan,Lieutenant Dirige,16769
+Kalgan,Munn,16770
+Kalgan,Arcadia,16770
+Kalgan,Mule,16770
+Kalgan,First,16770
+Kalgan,Homir,16770
+Kalgan,Lieutenant Dirige,16770
+Kalgan,Callia,16770
+Kalgan,Munn,16771
+Kalgan,Arcadia,16771
+Kalgan,Mule,16771
+Kalgan,First,16771
+Kalgan,Homir,16771
+Kalgan,Darell,16771
+Kalgan,Callia,16771
+Trantor,Arcadia,16786
+Trantor,Second Foundation,16786
+Trantor,Second Foundation,16787
+Kalgan,Second Foundation,16796
+Kalgan,Second Foundation,16797
+Kalgan,Arcadia,16799
+Terminus,Arcadia,16819
+Terminus,Fie,16819
+Terminus,Second Foundation,16819
+Trantor,Arcadia,16819
+Trantor,Fie,16819
+Trantor,Second Foundation,16819
+Terminus,Anthor,16820
+Trantor,Anthor,16820
+Kalgan,Second Foundation,16832
+Kalgan,Second Foundation,16833
+Kalgan,Darell,16842
+Kalgan,Second Foundation,16842
+Kalgan,Second Foundation,16843
+Space,Second Foundation,16853
+Kalgan,Space,16853
+Kalgan,Second Foundation,16853
+Space,Darell,16854
+Space,Second Foundation,16854
+Kalgan,Darell,16854
+Kalgan,Space,16854
+Kalgan,Second Foundation,16854
+Kalgan,Second Foundation,16862
+Kalgan,Darell,16863
+Kalgan,Second Foundation,16863
+Kalgan,Anthor,16873
+Kalgan,Anthor,16874
+Kalgan,Second Foundation,16874
+Kalgan,Stettin,16881
+Kalgan,Darell,16881
+Kalgan,Stettin,16882
+Kalgan,Darell,16882
+Trantor,Mamma,16967
+Trantor,Pappa,16967
+Trantor,Mamma,16968
+Trantor,Pappa,16968
+Kalgan,Second Foundation,16991
+Kalgan,Second Foundation,16992
+Kalgan,Second Foundation,16995
+Terminus,Arcadia,17017
+Terminus,Pappa,17018
+Terminus,Pappa,17019
+Terminus,Mule,17060
+Terminus,Twice Pritcher,17060
+Terminus,Flan,17060
+Terminus,Second Foundation,17060
+Terminus,Mule,17061
+Terminus,Twice Pritcher,17061
+Terminus,Flan,17061
+Terminus,Second Foundation,17061
+Trantor,Second Foundation,17069
+Terminus,Arcadia,17100
+Terminus,Pappa,17105
+Terminus,Darell,17111
+Terminus,Toran,17111
+Kalgan,Stettin,17151
+Kalgan,Turbor,17151
+Kalgan,Second Foundation,17151
+Kalgan,Stettin,17152
+Kalgan,Turbor,17152
+Kalgan,Second Foundation,17152
+Trantor,Palver,17212
+Trantor,Palver,17213
+Terminus,Second Foundation,17282
+Kalgan,Second Foundation,17318
+Terminus,Palver,17319
+Terminus,Second Foundation,17319
+Terminus,Palver,17320
+Kalgan,First,17334
+Kalgan,Meirus,17334
+Kalgan,Seldon Historical,17368
+Kalgan,Hari Seldon,17368
+Kalgan,Second Foundation,17369
+Kalgan,Seldon Historical,17369
+Kalgan,Hari Seldon,17369
+Terminus,Stettin,17391
+Kalgan,Homir,17393
+Kalgan,Munn,17393
+Terminus,Homir,17394
+Terminus,Munn,17394
+Kalgan,Homir,17394
+Kalgan,Munn,17394
+Terminus,Second Foundation,17405
+Terminus,Homir,17406
+Terminus,Meirus,17406
+Terminus,Second Foundation,17406
+Kalgan,Homir,17406
+Kalgan,Meirus,17406
+Kalgan,Second Foundation,17406
+Kalgan,Darell,17407
+Kalgan,Meirus,17407
+Kalgan,Homir,17407
+Terminus,Darell,17410
+Terminus,Darell,17411
+Trantor,Darell,17420
+Trantor,Darell,17421
+Kalgan,Munn,17427
+Trantor,Munn,17428
+Trantor,Arcadia,17428
+Kalgan,Munn,17428
+Kalgan,Arcadia,17428
+Trantor,Arcadia,17429
+Kalgan,Arcadia,17429
+Kalgan,Mule,17447
+Kalgan,Munn,17447
+Kalgan,Mule,17448
+Kalgan,Second Foundation,17516
+Kalgan,Turbor,17517
+Kalgan,Darell,17520
+Kalgan,Darell,17521
+Kalgan,Munn,17568
+Kalgan,Turbor,17568
+Kalgan,Elvett Semic,17569
+Kalgan,Darell,17569
+Kalgan,Munn,17569
+Kalgan,Turbor,17569
+Space,Munn,17628
+Space,Anthor,17629
+Terminus,Darell,17641
+Trantor,Darell,17645
+Trantor,Arcadia,17645
+Trantor,Darell,17646
+Trantor,Arcadia,17646
+Kalgan,Arcadia,17650
+Kalgan,Lieutenant Dirige,17651
+Kalgan,Arcadia,17651
+Kalgan,Lieutenant Dirige,17652
+Kalgan,Munn,17652
+Kalgan,Mule,17653
+Kalgan,Munn,17653
+Kalgan,Mule,17654
+Kalgan,Anthor,17657
+Kalgan,Second Foundation,17657
+Kalgan,Turbor,17658
+Kalgan,Second Foundation,17658
+Kalgan,Anthor,17659
+Kalgan,Turbor,17659
+Kalgan,Anthor,17660
+Terminus,First,17675
+Terminus,Second Foundation,17675
+Terminus,Second Foundation,17681
+Kalgan,Fie,17715
+Kalgan,Anthor,17716
+Kalgan,Munn,17740
+Kalgan,Second Foundation,17740
+Kalgan,Second Foundation,17741
+Terminus,Anthor,17746
+Terminus,Elvett Semic,17746
+Terminus,Anthor,17747
+Kalgan,Anthor,17790
+Kalgan,Second Foundation,17790
+Kalgan,Second Foundation,17791
+Terminus,First,17824
+Terminus,Second Foundation,17824
+Terminus,Arcadia,17824
+Terminus,First,17825
+Terminus,Second Foundation,17825
+Kalgan,Munn,17860
+Kalgan,Arcadia,17860
+Kalgan,Arcadia,17861
+Terminus,Darell,17950
+Terminus,Second Foundation,17950
+Terminus,Darell,17951
+Terminus,Second Foundation,17964
+Kalgan,Munn,17970
+Kalgan,Stettin,17971
+Kalgan,Munn,17971
+Trantor,Anthor,17974
+Trantor,Arcadia,17974
+Trantor,Callia,17974
+Trantor,Callia,17975
+Trantor,Darell,17978
+Terminus,Callia,17997
+Terminus,Arcadia,18042
+Terminus,Arcadia,18043
+Kalgan,Anthor,18055
+Kalgan,Darell,18055
+Terminus,Darell,18056
+Kalgan,Darell,18056
+Terminus,Arcadia,18057
+Terminus,Callia,18061
+Terminus,Callia,18062
+Trantor,Darell,18098
+Trantor,Arcadia,18098
+Terminus,Anthor,18169
+Terminus,Arcadia,18170
+Trantor,Arcadia,18171
+Kalgan,Second Foundation,18176
+Kalgan,Second Foundation,18177
+Trantor,Empire,18216
+Trantor,Hari Seldon,18216
+Trantor,Empire,18217
+Trantor,Hari Seldon,18217
+Trantor,Hari Seldon,18220
+Trantor,Hari Seldon,18221
+Trantor,Second Foundation,18221
+Trantor,Second Foundation,18225
+Trantor,Second Foundation,18226
+Trantor,Mis,18228
+Trantor,Mule,18229
+Trantor,Second Foundation,18229
+Trantor,Mis,18229
+Trantor,End,18235
+Trantor,Far Star,18235
+Trantor,Hari Seldon,18235
+Trantor,End,18236
+Trantor,Far Star,18236
+Trantor,Hari Seldon,18236
+Trantor,First,18238
+Trantor,Palver,18238
+Trantor,First Speaker,18238

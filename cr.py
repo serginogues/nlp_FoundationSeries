@@ -1,6 +1,7 @@
 """
 Coreference resolution model
 Unification of Character Occurrences (alias resolution): grouping proper nouns referring to the same character
+https://github.com/huggingface/neuralcoref
 """
 from config import nlp
 

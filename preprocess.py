@@ -9,10 +9,9 @@ def preprocess(text, STAGE=True):
     doc_list = []
     if STAGE:
         sentences = get_sentences(text)
+        print("Number of preprocessed sentences: ", len(sentences))
         for i in tqdm(range(len(sentences))):
             doc_list.append(nlp(sentences[i]))
-
-        print("Number of preprocessed sentences: ", len(doc_list))
     return doc_list
 
 
