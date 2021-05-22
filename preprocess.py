@@ -8,7 +8,7 @@ def preprocess(text, STAGE=True):
     print("Start PREPROCESS")
     doc_list = []
     if STAGE:
-        sentences = get_sentences(text)
+        sentences = get_texts(text)
         print("Number of preprocessed sentences: ", len(sentences))
         for i in tqdm(range(len(sentences))):
             doc_list.append(nlp(sentences[i]))
@@ -18,6 +18,13 @@ def preprocess(text, STAGE=True):
 def get_sentences(text):
     text = remove_from_text(text)
     sentences = sent_tokenize(text)
+    sentences = [re.sub(' +', ' ', sent) for sent in sentences]
+    return sentences
+
+
+def get_texts(text):
+    a = text.split("\n\n")
+    sentences = [remove_from_text(x) for x in a if x and not x.islower() and not x.isupper() and len(x) > 5]
     sentences = [re.sub(' +', ' ', sent) for sent in sentences]
     return sentences
 

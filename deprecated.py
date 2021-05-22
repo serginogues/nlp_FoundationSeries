@@ -161,3 +161,32 @@ def get_full_named_entities(entity_list, parsed_list):
 
     print("NER finished:", len(final_list), "'person' entities found")
     return final_list
+
+
+
+def ner_event(doc):
+    """
+    Fact analyses
+    Most events are build around patterns of the form: <OBJECT> <VERB> <SUBJECT>
+    #TODO: see course 5 slide 35
+    """
+    subject = ""
+    direct_object = ""
+    indirect_object = ""
+    verb = ""
+    # get token dependencies
+    for word in doc:
+        # subject would be
+        if word.dep_ == "nsubj":
+            subject = word.orth_
+        # iobj for indirect object
+        elif word.dep_ == "iobj":
+            indirect_object = word.orth_
+        # dobj for direct object
+        elif word.dep_ == "dobj":
+            direct_object = word.orth_
+        elif word.dep_ == 'ROOT':
+            verb = word
+    if str(subject) != "" and str(verb) != "" and str(direct_object) != "":
+        print("----------Event---------\n - '", doc.text, "'\n - Who? ", subject, "\n - What?: ", verb, "\n - vs Who? ",
+              direct_object, "\n - indirect object: ", indirect_object)
