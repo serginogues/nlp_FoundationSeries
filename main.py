@@ -2,6 +2,7 @@ from config import FoundationTrilogy
 from preprocess import preprocess
 from ner import NER
 from entity_connections import LINK_ENTITIES
+from normalization import normalize_list
 from visualization import CHARACTER_NETWORK
 
 if __name__ == '__main__':
@@ -9,11 +10,13 @@ if __name__ == '__main__':
     text = FoundationTrilogy[:-1200000]
     #text = FoundationTrilogy
     parsed_list = preprocess(text, True)  # vector of preprocessed sentences
-    people_list, location_list, predicted = NER(parsed_list, STAGE=True, VALIDATE=True)
+    predicted = NER(parsed_list, STAGE=True, VALIDATE=True)
     #TODO: Validation
 
     #TODO: CR + link with predicted
-    people_links, location_links = LINK_ENTITIES(people_list, location_list, parsed_list, predicted, True)
+    people_links, location_links = LINK_ENTITIES(parsed_list, predicted, True)
+
+    #TODO: normalize
     CHARACTER_NETWORK(people_links, True)
 
     #TODO: geo-mapping with location_links

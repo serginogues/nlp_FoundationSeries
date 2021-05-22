@@ -52,7 +52,7 @@ def link_two_person(connection_list, entity1, entity, idx_sent):
     return connection_list
 
 
-def LINK_ENTITIES(people_list, location_list, parsed_list, predicted, STAGE=True):
+def LINK_ENTITIES(parsed_list, predicted, STAGE=True):
     """
     Two entities are considered to have a link if they appear in a range of two consecutive sentences.
     :return: a list of tuples
@@ -61,24 +61,23 @@ def LINK_ENTITIES(people_list, location_list, parsed_list, predicted, STAGE=True
         people_links = []
         location_links = []
         idx_sentence = 0  # sum(1 for _ in c)
+
         for pair in pairwise(parsed_list):
             tuple_ents = get_ents_from_doc(pair[0]) + get_ents_from_doc(pair[1])
             ents_list = [x[0] for x in tuple_ents]
             if any(ents_list):
 
-                # PEOPLE
-                people = entity_candidates(ents_list, people_list)
+                """# PEOPLE
                 for a, b in combinations(people, 2):
                     people_links = link_two_person(people_links, a, b, idx_sentence)
 
                 # LOCATIONS
-                locations = location_candidates(ents_list, location_list)
                 if any(locations) and any(people):
                     for loc in locations:
                         for pers in people:
                             if pers != loc:
                                 location_links.append([loc, pers, idx_sentence])
-                    print(locations, people, "in sentence:", " ".join([parsed_list[idx_sentence].text, parsed_list[idx_sentence+1].text]))
+                    print(locations, people, "in sentence:", " ".join([parsed_list[idx_sentence].text, parsed_list[idx_sentence+1].text]))"""
 
             idx_sentence += 1
 
@@ -95,25 +94,21 @@ def LINK_ENTITIES(people_list, location_list, parsed_list, predicted, STAGE=True
     return people_links, location_links
 
 
-def entity_candidates(ents_list, entity_list):
-    candidates = []
-    for ent in ents_list:
-        candidates += [x[0] for x in entity_list for name in x if name == ent]
-    candidates = list(set(candidates))
-    return candidates
+def coref_events(doc, people_list, location_list, idx):
+    """
+    https://ryanong.co.uk/2020/07/14/day-196-coreference-resolution-with-neuralcoref-spacy/
+    """
+    event_links = []
+    for token in doc:
+        if token._.has_coref:
+            print(token._.coref_cluster)
+    return event_links
 
 
-def location_candidates(ents_list, entity_list):
-    candidates = []
-    for ent in ents_list:
-        candidates += [x for x in entity_list if ent == x]
-    candidates = list(set(candidates))
-    return candidates
-
-
-def get_ents_from_predicted(predicted, doc):
+def get_ents_from_predicted(y_pred, doc):
     """
     :param predicted: ner output
     :param doc: spacy doc
     :return:
     """
+    spans = [(i, tag) for i, tag in enumerate(y_pred) if tag != 'O']

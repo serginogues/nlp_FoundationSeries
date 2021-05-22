@@ -3,8 +3,7 @@ Rule-Based Named Entity Recognition model for the detection of character occurre
 """
 from config import tqdm, honorific_words, person_verbs, matcher, location_name_pattern, location_name, \
     travel_to_pattern, travel_to_verbs, nlp, punctuation_tokens
-from utils import get_ents_from_doc, write_list, read_list, remove_repe_from_list, ner_unclassified_per, ner_unclassified_loc
-from normalization import normalize_list
+from utils import get_ents_from_doc, write_list, read_list, ner_unclassified_per, ner_unclassified_loc
 
 
 def get_full_name(doc, token):
@@ -18,7 +17,7 @@ def get_full_name(doc, token):
 def NER(sentence_list, STAGE=True, VALIDATE=False):
     """
     :param VALIDATE: if validate, there is no ovewritten in the txt files
-    :return: chronological sequence of unified character and location occurrences
+    :return: labeled sentence list
     """
     print("Start NER")
     if STAGE:
@@ -82,27 +81,13 @@ def NER(sentence_list, STAGE=True, VALIDATE=False):
             if tup[0] in location_list:
                 ner_unclassified_loc(predicted, unclassified_sent, tup)
 
-        unclassified = [x[0] for x in unclassified]
-
-        unclassified = list(set(unclassified))
-        unclassified = [x for x in unclassified if (x not in people_list and x not in location_list)]
-
         if not VALIDATE:
-            write_list('people_list', people_list)
-            write_list('location_list', location_list)
-            write_list('unclassified', unclassified)
             write_list('predicted', predicted)
 
     else:
-
-        location_list = read_list('location_list')
-        people_list = read_list('people_list')
-        unclassified = read_list('unclassified')
         predicted = read_list('predicted')
 
-    people_list = normalize_list(people_list, unclassified, True)
-
-    return people_list, location_list, predicted
+    return predicted
 
 
 def ner_person(doc, token, num):
@@ -141,14 +126,3 @@ def ner_location(doc, token):
         if len([x for x in nlp(str(span)) if x.pos_ == "VERB" and str(x.lemma_) in travel_to_verbs]) and str(
                 token) in str(span):
             return True
-
-
-def coref_events(doc, people_list, location_list, idx):
-    """
-    https://ryanong.co.uk/2020/07/14/day-196-coreference-resolution-with-neuralcoref-spacy/
-    """
-    event_links = []
-    for token in doc:
-        if token._.has_coref:
-            print(token._.coref_cluster)
-    return event_links

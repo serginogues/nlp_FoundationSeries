@@ -10,7 +10,7 @@ import collections
 import math
 
 
-def normalize_list(entity_list, unclassified, STAGE=True):
+def normalize_list(entity_list, STAGE=True):
     print("Start NORMALIZATION")
     if STAGE:
         normalized = []
@@ -36,7 +36,7 @@ def normalize_list(entity_list, unclassified, STAGE=True):
         # Do a second normalization of entities sharing surname
         [normalized.append([ent]) for ent in copy_list]
 
-        # if unclassified contains words in normalized, add it to tuple
+        """# if unclassified contains words in normalized, add it to tuple
         for i, tu in enumerate(normalized):
             for w in tu:
                 a = [x for x in unclassified if is_name(x, w) and 0.81 < (
@@ -52,7 +52,7 @@ def normalize_list(entity_list, unclassified, STAGE=True):
                 if a and b:
                     [normalized.remove(x) for x in normalized if x[0] == a[0]]
                     [normalized.remove(x) for x in normalized if x[0] == b[0]]
-                    normalized.append([ent, a[0], b[0]])
+                    normalized.append([ent, a[0], b[0]])"""
 
         for a, b in combinations([[i, x] for i, x in enumerate(normalized) if len(x) == 1], 2):
             if a[1][0] in b[1][0] or b[1][0] in a[1][0]:
