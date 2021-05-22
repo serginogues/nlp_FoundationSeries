@@ -14,7 +14,7 @@ def preprocess_tuple(tuple_list):
     return new_list
 
 
-def super_network(tuple_list, STAGE=True):
+def CHARACTER_NETWORK(tuple_list, STAGE=True):
     """
     https://melaniewalsh.github.io/Intro-Cultural-Analytics/Network-Analysis/Making-Network-Viz-with-Bokeh.html
     """

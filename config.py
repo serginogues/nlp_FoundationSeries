@@ -29,11 +29,11 @@ honorific_words = ['Dr.', 'Prof.', 'Mr.', 'Ms.', 'Msr.', 'Jr.', 'Sr.', 'Lord', '
                    'Commdor', 'Lady', 'Captain', 'Colonel', 'Miss', 'General', 'Mayor']
 person_verbs_ = ['said', 'sniffed', 'met', 'greet', 'walked', 'respond', 'talk', 'think', 'hear', 'wait', 'pause',
                  'write', 'smile', 'answer', 'wonder', 'reply', 'read', 'sit', 'muttered', 'fumble', 'ask', 'sigh',
-                 'frowned', 'cry', 'chuckled', 'murmured']
+                 'frowned', 'cry', 'chuckled', 'murmured', 'find']
 person_verbs = [lemmatizer.lemmatize(w, pos='v') for w in person_verbs_]
 location_name = ['planet', 'kingdom', 'world', 'region', 'location', 'republic', 'street', 'neighborhood', 'realm', 'sight']
 location_name_pattern = [{'POS': 'NOUN'}, {'LOWER': 'of'}, {'POS': 'PROPN'}]
-travel_to_verbs_ = ['go', 'travel', 'move', 'exiled']
+travel_to_verbs_ = ['go', 'travel', 'move', 'exiled', 'come']
 travel_to_verbs = [lemmatizer.lemmatize(w, pos='v') for w in travel_to_verbs_]
 travel_to_pattern = [{'POS': 'VERB'}, {'LOWER': 'to'}, {'POS': 'PROPN'}]
 be_in_pattern = [{'POS': 'AUX'}, {'LOWER': 'in'}, {'POS': 'PROPN'}]

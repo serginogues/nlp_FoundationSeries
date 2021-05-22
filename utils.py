@@ -148,15 +148,27 @@ def get_ents_from_doc(doc):
     idx = 0
     for pair in pairwise(doc):
         if is_candidate(pair[0]) and is_candidate(pair[1]):
-            ents.append([" ".join([pair[0].text, pair[1].text]), [idx, idx+1]])
-        elif is_candidate(pair[0]):
+            ents.append([" ".join([pair[0].text, pair[1].text]), [idx, idx + 1]])
+        elif is_candidate(pair[0]) and idx == 0:
             ents.append([pair[0].text, [idx]])
-        elif is_candidate(pair[1]):
-            ents.append([pair[1].text, [idx+1]])
+        elif is_candidate(pair[0]) and not idx == 0 and not is_candidate(doc[idx - 1]):
+            ents.append([pair[0].text, [idx]])
+        elif is_candidate(pair[1]) and not idx < len(doc) - 2:
+            ents.append([pair[1].text, [idx + 1]])
+        elif is_candidate(pair[1]) and idx < len(doc) - 2 and not is_candidate(doc[idx + 2]):
+            ents.append([pair[1].text, [idx + 1]])
         idx += 1
-    copy_list = ents.copy()
-    [ents.remove(x[1]) for x in pairwise(copy_list) if x[0][0] == x[1][0]]
+    ents = remove_repe_from_list(ents)
     return ents
+
+
+def remove_repe_from_list(list):
+    """
+    list[i] = [string, idx]
+    """
+    copy_list = list.copy()
+    [list.remove(x[1]) for x in pairwise(copy_list) if x[0][0] == x[1][0]]
+    return list
 
 
 def solve_ambiguity_names(list, word):
@@ -254,7 +266,7 @@ def write_list(name, list):
         f.seek(0)
         f.truncate()
         for item in list:
-            if name == 'people_links' or name == 'location_links' or name == 'normalized':
+            if name == 'people_links' or name == 'location_links' or name == 'normalized' or name == 'predicted' or name == 'unclassified':
                 a = ",".join([str(x) for x in item])
             else:
                 a = item
@@ -269,14 +281,43 @@ def read_list(name):
     with open('data_outputs/' + name + '.txt', 'r') as f:
         for line in f:
             item = line[:-1]
-            if name == 'people_links' or name == 'location_links' or name == 'normalized':
+            if name == 'people_links' or name == 'location_links' or name == 'normalized' or name == 'predicted':
                 a = [x for x in item.split(',')]
                 if name == 'people_links':
                     list.append([a[0], a[1], int(a[2]), int(a[3])])
                 elif name == 'location_links':
                     list.append([a[0], a[1], int(a[2])])
-                elif name == 'normalized':
+                elif name == 'unclassified':
+                    list.append([a[0], int(a[1])])
+                else:
                     list.append([x for x in a])
             else:
                 list.append(item)
     return list
+
+
+def ner_unclassified_per(predicted, unclassified_sent, x):
+    pred_doc = [y for idx, y in enumerate(predicted) if idx == x[1]][0]
+    idx = [tup[2] for tup in unclassified_sent if tup[0] == x[0] and tup[1] == x[1]][0]
+    add_tag(pred_doc, idx)
+    print("Found: ", x[0], "in index", idx, "in sentence:", x[1])
+
+
+def ner_unclassified_loc(predicted, unclassified_sent, x):
+    pred_doc = [y for idx, y in enumerate(predicted) if idx == x[1]][0]
+    idx = [tup[2] for tup in unclassified_sent if tup[0] == x[0] and tup[1] == x[1]][0]
+    add_tag(pred_doc, idx, False)
+    print("Found: ", x[0], "in index", idx, "in sentence:", x[1])
+
+
+def add_tag(pred_doc, idx, per = True):
+    if per:
+        tag = 'PER'
+    else:
+        tag = 'LOC'
+
+    if len(idx) == 1:
+        pred_doc[idx[0]] = 'B-'+tag
+    else:
+        pred_doc[idx[0]] = 'B-'+tag
+        pred_doc[idx[1]] = 'I-'+tag

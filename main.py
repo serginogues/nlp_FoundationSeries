@@ -1,37 +1,25 @@
 from config import FoundationTrilogy
 from preprocess import preprocess
-from ner import named_entity_recognition
-from entity_connections import entity_links
-from normalization import normalize_list
-from visualization import super_network
-
-"""
-*********PIPELINE*********
-0 - preprocess.py           - preprocess()                  - DONE
-1 - ner.py                  - NER + normalization           - DONE
-2 - CR + ALIAS RESOLUTION
-4 - CR + ENTITY RELATIONS
-5 - NORMALIZATION
-6 - VISUALIZATION
-7 - QUALITY VALIDATION
-"""
+from ner import NER
+from entity_connections import LINK_ENTITIES
+from visualization import CHARACTER_NETWORK
 
 if __name__ == '__main__':
 
-    # text = FoundationTrilogy[:-1200000]
-    text = FoundationTrilogy
+    text = FoundationTrilogy[:-1200000]
+    #text = FoundationTrilogy
     parsed_list = preprocess(text, True)  # vector of preprocessed sentences
-    people_list, location_list, unclassified = named_entity_recognition(parsed_list, False)
-    people_list = normalize_list(people_list, unclassified, False)
-    people_links, location_links = entity_links(people_list, location_list, parsed_list, True)
-    super_network(people_links, False)
+    people_list, location_list, predicted = NER(parsed_list, STAGE=True, VALIDATE=True)
+    #TODO: Validation
 
-    #TODO:
-    # - CR
-    # - Visualization:
-    #   - Custom Mapping with
-    #   - Events: see course 5 slide 47 (tree graph)
-    # - Validation
+    #TODO: CR + link with predicted
+    people_links, location_links = LINK_ENTITIES(people_list, location_list, parsed_list, predicted, True)
+    CHARACTER_NETWORK(people_links, True)
+
+    #TODO: geo-mapping with location_links
+
+
+
 
     # TODO: EXTRA bonus points
     #   - Detecting anomalies gets you bonus points

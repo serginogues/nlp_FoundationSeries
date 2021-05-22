@@ -52,7 +52,7 @@ def link_two_person(connection_list, entity1, entity, idx_sent):
     return connection_list
 
 
-def entity_links(people_list, location_list, parsed_list, STAGE=True):
+def LINK_ENTITIES(people_list, location_list, parsed_list, predicted, STAGE=True):
     """
     Two entities are considered to have a link if they appear in a range of two consecutive sentences.
     :return: a list of tuples
@@ -62,8 +62,8 @@ def entity_links(people_list, location_list, parsed_list, STAGE=True):
         location_links = []
         idx_sentence = 0  # sum(1 for _ in c)
         for pair in pairwise(parsed_list):
-            ents_list = get_ents_from_doc(pair[0]) + get_ents_from_doc(pair[1])
-            ents_list = list(set(ents_list))
+            tuple_ents = get_ents_from_doc(pair[0]) + get_ents_from_doc(pair[1])
+            ents_list = [x[0] for x in tuple_ents]
             if any(ents_list):
 
                 # PEOPLE
@@ -80,11 +80,6 @@ def entity_links(people_list, location_list, parsed_list, STAGE=True):
                                 location_links.append([loc, pers, idx_sentence])
                     print(locations, people, "in sentence:", " ".join([parsed_list[idx_sentence].text, parsed_list[idx_sentence+1].text]))
 
-                # CR
-                if idx_sentence % 2 == 0:
-                    sent = " ".join([parsed_list[idx_sentence].text, parsed_list[idx_sentence+1].text, parsed_list[idx_sentence+2].text])
-                    event_links = coref_events(nlp(sent), people, locations, idx_sentence)
-
             idx_sentence += 1
 
         # POST PROCESS
@@ -92,8 +87,6 @@ def entity_links(people_list, location_list, parsed_list, STAGE=True):
         people_links = [x for x in people_links if x[2] > 4]
         write_list('people_links', people_links)
         write_list('location_links', location_links)
-
-
 
     else:
         people_links = read_list('people_links')
@@ -118,13 +111,9 @@ def location_candidates(ents_list, entity_list):
     return candidates
 
 
-def coref_events(doc, people_list, location_list, idx):
+def get_ents_from_predicted(predicted, doc):
     """
-    https://ryanong.co.uk/2020/07/14/day-196-coreference-resolution-with-neuralcoref-spacy/
+    :param predicted: ner output
+    :param doc: spacy doc
+    :return:
     """
-    event_links = []
-    for token in doc:
-        print(token._.coref_cluster)
-    if doc._.has_coref:
-        clusters = doc._.coref_clusters
-    return event_links
