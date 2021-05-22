@@ -145,14 +145,17 @@ def get_ents_from_doc(doc):
     :return:
     """
     ents = []
+    idx = 0
     for pair in pairwise(doc):
         if is_candidate(pair[0]) and is_candidate(pair[1]):
-            ents.append(" ".join([pair[0].text, pair[1].text]))
+            ents.append([" ".join([pair[0].text, pair[1].text]), [idx, idx+1]])
         elif is_candidate(pair[0]):
-            ents.append(pair[0].text)
+            ents.append([pair[0].text, [idx]])
         elif is_candidate(pair[1]):
-            ents.append(pair[1].text)
-    ents = list(set(ents))
+            ents.append([pair[1].text, [idx+1]])
+        idx += 1
+    copy_list = ents.copy()
+    [ents.remove(x[1]) for x in pairwise(copy_list) if x[0][0] == x[1][0]]
     return ents
 
 
@@ -251,7 +254,10 @@ def write_list(name, list):
         f.seek(0)
         f.truncate()
         for item in list:
-            a = ",".join([str(x) for x in item])
+            if name == 'people_links' or name == 'location_links' or name == 'normalized':
+                a = ",".join([str(x) for x in item])
+            else:
+                a = item
             f.write('%s\n' % a)
 
 
@@ -263,9 +269,14 @@ def read_list(name):
     with open('data_outputs/' + name + '.txt', 'r') as f:
         for line in f:
             item = line[:-1]
-            a = [x for x in item.split(',')]
-            if name == 'people_links':
-                list.append([a[0], a[1], int(a[2]), int(a[3])])
-            if name == 'location_links':
-                list.append([a[0], a[1], int(a[2])])
+            if name == 'people_links' or name == 'location_links' or name == 'normalized':
+                a = [x for x in item.split(',')]
+                if name == 'people_links':
+                    list.append([a[0], a[1], int(a[2]), int(a[3])])
+                elif name == 'location_links':
+                    list.append([a[0], a[1], int(a[2])])
+                elif name == 'normalized':
+                    list.append([x for x in a])
+            else:
+                list.append(item)
     return list

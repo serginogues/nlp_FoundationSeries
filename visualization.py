@@ -111,6 +111,13 @@ def super_network(tuple_list, STAGE=True):
 
 
 def mapping_character_location():
+    """
+    https://plotly.com/python/scatter-plots-on-maps/
+    https://melaniewalsh.github.io/Intro-Cultural-Analytics/Mapping/Mapping.html#making-interactive-maps
+    https://melaniewalsh.github.io/Intro-Cultural-Analytics/Mapping/Custom-Maps.html
+    https://towardsdatascience.com/i-scraped-more-than-1k-top-machine-learning-github-profiles-and-this-is-what-i-found-1ab4fb0c0474
+    https://towardsdatascience.com/top-6-python-libraries-for-visualization-which-one-to-use-fe43381cd658
+    """
     print("Not implemented")
 
 

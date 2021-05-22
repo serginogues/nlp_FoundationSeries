@@ -20,27 +20,18 @@ if __name__ == '__main__':
 
     # text = FoundationTrilogy[:-1200000]
     text = FoundationTrilogy
-
-    parsed_list = preprocess(text, False)  # vector of preprocessed sentences
-
+    parsed_list = preprocess(text, True)  # vector of preprocessed sentences
     people_list, location_list, unclassified = named_entity_recognition(parsed_list, False)
-
     people_list = normalize_list(people_list, unclassified, False)
-
-    people_links, location_links = entity_links(people_list, location_list, parsed_list, False)
+    people_links, location_links = entity_links(people_list, location_list, parsed_list, True)
+    super_network(people_links, False)
 
     #TODO:
-    # - Coreferences for entity connection
+    # - CR
     # - Visualization:
-    #   - Custom Mapping with https://melaniewalsh.github.io/Intro-Cultural-Analytics/Mapping/Custom-Maps.html
+    #   - Custom Mapping with
     #   - Events: see course 5 slide 47 (tree graph)
-    # - Measure Quality:
-    #   - Do a random validation of quality, avoid to blindly apply libraries without understanding
-    #   how they work or what the quality is. So, the need to measure that by a small (50-100) random manual validations.
-    #   - Also incorporate multi-juror validation and calculate a kappa distance in the above
-
-
-    super_network(people_links)
+    # - Validation
 
     # TODO: EXTRA bonus points
     #   - Detecting anomalies gets you bonus points

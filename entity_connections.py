@@ -1,7 +1,7 @@
 """
 Given a text and a list of entities (post NER) find all connections between them
 """
-from config import combinations
+from config import combinations, nlp
 from utils import get_ents_from_doc, pairwise, read_list, write_list
 
 
@@ -80,6 +80,11 @@ def entity_links(people_list, location_list, parsed_list, STAGE=True):
                                 location_links.append([loc, pers, idx_sentence])
                     print(locations, people, "in sentence:", " ".join([parsed_list[idx_sentence].text, parsed_list[idx_sentence+1].text]))
 
+                # CR
+                if idx_sentence % 2 == 0:
+                    sent = " ".join([parsed_list[idx_sentence].text, parsed_list[idx_sentence+1].text, parsed_list[idx_sentence+2].text])
+                    event_links = coref_events(nlp(sent), people, locations, idx_sentence)
+
             idx_sentence += 1
 
         # POST PROCESS
@@ -87,6 +92,8 @@ def entity_links(people_list, location_list, parsed_list, STAGE=True):
         people_links = [x for x in people_links if x[2] > 4]
         write_list('people_links', people_links)
         write_list('location_links', location_links)
+
+
 
     else:
         people_links = read_list('people_links')
@@ -109,3 +116,15 @@ def location_candidates(ents_list, entity_list):
         candidates += [x for x in entity_list if ent == x]
     candidates = list(set(candidates))
     return candidates
+
+
+def coref_events(doc, people_list, location_list, idx):
+    """
+    https://ryanong.co.uk/2020/07/14/day-196-coreference-resolution-with-neuralcoref-spacy/
+    """
+    event_links = []
+    for token in doc:
+        print(token._.coref_cluster)
+    if doc._.has_coref:
+        clusters = doc._.coref_clusters
+    return event_links
