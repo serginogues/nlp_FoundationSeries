@@ -27,7 +27,7 @@ def family_links(entity_list, connection_list):
     return connection_list
 
 
-def link_two_person(connection_list, entity1, entity, idx_sent):
+def link_two_person(connection_list, entity1, entity):
     """
     Creates link betweeen two entities if conditions apply
     :returns: new link list
@@ -47,7 +47,7 @@ def link_two_person(connection_list, entity1, entity, idx_sent):
                 found = True
 
         if not found:
-            connection_list.append([entity1, entity, 1, idx_sent])
+            connection_list.append([entity1, entity, 1])
 
     return connection_list
 
@@ -59,31 +59,34 @@ def LINK_ENTITIES(parsed_list, predicted, STAGE=True):
     """
     if STAGE:
         people_links = []
+        per_link = []
         location_links = []
-        idx_sentence = 0  # sum(1 for _ in c)
 
-        for pair in pairwise(parsed_list):
-            tuple_ents = get_ents_from_doc(pair[0]) + get_ents_from_doc(pair[1])
-            ents_list = [x[0] for x in tuple_ents]
-            if any(ents_list):
+        for idx in range(len(parsed_list)):
+            per, loc, per_idx, loc_idx = get_ents_from_predicted(predicted[idx], parsed_list[idx])
+            if idx < len(parsed_list) - 1:
+                per2, loc2, per_idx2, loc_idx2 = get_ents_from_predicted(predicted[idx+1], parsed_list[idx+1])
+                per += per2
+                loc += loc2
+                per_idx += per_idx2
+                loc_idx += loc_idx2
+            per = list(set(per))
+            loc = list(set(loc))
 
-                """# PEOPLE
-                for a, b in combinations(people, 2):
-                    people_links = link_two_person(people_links, a, b, idx_sentence)
+            # PEOPLE
+            for a, b in combinations(per, 2):
+                link_two_person(people_links, a, b)
+                per_link.append([a, b, idx])
 
-                # LOCATIONS
-                if any(locations) and any(people):
-                    for loc in locations:
-                        for pers in people:
-                            if pers != loc:
-                                location_links.append([loc, pers, idx_sentence])
-                    print(locations, people, "in sentence:", " ".join([parsed_list[idx_sentence].text, parsed_list[idx_sentence+1].text]))"""
-
-            idx_sentence += 1
+            # LOCATIONS
+            if any(loc) and any(per):
+                for l in loc:
+                    for p in per:
+                        if p != l:
+                            location_links.append([l, p, idx])
 
         # POST PROCESS
         people_links = sorted([x for x in people_links if x[2] > 2], key=lambda x: x[2], reverse=True)
-        people_links = [x for x in people_links if x[2] > 4]
         write_list('people_links', people_links)
         write_list('location_links', location_links)
 
@@ -111,4 +114,24 @@ def get_ents_from_predicted(y_pred, doc):
     :param doc: spacy doc
     :return:
     """
-    spans = [(i, tag) for i, tag in enumerate(y_pred) if tag != 'O']
+    per = []
+    loc = []
+    per_idx = []
+    loc_idx = []
+    for i, name in [(i, tag) for i, tag in enumerate(y_pred) if tag != 'O']:
+        if name == 'B-PER':
+            per.append(doc[i].text)
+            per_idx.append(i)
+        elif name == 'I-PER':
+            per[-1] = " ".join([per[-1], doc[i].text])
+            per_idx[-1] = i
+        if name == 'B-LOC':
+            loc.append(doc[i].text)
+            loc_idx.append(i)
+        elif name == 'I-LOC':
+            loc[-1] = " ".join([loc[-1], doc[i].text])
+            loc_idx[-1] = i
+
+    return per, loc, per_idx, loc_idx
+
+

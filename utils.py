@@ -294,30 +294,3 @@ def read_list(name):
             else:
                 list.append(item)
     return list
-
-
-def ner_unclassified_per(predicted, unclassified_sent, x):
-    pred_doc = [y for idx, y in enumerate(predicted) if idx == x[1]][0]
-    idx = [tup[2] for tup in unclassified_sent if tup[0] == x[0] and tup[1] == x[1]][0]
-    add_tag(pred_doc, idx)
-    print("Found: ", x[0], "in index", idx, "in sentence:", x[1])
-
-
-def ner_unclassified_loc(predicted, unclassified_sent, x):
-    pred_doc = [y for idx, y in enumerate(predicted) if idx == x[1]][0]
-    idx = [tup[2] for tup in unclassified_sent if tup[0] == x[0] and tup[1] == x[1]][0]
-    add_tag(pred_doc, idx, False)
-    print("Found: ", x[0], "in index", idx, "in sentence:", x[1])
-
-
-def add_tag(pred_doc, idx, per = True):
-    if per:
-        tag = 'PER'
-    else:
-        tag = 'LOC'
-
-    if len(idx) == 1:
-        pred_doc[idx[0]] = 'B-'+tag
-    else:
-        pred_doc[idx[0]] = 'B-'+tag
-        pred_doc[idx[1]] = 'I-'+tag

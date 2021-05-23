@@ -1,212 +1,607 @@
-Mule,Second Foundation,154,8918
-Second Foundation,Hari Seldon,136,1401
-First,Second Foundation,90,11765
-First,First Speaker,89,12792
-Toran,Bayta,81,8288
-Empire,Second Foundation,74,1886
-Empire,Hari Seldon,58,730
-Seldon Historical,Hari Seldon,57,27
-Magnifico,Bayta,54,8991
-Anthor,Darell,51,14515
-Mule,Channis,49,12462
-Mule,Twice Pritcher,43,9210
-Second Foundation,Channis,43,12485
-Salvor Hardin,Second Foundation,42,999
-Magnifico,Toran,41,8991
-Hari Seldon,Gaal Dornick,39,6
-Mule,First,38,12417
-Twice Pritcher,Channis,38,12827
-Twice Pritcher,Second Foundation,36,8609
-Mule,Bayta,35,8882
-Mule,Magnifico,34,8991
-Homir,Munn,34,14857
-Mallow,Second Foundation,33,3993
-Han,Twice Pritcher,33,8581
-Second Foundation,Mis,33,9226
-Darell,Arcadia,33,14309
-Empire,First,32,1911
-Mule,Toran,32,8543
-Mule,Hari Seldon,31,9920
-Jael,Mallow,29,5398
-Toran,Second Foundation,29,8253
-Salvor Hardin,Pirenne,28,941
-Toran,Mis,27,10648
-First,Hari Seldon,26,296
-Salvor Hardin,Lee Senter,25,1917
-Salvor Hardin,Wienis,25,2576
-Second Foundation,Bayta,25,8413
-Fie,Second Foundation,25,8730
-Mule,Mis,25,9786
-Twice Pritcher,Flan,24,8740
-Bayta,Mis,24,9628
-Indbur,Mis,23,9231
-Mamma,Pappa,23,16256
-Magnifico,Mis,22,9669
-Munn,Darell,22,14858
-Empire,Emperor,21,136
-Second Foundation,Haven,21,8276
-First,Channis,21,12472
-Arcadia,Callia,21,15663
-Salvor Hardin,Hari Seldon,20,1768
-Salvor Hardin,Sermak,20,1964
-Mule,Fie,20,9547
-Anthor,Munn,20,14894
-Munn,Second Foundation,19,15045
-Anthor,Second Foundation,19,15101
-Board,Salvor Hardin,18,998
-Riose,Bel,18,6016
-Barr,Riose,18,6057
-Brodrig,Emperor,18,6614
-Mule,Randu,18,8544
-Darell,Kleise,18,14873
-Munn,Arcadia,18,15344
-Korell,Second Foundation,17,4404
-Mule,Haven,17,8246
-Homir,Second Foundation,17,15435
-Verisof,Salvor Hardin,16,2192
-Second Foundation,Seldon Historical,16,8518
-Mule,Empire,16,11951
-First,Student,16,14616
-Darell,Second Foundation,16,15044
-Pappa,Arcadia,16,16251
-Empire,Barr,15,4860
-Salvor Hardin,Mallow,15,5424
-Barr,Second Foundation,15,7021
-Flan,Second Foundation,15,8414
-Munn,Mule,15,15045
-Stettin,Second Foundation,15,15087
-Stettin,Callia,15,15520
-Hari Seldon,Emperor,14,408
-Mallow,Hari Seldon,14,3988
-Second Foundation,Randu,14,8414
-Twice Pritcher,Mis,14,9372
-First Speaker,Student,14,14616
-Darell,Turbor,14,14858
-Darell,Elvett Semic,14,14858
-Homir,Arcadia,14,15374
-Board,Pirenne,13,993
-Dorwin,Salvor Hardin,13,1293
-Barr,Emperor,13,5046
-Korell,Mallow,13,5601
-Riose,Emperor,13,6209
-Twice Pritcher,Bayta,13,9949
-Mule,First Speaker,13,12793
-Arcadia,Second Foundation,13,15662
-Wienis,Lepold,12,2234
-Twer,Mallow,12,4250
-Empire,Riose,12,6015
-Indbur,Second Foundation,12,8597
-Hari Seldon,Mis,12,9275
-End,Far Star,12,12877
-First Speaker,Channis,12,14103
-Second Foundation,First Speaker,12,14239
-Fie,Hari Seldon,11,854
-Second Foundation,Lepold,11,2526
-Master,Second Foundation,11,3455
-Pherl,Master,11,3655
-Bayta,Haven,11,8279
-Bayta,Hari Seldon,11,8402
-Fie,Channis,11,13146
-Munn,Turbor,11,14857
-Turbor,Second Foundation,11,15044
-Far Star,Hari Seldon,10,1386
-Sermak,Lee Senter,10,1962
-Wienis,Second Foundation,10,2287
-Salvor Hardin,Lepold,10,2636
-Riose,Second Foundation,10,6263
-Mule,Indbur,10,9589
-Darell,Bayta,10,14309
-Stettin,Homir,10,15744
-Mule,Arcadia,10,15750
-Salvor Hardin,Emperor,9,1048
-Salvor Hardin,Empire,9,1293
-Salvor Hardin,Far Star,9,1399
-Toran,Dad,9,8296
-Randu,Flan,9,8382
-Twice Pritcher,Fie,9,8745
-Arcadia,Hari Seldon,9,14409
-Anthor,Arcadia,9,15278
-Poochie,Callia,9,15532
-Board,Emperor,8,1048
-Salvor Hardin,Haut Rodric,8,1066
-Pirenne,Haut Rodric,8,1102
-Second Foundation,Far Star,8,1401
-Ponyets,Master,8,3455
-Master,Mallow,8,3990
-Barr,Brodrig,8,7408
-Barr,Hari Seldon,8,7570
-Barr,Korell,8,8149
-Twice Pritcher,Toran,8,9210
-Randu,Mangin,8,9519
-Randu,Haven,8,9896
-Mule,Seldon Historical,8,11777
-Homir,Darell,8,14858
-First,Callia,8,15520
-Mule,Homir,8,15572
-Anthor,Elvett Semic,8,16589
-Commissioners,Hari Seldon,7,408
-Board,Second Foundation,7,993
-Pirenne,Second Foundation,7,993
-Commissioners,Second Foundation,7,1717
-Second Foundation,Emperor,7,2436
-Gorov,Ponyets,7,3450
-Gorov,Master,7,3455
-Space,Second Foundation,7,4041
-Riose,Hari Seldon,7,6222
-Mule,Flan,7,9478
-Mule,Darell,7,14310
-Elvett Semic,Munn,7,14857
-Elvett Semic,Turbor,7,14857
-Mule,Stettin,7,15087
-Stettin,First,7,15088
-Munn,Fie,7,15133
-Second Foundation,Callia,7,15548
-Munn,Hari Seldon,7,15572
-Homir,Callia,7,15710
-Stettin,Munn,7,16007
-Avakim,Gaal Dornick,6,462
-Pirenne,Emperor,6,1004
-Lee Senter,Hari Seldon,6,1949
-Verisof,Second Foundation,6,2192
-Bort,Sermak,6,2667
-Far Star,Mallow,6,4255
-Mallow,Fie,6,4323
-Barr,Mallow,6,4891
-Empire,Bel,6,6016
-Siwennian,Barr,6,6152
-Siwennian,Riose,6,6152
-Toran,Hari Seldon,6,8414
-Indbur,Hari Seldon,6,8727
-Magnifico,Second Foundation,6,9004
-Randu,Mis,6,9999
-Seldon Historical,Arcadia,6,14583
-First Speaker,Hari Seldon,6,14609
-Kleise,Second Foundation,6,15044
-First,Meirus,6,15523
-Anthor,Fie,6,15923
-Stettin,Arcadia,6,15977
-Palver,Arcadia,6,16415
-Darell,Lieutenant Dirige,6,16596
-Anthor,Turbor,6,17635
-Supervisor,Gaal Dornick,5,86
-Gaal Dornick,Linge Chen,5,543
-Board,Dorwin,5,1293
-Dorwin,Pirenne,5,1293
-Dorwin,Empire,5,1293
-Dorwin,Emperor,5,1294
-Bort,Second Foundation,5,2714
-Argo,Mallow,5,4528
-Riose,Brodrig,5,6644
-Toran,Haven,5,8304
-Randu,Toran,5,8348
-Toran,Flan,5,8365
-Empire,Bayta,5,8412
-Twice Pritcher,Indbur,5,8605
-Haven,Mis,5,10198
-Mule,Commissioners,5,10998
-First,Fie,5,12545
-Anthor,Kleise,5,14873
-Mule,Callia,5,15548
-Meirus,Second Foundation,5,15558
-Arcadia,Fie,5,16818
-Anthor,Hari Seldon,5,17509
+Foundation,Mule,150
+Bayta,Toran,131
+Galaxy,Foundation,124
+Second Foundation,Mule,105
+Seldon,Foundation,94
+Bayta,Magnifico,85
+Darell,Anthor,83
+Mule,Channis,80
+Pritcher,Mule,75
+Mule,Toran,72
+Bayta,Mule,70
+Channis,Pritcher,70
+Foundation,Empire,69
+Galaxy,Mule,68
+Magnifico,Toran,66
+Galaxy,Empire,65
+Galaxy,Seldon,61
+Second Foundation,Galaxy,59
+Second Foundation,Channis,59
+Bayta,Foundation,54
+Seldon,Mule,52
+Hari Seldon,Foundation,51
+Mallow,Foundation,49
+Wienis,Hardin,48
+Magnifico,Mule,48
+Darell,Arcadia,48
+Pirenne,Hardin,46
+Seldon,Gaal,45
+Foundation,Hardin,44
+Hari Seldon,Galaxy,43
+Foundation,Toran,43
+Second Foundation,Seldon,43
+Darell,Munn,42
+Seldon,Empire,40
+Randu,Mule,40
+Bayta,Ebling Mis,40
+Ebling Mis,Mule,40
+Hari Seldon,Seldon,39
+Mallow,Sutt,38
+Fie,Mule,38
+Second Foundation,Foundation,38
+Second Foundation,Anthor,37
+Pritcher,Second Foundation,36
+Jael,Mallow,35
+Fie,Foundation,35
+Foundation,Randu,34
+Magnifico,Ebling Mis,34
+Ebling Mis,Toran,33
+Anthor,Munn,33
+Sermak,Hardin,31
+Emperor,Barr,31
+Emperor,Brodrig,31
+Mis,Mule,31
+Callia,Arcadia,31
+Arcadia,Pappa,31
+Board,Hardin,30
+Lee,Hardin,30
+Wienis,Lepold,30
+Barr,Riose,30
+Second Foundation,Darell,30
+Wienis,Foundation,29
+Second Foundation,Fie,29
+Ebling Mis,Foundation,28
+Pappa,Mamma,28
+Dorwin,Hardin,27
+Pritcher,Foundation,27
+Darell,Turbor,27
+Bayta,Mis,26
+Stettin,Foundation,26
+Emperor,Empire,25
+Hober Mallow,Foundation,25
+Bayta,Pritcher,25
+Arcadia,Foundation,25
+Foundation,Salvor Hardin,24
+Foundation,Korell,24
+Mallow,Korell,24
+Barr,Foundation,24
+Bayta,Galaxy,24
+Mis,Indbur,24
+Fie,Seldon,23
+Foundation,Lepold,23
+Emperor,Riose,23
+Indbur,Foundation,23
+Arcadia,Munn,23
+Mule,Arcadia,23
+Callia,Stettin,23
+Emperor,Hardin,22
+Galaxy,Mallow,22
+Arcadia,Anthor,22
+Turbor,Anthor,22
+Semic,Darell,22
+Galaxy,Arcadia,22
+Arcadia,Mamma,22
+Galaxy,Periphery,21
+Verisof,Hardin,21
+Mis,Toran,21
+Hari Seldon,Second Foundation,21
+Second Foundation,Ebling Mis,21
+Darell,Galaxy,21
+Emperor,Galaxy,20
+Board,Pirenne,20
+Seldon,Second Empire,20
+Mis,Magnifico,20
+First Speaker,Mule,20
+Second Foundation,Munn,20
+Hari Seldon,Empire,19
+Galaxy,Fie,19
+Empire,Hardin,19
+Barr,Empire,19
+Galaxy,Toran,19
+Bayta,Seldon,19
+Kleise,Darell,19
+Second Foundation,Turbor,19
+Semic,Anthor,19
+Emperor,Foundation,18
+Hari Seldon,Hardin,18
+Periphery,Foundation,18
+Grand Master,Pherl,18
+Mallow,Seldon,18
+Pritcher,Toran,18
+Fie,Pritcher,18
+Student,First Speaker,18
+Callia,Poochie,18
+Callia,Foundation,18
+Second Empire,Empire,17
+Lee,Sermak,17
+Seldon,Randu,17
+Union,Mule,17
+Pelleas Anthor,Darell,17
+Darell,Foundation,17
+Mule,Munn,17
+Periphery,Empire,16
+Lepold,Hardin,16
+Ponyets,Grand Master,16
+Foundation,Sutt,16
+Foundation,Second Empire,16
+Randu,Toran,16
+Foundation,Fran,16
+Mis,Ebling Mis,16
+Mis,Pritcher,16
+Second Foundation,Arcadia,16
+Galaxy,Anthor,16
+Darell,Mule,16
+Pirenne,Haut Rodric,15
+Sermak,Foundation,15
+Second Empire,Galaxy,15
+Brodrig,Riose,15
+Brodrig,Barr,15
+Randu,Fran,15
+Randu,Ebling Mis,15
+Indbur,Mule,15
+Second Foundation,First Speaker,15
+Mule,Stettin,15
+Fie,Anthor,15
+Emperor,Pirenne,14
+Haut Rodric,Hardin,14
+Emperor,Hari Seldon,14
+Korell,Sutt,14
+Fran,Toran,14
+Magnifico,Foundation,14
+Galaxy,Pritcher,14
+Mis,Foundation,14
+First Speaker,Galaxy,14
+Munn,Foundation,14
+Fie,Darell,14
+Galaxy,Hardin,13
+Grand Master,Gorov,13
+Hober Mallow,Mallow,13
+Riose,Foundation,13
+Barr,Forell,13
+Second Foundation,Bayta,13
+Second Foundation,Mis,13
+Galaxy,Channis,13
+Fie,Channis,13
+Turbor,Munn,13
+Arcadia,Homir,13
+Hari Seldon,Gaal,12
+Fara,Hardin,12
+Foundation,Ducem Barr,12
+Bayta,Fran,12
+Fie,Toran,12
+Mule,Empire,12
+Indbur,Ebling Mis,12
+Second Foundation,Toran,12
+First Speaker,Seldon,12
+Arcadia,Homir Munn,12
+Kleise,Anthor,12
+Pappa,Foundation,12
+Emperor,Seldon,11
+Emperor,Board,11
+Periphery,Hardin,11
+Hari Seldon,Fara,11
+Bort,Sermak,11
+Bort,Hardin,11
+Hober Mallow,Salvor Hardin,11
+Emperor,Mallow,11
+Brodrig,Cleon II,11
+Dad,Toran,11
+Bayta,Randu,11
+Mule,Commason,11
+Flan Pritcher,Mule,11
+First Speaker,Channis,11
+Speaker,Student,11
+Mule,Homir Munn,11
+Stettin,Munn,11
+Callia,Mule,11
+Galaxy,Gaal,10
+Seldon,Chen,10
+End,Galaxy,10
+Hari Seldon,Fie,10
+Bort,Foundation,10
+Mallow,Barr,10
+Ducem Barr,Empire,10
+Indbur,Seldon,10
+Galaxy,Ebling Mis,10
+Mis,Seldon,10
+Hari Seldon,Mule,10
+Channis,Elders,10
+Darell,Homir Munn,10
+Munn,Galaxy,10
+Second Foundation,Stettin,10
+Homir Munn,Foundation,10
+Homir,Foundation,10
+Munn,Callia,10
+Arcadia,Stettin,10
+Seldon,Hardin,9
+Verisof,Wienis,9
+Seldon,Sutt,9
+Hari Seldon,Second Empire,9
+Mallow,Empire,9
+Galaxy,Sutt,9
+Jael,Sutt,9
+Bel Riose,Empire,9
+Forell,Empire,9
+Emperor,Cleon II,9
+Han Pritcher,Mule,9
+Ebling Mis,Pritcher,9
+Randu,Mangin,9
+Randu,Indbur,9
+Foundation,Commason,9
+Empire,Second Foundation,9
+Pritcher,Union,9
+Second Foundation,Bail Channis,9
+Mule,Anthor,9
+Second Foundation,Homir Munn,9
+Fie,Munn,9
+Uncle Homir,Arcadia,9
+Fie,Arcadia,9
+Gaal,Empire,8
+Emperor,Fie,8
+Board,Foundation,8
+Yohan Lee,Hardin,8
+Lee,Foundation,8
+Salvor Hardin,Seldon,8
+Ponyets,Gorov,8
+Loris,Foundation,8
+Galaxy,Korell,8
+Jaim Twer,Mallow,8
+Far Star,Mallow,8
+Periphery,Mallow,8
+Mallow,Jorane Sutt,8
+Korell,Empire,8
+Hober Mallow,Seldon,8
+Riose,Empire,8
+Siwennian,Riose,8
+Galaxy,Riose,8
+Hari Seldon,Riose,8
+Ducem Barr,Bel Riose,8
+Foundation,Bel Riose,8
+Brodrig,Galaxy,8
+Galaxy,Barr,8
+Seldon,Fran,8
+Foundation,Flan Pritcher,8
+Magnifico,Pritcher,8
+Second Foundation,Second Empire,8
+Union,Galaxy,8
+Mule,Bail Channis,8
+Speaker,First Speaker,8
+Second Foundation,Kleise,8
+Semic,Munn,8
+First Minister,Stettin,8
+Homir Munn,Stettin,8
+Gaal,Supervisor,7
+Gaal,Avakim,7
+Chen,Gaal,7
+Hardin,Fulham,7
+Hari Seldon,Salvor Hardin,7
+Verisof,Foundation,7
+Wienis,Salvor Hardin,7
+Salvor Hardin,Korell,7
+Mallow,Hardin,7
+Ducem Barr,Riose,7
+Fie,Empire,7
+Brodrig,Foundation,7
+Lathan Devers,Foundation,7
+Bayta,Fie,7
+Randu,Galaxy,7
+Fie,Indbur,7
+Fie,Flan Pritcher,7
+Hari Seldon,Mis,7
+Mangin,Mule,7
+Seldon,Ebling Mis,7
+Bayta,Commason,7
+Union,Foundation,7
+Channis,Bail Channis,7
+Pritcher,Bail Channis,7
+First Speaker,Fie,7
+Darell,Seldon,7
+Second Foundation,Speaker,7
+Darell,Homir,7
+Semic,Second Foundation,7
+Mule,Uncle Homir,7
+Meirus,Stettin,7
+Homir,Stettin,7
+Darell,Callia,7
+Emperor,Gaal,6
+Seldon,Advocate,6
+Salvor Hardin,Hardin,6
+Pirenne,Foundation,6
+Emperor,Dorwin,6
+Board,Dorwin,6
+Pirenne,Dorwin,6
+Hari Seldon,Lee,6
+Council,Hardin,6
+Empire,Salvor Hardin,6
+Hari Seldon,Sutt,6
+Korell,Periphery,6
+Periphery,Seldon,6
+Korell,Hober Mallow,6
+Fie,Mallow,6
+Mallow,Asper,6
+Siwennian,Barr,6
+Forell,Hober Mallow,6
+Fie,Riose,6
+Seldon,Barr,6
+Seldon,Toran,6
+Han Pritcher,Pritcher,6
+Seldon,Pritcher,6
+Kalgan,Mule,6
+Foundation,Han Pritcher,6
+Hari Seldon,Ebling Mis,6
+Iwo,Fran,6
+Mule,Fran,6
+Mule,Ovall,6
+Fox,Mule,6
+Magnifico,Commason,6
+Fie,Ebling Mis,6
+Second Empire,Mule,6
+Second Foundation,Union,6
+Channis,Union,6
+Seldon,Channis,6
+Pritcher,Elders,6
+Student,Galaxy,6
+Speaker,Second Empire,6
+Pelleas Anthor,Anthor,6
+Homir,Munn,6
+Pelleas Anthor,Munn,6
+Munn,Homir Munn,6
+Uncle Homir,Callia,6
+Arcadia,Palver,6
+Darell,Lieutenant Dirige,6
+Foundation,Anthor,6
+Mule,Lieutenant Dirige,6
+Darell,Stettin,6
+Semic,Turbor,6
+Gaal,Jerril,5
+Chen,Galaxy,5
+Galaxy,Salvor Hardin,5
+Emperor,Haut Rodric,5
+Lundin Crast,Hardin,5
+Dorwin,Empire,5
+Board,Lee,5
+Lee,Yohan Lee,5
+Sermak,Empire,5
+Hari Seldon,Wienis,5
+Salvor Hardin,Lepold,5
+Bort,Walto,5
+Bort,Lepold,5
+Grand Master,Foundation,5
+Gorov,Pherl,5
+Ponyets,Pherl,5
+Periphery,Sutt,5
+Korell,Seldon,5
+Hober Mallow,Empire,5
+Salvor Hardin,Mallow,5
+Korell,Jael,5
+Siwennian,Galaxy,5
+Ducem Barr,Barr,5
+Ducem Barr,Fie,5
+Galaxy,Bel Riose,5
+Loris,Barr,5
+Foundation,Dad,5
+Fie,Fran,5
+Galaxy,Fran,5
+Han Pritcher,Indbur,5
+Foundation,Personal Capsule,5
+Magnifico,Galaxy,5
+Han Pritcher,Toran,5
+Indbur,Pritcher,5
+Ovall Gri,Randu,5
+Mangin,Foundation,5
+Ovall,Randu,5
+Periphery,Toran,5
+Toran,Commason,5
+Channis,Foundation,5
+Seldon,Arcadia,5
+Student,Second Foundation,5
+Darell,Jole Turbor,5
+Kleise,Munn,5
+Tamper Plateau,Anthor,5
+Homir Munn,Anthor,5
+Seldon,Munn,5
+Poochie,Stettin,5
+Galaxy,Stettin,5
+Poochie,Arcadia,5
+Homir Munn,Callia,5
+Foundation,Mamma,5
+Turbor,Palver,5
+Seldon,Gaal Dornick,4
+Chen,Linge Chen,4
+Commissioners,Seldon,4
+End,Seldon,4
+Galaxy,Pirenne,4
+Board,Chairman,4
+Fara,Seldon,4
+Lameth,Hardin,4
+Sutt,Hardin,4
+Sutt,Empire,4
+Sermak,Councilman,4
+Sermak,Council,4
+Seldon,Verisof,4
+Seldon,Lepold,4
+Hari Seldon,Lepold,4
+Verisof,Lepold,4
+Empire,Lepold,4
+Bort,Empire,4
+Emperor,Periphery,4
+Fie,Aporat,4
+Hari Seldon,End,4
+Fie,Grand Master,4
+Hari Seldon,Hober Mallow,4
+Hari Seldon,Jorane Sutt,4
+Hari Seldon,Korell,4
+Asper Argo,Foundation,4
+Hober Mallow,Far Star,4
+Lieutenant Tinter,Mallow,4
+Jael,Seldon,4
+Jaim Twer,Jorane Sutt,4
+Jael,Galaxy,4
+Galaxy,Forell,4
+Emperor,Bel Riose,4
+Emperor,Council,4
+Ducem Barr,Lathan Devers,4
+Ducem Barr,Brodrig,4
+Ducem Barr,Emperor,4
+Forell,Riose,4
+Emperor,Forell,4
+Bayta,Dad,4
+Fie,Randu,4
+Empire,Bayta,4
+Hari Seldon,Toran,4
+Mis,Fie,4
+Ovall,Foundation,4
+Mis,Galaxy,4
+Bayta,Indbur,4
+Indbur,Toran,4
+Hella,Bayta,4
+Pritcher,Flan Pritcher,4
+Second Foundation,End,4
+End,Mule,4
+Mis,Channis,4
+Ebling Mis,Channis,4
+First Speaker,Bail Channis,4
+Student,Fie,4
+Speaker,Seldon,4
+Speaker,Fie,4
+Elvett Semic,Darell,4
+Jole Turbor,Homir Munn,4
+Kleise,Galaxy,4
+Kleise,Turbor,4
+Pelleas Anthor,Galaxy,4
+Galaxy,Turbor,4
+Semic,Pelleas Anthor,4
+Turbor,Mule,4
+Kleise,Semic,4
+Semic,Homir Munn,4
+Second Foundation,Tamper Plateau,4
+Second Foundation,Jole Turbor,4
+Darell,Tamper Plateau,4
+Galaxy,Homir,4
+Meirus,Callia,4
+Meirus,Mule,4
+Meirus,Galaxy,4
+Poochie,Foundation,4
+Uncle Homir,Stettin,4
+Palver,Pappa,4
+Semic,Fie,4
+Darell,Trading Representative,4
+Lieutenant Dirige,Arcadia,4
+Lieutenant Dirige,Homir Munn,4
+Darell,Palver,4
+Homir Munn,Galaxy,4
+Hari Seldon,Homir Munn,4
+Seldon,Homir Munn,4
+Callia,Anthor,4
+Dornick,Gaal,3
+Dornick,Seldon,3
+Gaal,Gaal Dornick,3
+Linge Chen,Gaal,3
+Commissioners,Advocate,3
+Emperor,Chen,3
+Commissioners,Galaxy,3
+Gaal,Fie,3
+Board,Haut Rodric,3
+Yate Fulham,Hardin,3
+Hardin,Tomaz Sutt,3
+Fara,Pirenne,3
+Fara,Foundation,3
+Board,Fara,3
+Emperor,Fara,3
+Yohan Lee,Salvor Hardin,3
+Yohan Lee,Foundation,3
+Wienis,Council,3
+Hari Seldon,Council,3
+Verisof,Empire,3
+Yohan Lee,Seldon,3
+Wienis,Galaxy,3
+Wienis,Seldon,3
+Sermak,Salvor Hardin,3
+Hardin,Walto,3
+Foundation,Walto,3
+Sermak,Walto,3
+Bort,Orsy,3
+Foundation,Orsy,3
+Wienis,Prince Lefkin,3
+Gorm,Foundation,3
+Ponyets,Galaxy,3
+Askonian,Grand Master,3
+Foundation,Gorov,3
+Salvor Hardin,Sutt,3
+Hober Mallow,Jaim Twer,3
+Jaim Twer,Foundation,3
+Sutt,Jaim Twer,3
+Jaim Twer,Seldon,3
+Hari Seldon,Mallow,3
+Far Star,Korell,3
+Asper Argo,Korell,3
+Hober Mallow,Barr,3
+Salvor Hardin,Periphery,3
+Jael,Foundation,3
+Hober Mallow,Galaxy,3
+Fie,Forell,3
+Ducem Barr,Galaxy,3
+Hari Seldon,Siwennian,3
+Emperor,Privy Secretary,3
+Brodrig,Privy Secretary,3
+Brodrig,Bel Riose,3
+Brodrig,Empire,3
+Hari Seldon,Ducem Barr,3
+Lathan Devers,Barr,3
+Lathan Devers,Empire,3
+Riose,Loris,3
+Hari Seldon,Barr,3
+Seldon,Riose,3
+Privy Secretary,Barr,3
+Fie,Dad,3
+Seldon,Bel Riose,3
+Kalgan,Foundation,3
+Iwo,Mule,3
+Ovall Gri,Mule,3
+Ovall Gri,Mangin,3
+Mule,Personal Capsule,3
+Hari Seldon,Bayta,3
+Indbur,Fox,3
+Fox,Pritcher,3
+Fie,Fox,3
+Senter,Lee Senter,3
+Ebling Mis,Empire,3
+Emperor,Mule,3
+Pritcher,Hari Seldon,3
+End,Pritcher,3
+Bail Channis,Foundation,3
+Han Pritcher,Channis,3
+Second Foundation,Elders,3
+Channis,Empire,3
+Pelleas Anthor,Arcadia,3
+Hari Seldon,First Speaker,3
+Student,Seldon,3
+Semic,Tamper Plateau,3
+Kleise,Mule,3
+Speaker,Foundation,3
+Foundation,Uncle Homir,3
+Fie,Stettin,3
+Callia,First Minister,3
+Galaxy,Callia,3
+Foundation,Meirus,3
+Foundation,Pelleas Anthor,3
+Thallos,Stettin,3
+Hari Seldon,Darell,3
+Homir,Callia,3
+Second Foundation,Callia,3
+Mamma,Callia,3
+Uncle Homir,Mamma,3
+Hober Mallow,Darell,3
+Seldon,Anthor,3
+Turbor,Seldon,3
+Seldon,Stettin,3

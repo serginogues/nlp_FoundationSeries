@@ -3,7 +3,7 @@ Rule-Based Named Entity Recognition model for the detection of character occurre
 """
 from config import tqdm, honorific_words, person_verbs, matcher, location_name_pattern, location_name, \
     travel_to_pattern, travel_to_verbs, nlp, punctuation_tokens
-from utils import get_ents_from_doc, write_list, read_list, ner_unclassified_per, ner_unclassified_loc
+from utils import get_ents_from_doc, write_list, read_list
 
 
 def get_full_name(doc, token):
@@ -34,7 +34,6 @@ def NER(sentence_list, STAGE=True, VALIDATE=False):
             ents = get_ents_from_doc(doc)
             ents = [x for x in ents if len(x[0]) > 2 and not x[0].islower() and not x[0].isupper()]
             if any(ents):
-                print(doc)
                 for name, num_list in ents:
                     if len(num_list) > 1:
                         num = num_list[1]
@@ -59,7 +58,6 @@ def NER(sentence_list, STAGE=True, VALIDATE=False):
                             predicted[i][num_list[0]] = 'B-LOC'
                             predicted[i][num_list[1]] = 'I-LOC'
                     else:
-                        print("Unclassified: ", name, num_list)
                         unclassified.append([name, i])
                         unclassified_sent.append([name, i, num_list])
 
@@ -81,8 +79,7 @@ def NER(sentence_list, STAGE=True, VALIDATE=False):
             if tup[0] in location_list:
                 ner_unclassified_loc(predicted, unclassified_sent, tup)
 
-        if not VALIDATE:
-            write_list('predicted', predicted)
+        write_list('predicted', predicted)
 
     else:
         predicted = read_list('predicted')
@@ -126,3 +123,28 @@ def ner_location(doc, token):
         if len([x for x in nlp(str(span)) if x.pos_ == "VERB" and str(x.lemma_) in travel_to_verbs]) and str(
                 token) in str(span):
             return True
+
+
+def ner_unclassified_per(predicted, unclassified_sent, x):
+    pred_doc = [y for idx, y in enumerate(predicted) if idx == x[1]][0]
+    idx = [tup[2] for tup in unclassified_sent if tup[0] == x[0] and tup[1] == x[1]][0]
+    add_tag(pred_doc, idx)
+
+
+def ner_unclassified_loc(predicted, unclassified_sent, x):
+    pred_doc = [y for idx, y in enumerate(predicted) if idx == x[1]][0]
+    idx = [tup[2] for tup in unclassified_sent if tup[0] == x[0] and tup[1] == x[1]][0]
+    add_tag(pred_doc, idx, False)
+
+
+def add_tag(pred_doc, idx, per = True):
+    if per:
+        tag = 'PER'
+    else:
+        tag = 'LOC'
+
+    if len(idx) == 1:
+        pred_doc[idx[0]] = 'B-'+tag
+    else:
+        pred_doc[idx[0]] = 'B-'+tag
+        pred_doc[idx[1]] = 'I-'+tag

@@ -29,7 +29,7 @@ honorific_words = ['Dr.', 'Prof.', 'Mr.', 'Ms.', 'Msr.', 'Jr.', 'Sr.', 'Lord', '
                    'Commdor', 'Lady', 'Captain', 'Colonel', 'Miss', 'General', 'Mayor']
 person_verbs_ = ['said', 'sniffed', 'met', 'greet', 'walked', 'respond', 'talk', 'think', 'hear', 'wait', 'pause',
                  'write', 'smile', 'answer', 'wonder', 'reply', 'read', 'sit', 'muttered', 'fumble', 'ask', 'sigh',
-                 'frowned', 'cry', 'chuckled', 'murmured', 'find']
+                 'frowned', 'cry', 'chuckled', 'murmured', 'find', 'shoved', 'fastened']
 person_verbs = [lemmatizer.lemmatize(w, pos='v') for w in person_verbs_]
 location_name = ['planet', 'kingdom', 'world', 'region', 'location', 'republic', 'street', 'neighborhood', 'realm', 'sight']
 location_name_pattern = [{'POS': 'NOUN'}, {'LOWER': 'of'}, {'POS': 'PROPN'}]
