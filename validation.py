@@ -66,6 +66,29 @@ def list_of_values(ner_sent, doc):
     return list
 
 
+def KAPPA(TP, FN,FP, TN):
+    """
+    Confusion matrix:
+                         TRUE
+                         pos     neg     TOT
+                         -----------
+           PRED pos  |   TP      FP     | TP+FP
+                neg  |   FN      TN     | FN+TN
+                         -----------
+                TOT  -   TP+FN   FP+TN
+
+    :return: kappa measure
+    """
+
+    total = (TP + TN + FN + FP)
+    p_0 = (TP + TN)/total
+    p_pos = (FN + FP + 2*TP)/(2*total) # ((TP + FP)/total) * ((TP + FN)/total)
+    p_neg = (FN + FP + 2*TN)/(2*total) # ((TN + FN)/total) * ((FP + TN)/total)
+    p_e = p_pos**2 + p_neg**2
+    kappa = (p_0 - p_e)/(1 - p_e)
+    print("p_0: ", p_0, "\n p_pos: ", p_pos, "\n p_neg: ", p_neg, "\n p_e: ", p_e, "\n Kappa: ", kappa)
+
+
 class Matrics:
     """
     https://towardsdatascience.com/entity-level-evaluation-for-ner-task-c21fb3a8edf
@@ -132,6 +155,12 @@ class Matrics:
         for entity_type, score in self.scores.items():
             print(f"{entity_type}: F1-Score: {score['f1']:.4f}, PRECISION: {score['p']:.4f}, RECALL: {score['r']:.4f}")
 
+    def get_scores(self):
+        aa = []
+        for entity_type, matrix in self.confusion_matrices.items():
+            aa.append([matrix['TP'], matrix['TN'], matrix['FP'], matrix['FN']])
+        return aa
+
 
 def y_pred(predicted, parsed_list):
     a = []
@@ -143,141 +172,152 @@ def y_pred(predicted, parsed_list):
     return a
 
 
-def validate():
+def precision_recall_f1_kappa():
+    from sklearn.metrics import confusion_matrix, classification_report, cohen_kappa_score
+    from preprocess import get_texts
+    from config import FoundationTrilogy
+    from utils import read_list, write_list
+
+    """validation_idx = read_list('validation_dataset')
+    sentences2 = get_texts(FoundationTrilogy)
+    sentences = [sentences2[i] for i in validation_idx]"""
+    pred = read_list('validation_predicted')
+    trues = read_list('validation_true')
+    """for i, sent in enumerate(sents_true_labels):
+        for ent in sent:
+            # 'start_idx', 'end_idx', 'text', 'type'
+            start = ent['start_idx']
+            type = ent['type']
+            trues[i][start] = type"""
+
+    y_pred = []
+    for s in pred:
+        for x in s:
+            y_pred.append(x)
+    y_true = []
+    for s in trues:
+        for x in s:
+            y_true.append(x)
+    labels = ['B-PER', 'I-PER', 'B-LOC']
+    new_y_true = []
+    new_y_pred = []
+    for i in range(len(y_pred)):
+        x = y_pred[i]
+        y = y_true[i]
+        if x == y and x == 'O':
+            pass
+        else:
+            new_y_true.append(y)
+            new_y_pred.append(x)
+
+    print(confusion_matrix(new_y_true, new_y_pred, labels=labels))
+    print(classification_report(new_y_true, new_y_pred, labels=labels))
+    print(cohen_kappa_score(new_y_true, new_y_pred, labels=labels))
+
+
+def deprecated_validate():
     # sents_pred_labels = y_pred(predicted, parsed_list)
     matrics = Matrics(sents_true_labels, sents_pred_labels)
     matrics.cal_confusion_matrices()
     matrics.print_confusion_matrices()
     matrics.cal_scores()
     matrics.print_scores()
+    matrix = matrics.get_scores()
+    a = matrix[0]
+    # matrix['TP'], matrix['TN'], matrix['FP'], matrix['FN']
+    TP=a[0]
+    TN=a[1]
+    FP=a[2]
+    FN=a[3]
+    KAPPA(TP, FN,FP, TN)
 
 
 # region labeled data
-sents_pred_labels = [[{'start_idx': 23, 'end_idx': 23, 'text': 'Foundation', 'type': 'PER'}],
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gorov', 'type': 'PER'},
-                      {'start_idx': 22, 'end_idx': 22, 'text': 'Ponyets', 'type': 'PER'},
-                      {'start_idx': 33, 'end_idx': 34, 'text': 'Grand Master', 'type': 'PER'}], [], [],
-                     [{'start_idx': 4, 'end_idx': 4, 'text': 'Trantor', 'type': 'LOC'}],
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'PER'},
-                      {'start_idx': 22, 'end_idx': 22, 'text': 'Empire', 'type': 'PER'}],
-                     [{'start_idx': 1, 'end_idx': 1, 'text': 'Hardin', 'type': 'PER'},
-                      {'start_idx': 28, 'end_idx': 28, 'text': 'Terminus', 'type': 'LOC'}],
-                     [{'start_idx': 7, 'end_idx': 8, 'text': 'Ebling Mis', 'type': 'PER'},
-                      {'start_idx': 12, 'end_idx': 12, 'text': 'Indbur', 'type': 'PER'}],
-                     [{'start_idx': 29, 'end_idx': 29, 'text': 'Trantor', 'type': 'LOC'}], [], [],
-                     [{'start_idx': 9, 'end_idx': 9, 'text': 'Seldon', 'type': 'PER'}],
-                     [{'start_idx': 6, 'end_idx': 6, 'text': 'Board', 'type': 'PER'},
-                      {'start_idx': 15, 'end_idx': 15, 'text': 'Emperor', 'type': 'PER'},
-                      {'start_idx': 19, 'end_idx': 19, 'text': 'Terminus', 'type': 'LOC'},
-                      {'start_idx': 21, 'end_idx': 21, 'text': 'Hardin', 'type': 'PER'}], [], [],
-                     [{'start_idx': 1, 'end_idx': 2, 'text': 'Lundin Crast', 'type': 'PER'},
-                      {'start_idx': 19, 'end_idx': 19, 'text': 'Foundation', 'type': 'PER'}],
-                     [{'start_idx': 72, 'end_idx': 72, 'text': 'Seldon', 'type': 'PER'}],
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Mallow', 'type': 'PER'}],
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Hardin', 'type': 'PER'},
-                      {'start_idx': 22, 'end_idx': 22, 'text': 'Board', 'type': 'PER'}], [], [], [],
-                     [{'start_idx': 0, 'end_idx': 1, 'text': 'Ducem Barr', 'type': 'PER'}],
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'PER'},
-                      {'start_idx': 88, 'end_idx': 88, 'text': 'Trantor', 'type': 'LOC'}], [],
-                     [{'start_idx': 12, 'end_idx': 12, 'text': 'Fara', 'type': 'PER'}], [],
-                     [{'start_idx': 0, 'end_idx': 1, 'text': 'LingeChen', 'type': 'PER'},
-                      {'start_idx': 13, 'end_idx': 13, 'text': 'Commissioners', 'type': 'PER'},
-                      {'start_idx': 28, 'end_idx': 28, 'text': 'Chen', 'type': 'PER'}],
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Hardin', 'type': 'PER'}],
-                     [{'start_idx': 38, 'end_idx': 38, 'text': 'Brodrig', 'type': 'PER'}],
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'PER'}], [], [], [], [], [], [],
-                     [{'start_idx': 9, 'end_idx': 9, 'text': 'Bayta', 'type': 'PER'},
-                      {'start_idx': 15, 'end_idx': 15, 'text': 'Toran', 'type': 'PER'}],
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Seldon', 'type': 'PER'},
-                      {'start_idx': 13, 'end_idx': 13, 'text': 'Fie', 'type': 'PER'}],
-                     [{'start_idx': 13, 'end_idx': 13, 'text': 'Trantor', 'type': 'LOC'}],
-                     [{'start_idx': 8, 'end_idx': 8, 'text': 'Mule', 'type': 'PER'},
-                      {'start_idx': 22, 'end_idx': 22, 'text': 'Empire', 'type': 'PER'},
-                      {'start_idx': 38, 'end_idx': 38, 'text': 'Galaxy', 'type': 'PER'},
-                      {'start_idx': 63, 'end_idx': 64, 'text': 'Second Empire', 'type': 'PER'}], [],
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Jerril', 'type': 'PER'}],
-                     [{'start_idx': 8, 'end_idx': 8, 'text': 'Askonian', 'type': 'PER'}],
-                     [{'start_idx': 0, 'end_idx': 1, 'text': 'Haut Rodric', 'type': 'PER'}], [], [], [],
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Mallow', 'type': 'PER'}],
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Arcadia', 'type': 'PER'},
-                      {'start_idx': 30, 'end_idx': 30, 'text': 'Trantor', 'type': 'LOC'}]]
-
-sents_true_labels = [[{'start_idx': 18, 'end_idx': 18, 'text': 'Smyrno', 'type': 'LOC'},
-                      {'start_idx': 23, 'end_idx': 23, 'text': 'Foundation', 'type': 'LOC'}],  # 0
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gorov', 'type': 'PER'},
-                      {'start_idx': 22, 'end_idx': 22, 'text': 'Ponyets', 'type': 'PER'},
-                      {'start_idx': 33, 'end_idx': 34, 'text': 'Grand Master', 'type': 'PER'}],  # 1
-                     [],  # 2
-                     [],  # 3
-                     [{'start_idx': 4, 'end_idx': 4, 'text': 'Trantor', 'type': 'LOC'},
-                      {'start_idx': 44, 'end_idx': 45, 'text': 'Galactic center', 'type': 'LOC'}],  # 4
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'PER'}],  # 5
-                     [{'start_idx': 1, 'end_idx': 1, 'text': 'Hardin', 'type': 'PER'},
-                      {'start_idx': 17, 'end_idx': 17, 'text': 'Hardin', 'type': 'PER'},
-                      {'start_idx': 28, 'end_idx': 28, 'text': 'Terminus', 'type': 'LOC'}],  # 6
-                     [{'start_idx': 7, 'end_idx': 8, 'text': 'Ebling Mis', 'type': 'PER'},
-                      {'start_idx': 12, 'end_idx': 12, 'text': 'Indbur', 'type': 'PER'}],  # 7
-                     [{'start_idx': 7, 'end_idx': 7, 'text': 'Trantor', 'type': 'LOC'},
-                      {'start_idx': 29, 'end_idx': 29, 'text': 'Trantor', 'type': 'LOC'}],  # 8
-                     [],  # 9
-                     [],  # 10
-                     [{'start_idx': 9, 'end_idx': 9, 'text': 'Seldon', 'type': 'PER'}],  # 11
-                     [{'start_idx': 15, 'end_idx': 15, 'text': 'Emperor', 'type': 'PER'},
-                      {'start_idx': 19, 'end_idx': 19, 'text': 'Terminus', 'type': 'LOC'},
-                      {'start_idx': 21, 'end_idx': 21, 'text': 'Hardin', 'type': 'PER'}],  # 12
-                     [],  # 13
-                     [{'start_idx': 1, 'end_idx': 1, 'text': 'Sutt', 'type': 'PER'}],  # 14
-                     [{'start_idx': 1, 'end_idx': 2, 'text': 'Lundin Crast', 'type': 'PER'},
-                      {'start_idx': 45, 'end_idx': 45, 'text': 'Mayor', 'type': 'PER'}],  # 15
-                     [{'start_idx': 0, 'end_idx': 1, 'text': 'The inquisitor', 'type': 'PER'},
-                      {'start_idx': 36, 'end_idx': 36, 'text': 'doctor', 'type': 'PER'},
-                      {'start_idx': 72, 'end_idx': 72, 'text': 'Seldon', 'type': 'PER'}],  # 16
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Mallow', 'type': 'PER'}],  # 17
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Hardin', 'type': 'PER'},
-                      {'start_idx': 17, 'end_idx': 18, 'text': 'Jord Fara', 'type': 'PER'},
-                      {'start_idx': 42, 'end_idx': 42, 'text': 'Santanni', 'type': 'PER'}],  # 18
-                     [],  # 19
-                     [],  # 20
-                     [],  # 21
-                     [{'start_idx': 0, 'end_idx': 1, 'text': 'Ducem Barr', 'type': 'PER'}],  # 22
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'PER'},
-                      {'start_idx': 88, 'end_idx': 88, 'text': 'Trantor', 'type': 'LOC'}],  # 23
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Suit', 'type': 'PER'}],  # 24
-                     [{'start_idx': 12, 'end_idx': 12, 'text': 'Fara', 'type': 'PER'}],  # 25
-                     [],  # 26
-                     [{'start_idx': 0, 'end_idx': 1, 'text': 'Linge Chen', 'type': 'PER'},
-                      {'start_idx': 13, 'end_idx': 13, 'text': 'Commissioners', 'type': 'PER'},
-                      {'start_idx': 28, 'end_idx': 28, 'text': 'Chen', 'type': 'PER'}],  # 27
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Hardin', 'type': 'PER'}],  # 28
-                     [{'start_idx': 28, 'end_idx': 28, 'text': 'Devers', 'type': 'PER'},
-                      {'start_idx': 38, 'end_idx': 38, 'text': 'Brodrig', 'type': 'PER'}],  # 29
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'PER'}],  # 30
-                     [{'start_idx': 2, 'end_idx': 2, 'text': 'patrician', 'type': 'PER'}],  # 31
-                     [{'start_idx': 1, 'end_idx': 1, 'text': 'trader', 'type': 'PER'},
-                      {'start_idx': 40, 'end_idx': 40, 'text': 'Setdon', 'type': 'PER'}],  # 32
-                     [],  # 33
-                     [],  # 34
-                     [],  # 35
-                     [],  # 36
-                     [{'start_idx': 9, 'end_idx': 9, 'text': 'Bayta', 'type': 'PER'},
-                      {'start_idx': 20, 'end_idx': 20, 'text': 'clown', 'type': 'PER'},
-                      {'start_idx': 15, 'end_idx': 15, 'text': 'Toran', 'type': 'PER'}],  # 37
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Seldon', 'type': 'PER'},
-                      {'start_idx': 13, 'end_idx': 13, 'text': 'Fie', 'type': 'PER'}],  # 38
-                     [{'start_idx': 13, 'end_idx': 13, 'text': 'Trantor', 'type': 'LOC'}],  # 39
-                     [{'start_idx': 8, 'end_idx': 8, 'text': 'Mule', 'type': 'PER'},
-                      {'start_idx': 22, 'end_idx': 22, 'text': 'Empire', 'type': 'PER'},
-                      {'start_idx': 63, 'end_idx': 64, 'text': 'Second Empire', 'type': 'PER'}],  # 40
-                     [{'start_idx': 7, 'end_idx': 7, 'text': 'Hardin', 'type': 'PER'}],  # 41
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Jerril', 'type': 'PER'}],  # 42
-                     [{'start_idx': 8, 'end_idx': 8, 'text': 'Askonian', 'type': 'PER'}],  # 43
-                     [{'start_idx': 0, 'end_idx': 1, 'text': 'Haut Rodric', 'type': 'PER'}],  # 44
-                     [],  # 45
-                     [],  # 46
-                     [],  # 47
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Mallow', 'type': 'PER'}],  # 48
-                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Arcadia', 'type': 'PER'},
-                      {'start_idx': 30, 'end_idx': 30, 'text': 'Trantor', 'type': 'LOC'}]]  # 49
+sents_true_labels = [[{'start_idx': 18, 'end_idx': 18, 'text': 'Smyrno', 'type': 'B-LOC'},
+                      {'start_idx': 23, 'end_idx': 23, 'text': 'Foundation', 'type': 'B-LOC'}], # 0
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gorov', 'type': 'B-PER'},
+                      {'start_idx': 22, 'end_idx': 22, 'text': 'Ponyets', 'type': 'B-PER'},
+                      {'start_idx': 33, 'end_idx': 33, 'text': 'GrandMaster', 'type': 'B-PER'},
+                      {'start_idx': 34, 'end_idx': 34, 'text': 'GrandMaster', 'type': 'I-PER'}], # 1
+                     [], # 2
+                     [], # 3
+                     [{'start_idx': 4, 'end_idx': 4, 'text': 'Trantor', 'type': 'B-LOC'},
+                      {'start_idx': 44, 'end_idx': 44, 'text': 'Galactic', 'type': 'B-LOC'}], # 4
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'B-PER'}], # 5
+                     [{'start_idx': 1, 'end_idx': 1, 'text': 'Hardin', 'type': 'B-PER'},
+                      {'start_idx': 17, 'end_idx': 17, 'text': 'Hardin', 'type': 'B-PER'},
+                      {'start_idx': 28, 'end_idx': 28, 'text': 'Terminus', 'type': 'B-LOC'}], # 6
+                     [{'start_idx': 7, 'end_idx': 7, 'text': 'EblingMis', 'type': 'B-PER'},
+                      {'start_idx': 8, 'end_idx': 8, 'text': 'EblingMis', 'type': 'I-PER'},
+                      {'start_idx': 12, 'end_idx': 12, 'text': 'Indbur', 'type': 'B-PER'}], #7
+                     [{'start_idx': 7, 'end_idx': 7, 'text': 'Trantor', 'type': 'B-LOC'},
+                      {'start_idx': 29, 'end_idx': 29, 'text': 'Trantor', 'type': 'B-LOC'}], # 8
+                     [], # 9
+                     [], # 10
+                     [{'start_idx': 9, 'end_idx': 9, 'text': 'Seldon', 'type': 'B-PER'}], # 11
+                     [{'start_idx': 15, 'end_idx': 15, 'text': 'Emperor', 'type': 'B-PER'},
+                      {'start_idx': 19, 'end_idx': 19, 'text': 'Terminus', 'type': 'B-LOC'},
+                      {'start_idx': 21, 'end_idx': 21, 'text': 'Hardin', 'type': 'B-PER'}], # 12
+                     [], # 13
+                     [{'start_idx': 1, 'end_idx': 1, 'text': 'Sutt', 'type': 'B-PER'}], # 14
+                     [{'start_idx': 1, 'end_idx': 1, 'text': 'LundinCrast', 'type': 'B-PER'},
+                      {'start_idx': 2, 'end_idx': 2, 'text': 'LundinCrast', 'type': 'I-PER'},
+                      {'start_idx': 45, 'end_idx': 45, 'text': 'Mayor', 'type': 'B-PER'}], # 15
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Theinquisitor', 'type': 'B-PER'},
+                      {'start_idx': 1, 'end_idx': 1, 'text': 'Theinquisitor', 'type': 'I-PER'},
+                      {'start_idx': 36, 'end_idx': 36, 'text': 'doctor', 'type': 'B-PER'},
+                      {'start_idx': 72, 'end_idx': 72, 'text': 'Seldon', 'type': 'B-PER'}], # 16
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Mallow', 'type': 'B-PER'}], # 17
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Hardin', 'type': 'B-PER'},
+                      {'start_idx': 17, 'end_idx': 17, 'text': 'JordFara', 'type': 'B-PER'},
+                      {'start_idx': 18, 'end_idx': 18, 'text': 'JordFara', 'type': 'I-PER'},
+                      {'start_idx': 42, 'end_idx': 42, 'text': 'Santanni', 'type': 'B-PER'}], # 18
+                     [], # 19
+                     [], # 20
+                     [], # 21
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'DucemBarr', 'type': 'B-PER'},
+                      {'start_idx': 1, 'end_idx': 1, 'text': 'DucemBarr', 'type': 'I-PER'}], # 22
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'B-PER'},
+                      {'start_idx': 88, 'end_idx': 88, 'text': 'Trantor', 'type': 'B-LOC'}], # 23
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Suit', 'type': 'B-PER'}], # 24
+                     [{'start_idx': 12, 'end_idx': 12, 'text': 'Fara', 'type': 'B-PER'}], # 25
+                     [], # 26
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'LingeChen', 'type': 'B-PER'},
+                      {'start_idx': 1, 'end_idx': 1, 'text': 'LingeChen', 'type': 'I-PER'},
+                      {'start_idx': 13, 'end_idx': 13, 'text': 'Commissioners', 'type': 'B-PER'},
+                      {'start_idx': 28, 'end_idx': 28, 'text': 'Chen', 'type': 'B-PER'}], # 27
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Hardin', 'type': 'B-PER'}], # 28
+                     [{'start_idx': 28, 'end_idx': 28, 'text': 'Devers', 'type': 'B-PER'},
+                      {'start_idx': 38, 'end_idx': 38, 'text': 'Brodrig', 'type': 'B-PER'}], # 29
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'B-PER'}], # 30
+                     [{'start_idx': 2, 'end_idx': 2, 'text': 'patrician', 'type': 'B-PER'}], # 31
+                     [{'start_idx': 1, 'end_idx': 1, 'text': 'trader', 'type': 'B-PER'},
+                      {'start_idx': 40, 'end_idx': 40, 'text': 'Setdon', 'type': 'B-PER'}], # 32
+                     [], # 33
+                     [], # 34
+                     [], # 35
+                     [], # 36
+                     [{'start_idx': 9, 'end_idx': 9, 'text': 'Bayta', 'type': 'B-PER'},
+                      {'start_idx': 20, 'end_idx': 20, 'text': 'clown', 'type': 'B-PER'},
+                      {'start_idx': 15, 'end_idx': 15, 'text': 'Toran', 'type': 'B-PER'}], # 37
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Seldon', 'type': 'B-PER'},
+                      {'start_idx': 13, 'end_idx': 13, 'text': 'Fie', 'type': 'B-PER'}], # 38
+                     [{'start_idx': 13, 'end_idx': 13, 'text': 'Trantor', 'type': 'B-LOC'}], # 39
+                     [{'start_idx': 8, 'end_idx': 8, 'text': 'Mule', 'type': 'B-PER'},
+                      {'start_idx': 22, 'end_idx': 22, 'text': 'Empire', 'type': 'B-PER'},
+                      {'start_idx': 63, 'end_idx': 63, 'text': 'SecondEmpire', 'type': 'B-PER'},
+                      {'start_idx': 64, 'end_idx': 64, 'text': 'SecondEmpire', 'type': 'I-PER'}], # 40
+                     [{'start_idx': 7, 'end_idx': 7, 'text': 'Hardin', 'type': 'B-PER'}], # 41
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Jerril', 'type': 'B-PER'}], # 42
+                     [{'start_idx': 8, 'end_idx': 8, 'text': 'Askonian', 'type': 'B-PER'}], # 43
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'HautRodric', 'type': 'B-PER'},
+                      {'start_idx': 1, 'end_idx': 1, 'text': 'HautRodric', 'type': 'I-PER'}], # 44
+                     [], # 45
+                     [], # 46
+                     [],# 47
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Mallow', 'type': 'B-PER'}], # 48
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Arcadia', 'type': 'B-PER'},
+                      {'start_idx': 30, 'end_idx': 30, 'text': 'Trantor', 'type': 'B-LOC'}]] # 49
 # endregion
 
 
@@ -306,5 +346,5 @@ def visualize_ner(ydx):
 
 
 if __name__ == '__main__':
-    validate()
+    precision_recall_f1_kappa()
     # visualize_ner(23)

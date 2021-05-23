@@ -13,7 +13,7 @@ if __name__ == '__main__':
     predicted = NER(parsed_list, STAGE=False)
 
     #TODO: CR
-    people_links, location_links = LINK_ENTITIES(parsed_list, predicted, False)
+    people_links, location_links = LINK_ENTITIES(parsed_list, predicted, True)
     normalize, people_links = normalize_list(people_links, True)
     #TODO: normalize
     CHARACTER_NETWORK(people_links, True)
