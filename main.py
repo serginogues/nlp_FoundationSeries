@@ -11,20 +11,14 @@ if __name__ == '__main__':
     text = FoundationTrilogy
     parsed_list = preprocess(text, False)  # vector of preprocessed sentences
     predicted = NER(parsed_list, STAGE=False)
-    #TODO: Validation
 
-    person_list = [i for i, x in enumerate(predicted) if 'B-PER' in x]
-
-    #TODO: CR + link with predicted
+    #TODO: CR
     people_links, location_links = LINK_ENTITIES(parsed_list, predicted, False)
-
+    normalize, people_links = normalize_list(people_links, True)
     #TODO: normalize
     CHARACTER_NETWORK(people_links, True)
 
     #TODO: geo-mapping with location_links
-
-
-
 
     # TODO: EXTRA bonus points
     #   - Detecting anomalies gets you bonus points

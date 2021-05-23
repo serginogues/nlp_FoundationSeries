@@ -10,15 +10,16 @@ import collections
 import math
 
 
-def normalize_list(entity_list, STAGE=True):
+def normalize_list(people_links, STAGE=True):
     print("Start NORMALIZATION")
     if STAGE:
         normalized = []
+        entity_list = [x for x in list(set([x[0] for x in people_links] + [x[1] for x in people_links]))]
         copy_list = entity_list.copy()
         for a, b in combinations(entity_list, 2):
 
             val = (monge_elkan(a.split(" "), b.split(" ")) + monge_elkan(b.split(" "), a.split(" "))) / 2
-            if val > 0.81:
+            if val >= 0.81:
                 lis = [i for i, pair in enumerate(normalized) for name in pair for w in name.split(" ") if
                        w == a or w == b]
                 if len(lis) > 0:
@@ -36,39 +37,24 @@ def normalize_list(entity_list, STAGE=True):
         # Do a second normalization of entities sharing surname
         [normalized.append([ent]) for ent in copy_list]
 
-        """# if unclassified contains words in normalized, add it to tuple
-        for i, tu in enumerate(normalized):
-            for w in tu:
-                a = [x for x in unclassified if is_name(x, w) and 0.81 < (
-                        (monge_elkan(w.split(" "), x.split(" ")) + monge_elkan(x.split(" "), w.split(" "))) / 2)]
-                if len(a) > 0:
-                    [normalized[i].append(x) for x in a]
-
-        for i, ent in enumerate(unclassified):
-            c = ent.split(" ")
-            if len(c) == 2:
-                a = [w for x in normalized for w in x if w == c[0] and len(x) == 1]
-                b = [w for x in normalized for w in x if w == c[1] and len(x) == 1]
-                if a and b:
-                    [normalized.remove(x) for x in normalized if x[0] == a[0]]
-                    [normalized.remove(x) for x in normalized if x[0] == b[0]]
-                    normalized.append([ent, a[0], b[0]])"""
-
         for a, b in combinations([[i, x] for i, x in enumerate(normalized) if len(x) == 1], 2):
             if a[1][0] in b[1][0] or b[1][0] in a[1][0]:
                 [normalized.remove(x) for x in normalized if x[0] == a[1][0]]
                 [normalized.remove(x) for x in normalized if x[0] == b[1][0]]
-                normalized.append([a[1][0], a[1][0]])
+                normalized.append([a[1][0], b[1][0]])
                 normalized[-1] = list(set(normalized[-1]))
 
-        [normalized[i].remove(w) for i, x in enumerate(normalized) for w in x if w == 'Seldon']
-        [normalized[i].append('Seldon') for i, x in enumerate(normalized) if x[0] == 'Hari Seldon']
         write_list('normalized', normalized)
 
     else:
         normalized = read_list('normalized')
 
     print("NER and NORMALIZATION finished:", len(normalized), "'person' entities found")
+
+    for idx, link in enumerate(people_links):
+        for i, name in [[i,x] for i,x in enumerate(link) if i != 2]:
+            people_links[idx][i] = [x[0] for x in normalized if name in x][0]
+
     return normalized
 
 

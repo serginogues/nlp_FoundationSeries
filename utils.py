@@ -284,7 +284,7 @@ def read_list(name):
             if name == 'people_links' or name == 'location_links' or name == 'normalized' or name == 'predicted':
                 a = [x for x in item.split(',')]
                 if name == 'people_links':
-                    list.append([a[0], a[1], int(a[2]), int(a[3])])
+                    list.append([a[0], a[1], int(a[2])])
                 elif name == 'location_links':
                     list.append([a[0], a[1], int(a[2])])
                 elif name == 'unclassified':

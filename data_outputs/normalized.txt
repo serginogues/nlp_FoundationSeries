@@ -1,9 +1,103 @@
-Luxor Hotel
-Seldon Project
-Advocate
-Chen
-Jerril
-Hari Seldon,Seldon
+Council,Councilman
+Ebling Mis,Mis
+Foundation,Second Foundation
+Salvor Hardin,Hardin
+Forell,Korell
+Fara,Far Star
+Lee Senter,Lee,Senter
+Chen,Linge Chen
+Asper Argo,Asper
+Han Pritcher,Flan Pritcher
+Semic,Elvett Semic
+Bail Channis,Channis
+Loris
+Palver
+Dad
+Fie
+Callia
+Brodrig
+Pritcher
+Tamper Plateau
+Lieutenant Tinter
+Jaim Twer
+Mamma
+Gorm
+Board
+First Minister
 Avakim
+Poochie
+Mangin
+Grand Master
+Fox
+Personal Capsule
+Elders
+Emperor
+Bort
+Sermak
+Iwo
+Wienis
+Pirenne
+Dorwin
+Kalgan
+Advocate
+Stettin
+Lathan Devers
+Commason
+Haut Rodric
+Toran
+Meirus
+Orsy
+Privy Secretary
+Askonian
+Lameth
+Gorov
+Aporat
+Hella
+Mule
+Pherl
+Fran
+Galaxy
+Siwennian
+Ponyets
+Bayta
+Union
+Periphery
+End
+Prince Lefkin
+Pappa
+Jael
+Lieutenant Dirige
+Thallos
+Commissioners
+Yohan Lee
+Chairman
+Magnifico
+Lepold
+Indbur
+Student
+Kleise
+Cleon II
 Supervisor
-Gaal Dornick
+Lundin Crast
+Randu
+Verisof
+Arcadia
+Darell
+Walto
+Jerril
+Trading Representative
+Second Empire,Empire
+Ovall Gri,Ovall
+Riose,Bel Riose
+Jorane Sutt,Sutt
+Sutt,Tomaz Sutt
+Yate Fulham,Fulham
+Hari Seldon,Seldon
+Speaker,First Speaker
+Barr,Ducem Barr
+Dornick,Gaal Dornick
+Gaal Dornick,Gaal
+Homir Munn,Homir
+Anthor,Pelleas Anthor
+Turbor,Jole Turbor
+Hober Mallow,Mallow
