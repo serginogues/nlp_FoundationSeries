@@ -53,16 +53,16 @@ def list_of_values(ner_sent, doc):
     for idx, token in enumerate(ner_sent):
         if token != 'O':
             if token == 'B-PER' and ner_sent[idx + 1] == 'I-PER':
-                list.append([idx, idx + 1, " ".join([doc[idx].text + doc[idx + 1].text]), 'PER'])
+                list.append([idx, idx + 2, " ".join([doc[idx].text + doc[idx + 1].text]), 'PER'])
 
             elif token == 'B-PER':
-                list.append([idx, idx, doc[idx].text, 'PER'])
+                list.append([idx, idx+1, doc[idx].text, 'PER'])
 
             elif token == 'B-LOC' and ner_sent[idx + 1] == 'I-LOC':
-                list.append([idx, idx + 1, " ".join([doc[idx].text + doc[idx + 1].text]), 'LOC'])
+                list.append([idx, idx + 2, " ".join([doc[idx].text + doc[idx + 1].text]), 'LOC'])
 
             elif token == 'B-LOC':
-                list.append([idx, idx, doc[idx].text, 'LOC'])
+                list.append([idx, idx+1, doc[idx].text, 'LOC'])
     return list
 
 
@@ -233,6 +233,56 @@ def deprecated_validate():
 
 
 # region labeled data
+sents_pred_labels = [[{'start_idx': 23, 'end_idx': 23, 'text': 'Foundation', 'type': 'PER'}],
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gorov', 'type': 'PER'},
+                      {'start_idx': 22, 'end_idx': 22, 'text': 'Ponyets', 'type': 'PER'},
+                      {'start_idx': 33, 'end_idx': 34, 'text': 'GrandMaster', 'type': 'PER'}], [], [],
+                     [{'start_idx': 4, 'end_idx': 4, 'text': 'Trantor', 'type': 'LOC'}],
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'PER'},
+                      {'start_idx': 22, 'end_idx': 22, 'text': 'Empire', 'type': 'PER'}],
+                     [{'start_idx': 1, 'end_idx': 1, 'text': 'Hardin', 'type': 'PER'},
+                      {'start_idx': 28, 'end_idx': 28, 'text': 'Terminus', 'type': 'LOC'}],
+                     [{'start_idx': 7, 'end_idx': 8, 'text': 'EblingMis', 'type': 'PER'},
+                      {'start_idx': 12, 'end_idx': 12, 'text': 'Indbur', 'type': 'PER'}],
+                     [{'start_idx': 29, 'end_idx': 29, 'text': 'Trantor', 'type': 'LOC'}], [], [],
+                     [{'start_idx': 9, 'end_idx': 9, 'text': 'Seldon', 'type': 'PER'}],
+                     [{'start_idx': 6, 'end_idx': 6, 'text': 'Board', 'type': 'PER'},
+                      {'start_idx': 15, 'end_idx': 15, 'text': 'Emperor', 'type': 'PER'},
+                      {'start_idx': 19, 'end_idx': 19, 'text': 'Terminus', 'type': 'LOC'},
+                      {'start_idx': 21, 'end_idx': 21, 'text': 'Hardin', 'type': 'PER'}], [], [],
+                     [{'start_idx': 1, 'end_idx': 2, 'text': 'LundinCrast', 'type': 'PER'},
+                      {'start_idx': 19, 'end_idx': 19, 'text': 'Foundation', 'type': 'PER'}],
+                     [{'start_idx': 72, 'end_idx': 72, 'text': 'Seldon', 'type': 'PER'}],
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Mallow', 'type': 'PER'}],
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Hardin', 'type': 'PER'},
+                      {'start_idx': 22, 'end_idx': 22, 'text': 'Board', 'type': 'PER'}], [], [], [],
+                     [{'start_idx': 0, 'end_idx': 1, 'text': 'DucemBarr', 'type': 'PER'}],
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'PER'},
+                      {'start_idx': 88, 'end_idx': 88, 'text': 'Trantor', 'type': 'LOC'}], [],
+                     [{'start_idx': 12, 'end_idx': 12, 'text': 'Fara', 'type': 'PER'}], [],
+                     [{'start_idx': 0, 'end_idx': 1, 'text': 'LingeChen', 'type': 'PER'},
+                      {'start_idx': 13, 'end_idx': 13, 'text': 'Commissioners', 'type': 'PER'},
+                      {'start_idx': 28, 'end_idx': 28, 'text': 'Chen', 'type': 'PER'}],
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Hardin', 'type': 'PER'}],
+                     [{'start_idx': 38, 'end_idx': 38, 'text': 'Brodrig', 'type': 'PER'}],
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Gaal', 'type': 'PER'}], [], [], [], [], [], [],
+                     [{'start_idx': 9, 'end_idx': 9, 'text': 'Bayta', 'type': 'PER'},
+                      {'start_idx': 15, 'end_idx': 15, 'text': 'Toran', 'type': 'PER'}],
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Seldon', 'type': 'PER'},
+                      {'start_idx': 13, 'end_idx': 13, 'text': 'Fie', 'type': 'PER'}],
+                     [{'start_idx': 13, 'end_idx': 13, 'text': 'Trantor', 'type': 'LOC'}],
+                     [{'start_idx': 8, 'end_idx': 8, 'text': 'Mule', 'type': 'PER'},
+                      {'start_idx': 22, 'end_idx': 22, 'text': 'Empire', 'type': 'PER'},
+                      {'start_idx': 38, 'end_idx': 38, 'text': 'Galaxy', 'type': 'PER'},
+                      {'start_idx': 63, 'end_idx': 64, 'text': 'SecondEmpire', 'type': 'PER'}], [],
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Jerril', 'type': 'PER'}],
+                     [{'start_idx': 8, 'end_idx': 8, 'text': 'Askonian', 'type': 'PER'}],
+                     [{'start_idx': 0, 'end_idx': 1, 'text': 'HautRodric', 'type': 'PER'}], [], [], [],
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Mallow', 'type': 'PER'}],
+                     [{'start_idx': 0, 'end_idx': 0, 'text': 'Arcadia', 'type': 'PER'},
+                      {'start_idx': 30, 'end_idx': 30, 'text': 'Trantor', 'type': 'LOC'}]]
+
+
 sents_true_labels = [[{'start_idx': 18, 'end_idx': 18, 'text': 'Smyrno', 'type': 'B-LOC'},
                       {'start_idx': 23, 'end_idx': 23, 'text': 'Foundation', 'type': 'B-LOC'}], # 0
                      [{'start_idx': 0, 'end_idx': 0, 'text': 'Gorov', 'type': 'B-PER'},

@@ -13,29 +13,8 @@ import math
 def normalize_list(people_links, STAGE=True):
     print("Start NORMALIZATION")
     if STAGE:
-        normalized = []
-        entity_list = [x for x in list(set([x[0] for x in people_links] + [x[1] for x in people_links]))]
-        copy_list = entity_list.copy()
-        for a, b in combinations(entity_list, 2):
 
-            val = (monge_elkan(a.split(" "), b.split(" ")) + monge_elkan(b.split(" "), a.split(" "))) / 2
-            if val >= 0.81:
-                lis = [i for i, pair in enumerate(normalized) for name in pair for w in name.split(" ") if
-                       w == a or w == b]
-                if len(lis) > 0:
-                    i = lis[0]
-                    normalized[i].append(a)
-                    normalized[i].append(b)
-                    normalized[i] = list(set(normalized[i]))
-                else:
-                    normalized.append([a, b])
-                if a in copy_list:
-                    copy_list.remove(a)
-                if b in copy_list:
-                    copy_list.remove(b)
-
-        # Do a second normalization of entities sharing surname
-        [normalized.append([ent]) for ent in copy_list]
+        normalized = people_links_norm(people_links)
 
         for a, b in combinations([[i, x] for i, x in enumerate(normalized) if len(x) == 1], 2):
             if a[1][0] in b[1][0] or b[1][0] in a[1][0]:
@@ -51,9 +30,42 @@ def normalize_list(people_links, STAGE=True):
 
     print("NER and NORMALIZATION finished:", len(normalized), "'person' entities found")
 
+    new_list = []
     for idx, link in enumerate(people_links):
         for i, name in [[i,x] for i,x in enumerate(link) if i != 2]:
-            people_links[idx][i] = [x[0] for x in normalized if name in x][0]
+            a = [x[0] for x in normalized if name in x]
+            if any(a):
+                people_links[idx][i] = a[0]
+        if link[0] != link[1]:
+            new_list.append(link)
+    people_links = new_list
+    return people_links
+
+
+def people_links_norm(people_links):
+    normalized = []
+    entity_list = [x for x in list(set([x[0] for x in people_links] + [x[1] for x in people_links]))]
+    copy_list = entity_list.copy()
+    for a, b in combinations(entity_list, 2):
+
+        val = (monge_elkan(a.split(" "), b.split(" ")) + monge_elkan(b.split(" "), a.split(" "))) / 2
+        if val >= 0.81:
+            lis = [i for i, pair in enumerate(normalized) for name in pair for w in name.split(" ") if
+                   w == a or w == b]
+            if len(lis) > 0:
+                i = lis[0]
+                normalized[i].append(a)
+                normalized[i].append(b)
+                normalized[i] = list(set(normalized[i]))
+            else:
+                normalized.append([a, b])
+            if a in copy_list:
+                copy_list.remove(a)
+            if b in copy_list:
+                copy_list.remove(b)
+
+    # Do a second normalization of entities sharing surname
+    [normalized.append([ent]) for ent in copy_list]
 
     return normalized
 

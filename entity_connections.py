@@ -1,8 +1,8 @@
 """
 Given a text and a list of entities (post NER) find all connections between them
 """
-from config import combinations, nlp
-from utils import get_ents_from_doc, pairwise, read_list, write_list
+from config import combinations, tqdm
+from utils import read_list, write_list
 
 
 def alias_resolution(list):
@@ -57,13 +57,25 @@ def LINK_ENTITIES(parsed_list, predicted, STAGE=True):
     Two entities are considered to have a link if they appear in a range of two consecutive sentences.
     :return: a list of tuples
     """
+    print("Start LINKS")
     if STAGE:
         people_links = []
         per_link = []
         location_links = []
+        events = []
 
-        for idx in range(len(parsed_list)):
+        for idx in tqdm(range(len(parsed_list))):
             per, loc, per_idx, loc_idx = get_ents_from_predicted(predicted[idx], parsed_list[idx])
+
+            # CR per sentence
+            if len(per_idx)>1:
+                ev = coref_events(parsed_list[idx], per_idx, loc_idx)
+                if any(ev):
+                    [x.append(idx) for x in ev]
+                    events.append([x for x in ev])
+
+
+            # PER + LOC LINKS per two sentences
             if idx < len(parsed_list) - 1:
                 per2, loc2, per_idx2, loc_idx2 = get_ents_from_predicted(predicted[idx+1], parsed_list[idx+1])
                 per += per2
@@ -86,26 +98,79 @@ def LINK_ENTITIES(parsed_list, predicted, STAGE=True):
                             location_links.append([l, p, idx])
 
         # POST PROCESS
-        people_links = sorted([x for x in people_links if x[2] > 2], key=lambda x: x[2], reverse=True)
+        people_links = sorted([x for x in people_links if x[2] > 4], key=lambda x: x[2], reverse=True)
+        events = [x[0] for x in events]
         write_list('people_links', people_links)
         write_list('location_links', location_links)
+        write_list('events', events)
 
     else:
         people_links = read_list('people_links')
         location_links = read_list('location_links')
+    return people_links, location_links, events
 
-    return people_links, location_links
+
+def coref_events(doc, per_idx, loc_idx):
+    facts = []
+    from config import displacy
+    with open('doc_dep.html', 'w') as f:
+        f.write(displacy.render(doc, style="dep", options=dict(compact=True)))
+    # 0 - get PER and LOC entities and references
+    per = [get_token_list_from_cluster(doc[i], doc) for i in per_idx]
+    loc = [get_token_list_from_cluster(doc[i], doc) for i in loc_idx]
+
+    # 1 - get all nsubj and dobj and compare them
+    per_dobj = [token for token in doc if token.dep_ == "dobj"]
+    per_nsubj = [token for token in doc if token.dep_ == "nsubj"]
+    # 2 - get events
+    events = [[a, a.head.text, b] for a in per_dobj for b in per_nsubj if b.head == a.head and a.head.pos_ == 'VERB']
+    if len(events) > 0:
+        # 3 - check if any entity or its mentions in events
+        for event in events:
+            solved = False
+            dobj, nsubj = None, None
+            for i, ref in enumerate(per):
+                a = [x for x in ref if x == event[0]]
+                b = [x for x in ref if x == event[2]]
+                if any(a):
+                    dobj = ref[0]
+                if any(b):
+                    nsubj = ref[0]
+            if dobj != None and nsubj != None and dobj != nsubj:
+                event[0] = dobj.text
+                event[2] = nsubj.text
+                facts.append(event)
+            else:
+                for i, ref in enumerate(loc):
+                    a = [x for x in ref if x == event[0]]
+                    b = [x for x in ref if x == event[2]]
+                    if any(a):
+                        dobj = ref[0]
+                    if any(b):
+                        nsubj = ref[0]
+                if dobj != None and nsubj != None and dobj != nsubj:
+                    event[0] = dobj.text
+                    event[2] = nsubj.text
+                    facts.append(event)
+
+    return facts
 
 
-def coref_events(doc, people_list, location_list, idx):
-    """
-    https://ryanong.co.uk/2020/07/14/day-196-coreference-resolution-with-neuralcoref-spacy/
-    """
-    event_links = []
-    for token in doc:
-        if token._.has_coref:
-            print(token._.coref_cluster)
-    return event_links
+def get_token_list_from_cluster(token, doc):
+    tokens = [token]
+    if token._.in_coref:
+        cluster = [x for x in token._.coref_clusters][0]
+        for span in cluster:
+            if span.start+1 == span.end:
+                tok = doc[span.start]
+                if tok != token:
+                    tokens.append(tok)
+            else:
+                l = doc[span.start:span.end]
+                for tok in l:
+                    if tok != token:
+                        tokens.append(tok)
+    return tokens
 
 
 def get_ents_from_predicted(y_pred, doc):

@@ -266,7 +266,7 @@ def write_list(name, list):
         f.seek(0)
         f.truncate()
         for item in list:
-            if name == 'people_links' or name == 'location_links' or name == 'normalized' or name == 'predicted' or name == 'unclassified' or 'validation_true' or 'validation_predicted':
+            if name == 'people_links' or name == 'location_links' or name == 'normalized' or name == 'predicted' or name == 'unclassified' or 'validation_true' or 'validation_predicted' or 'events':
                 a = ",".join([str(x) for x in item])
             else:
                 a = item
@@ -281,7 +281,7 @@ def read_list(name):
     with open('data_outputs/' + name + '.txt', 'r') as f:
         for line in f:
             item = line[:-1]
-            if name == 'people_links' or name == 'location_links' or name == 'normalized' or name == 'predicted' or name == 'validation_true' or name == 'validation_predicted':
+            if name == 'people_links' or name == 'location_links' or name == 'normalized' or name == 'predicted' or name == 'validation_true' or name == 'validation_predicted' or name == 'events':
                 a = [x for x in item.split(',')]
                 if name == 'people_links':
                     list.append([a[0], a[1], int(a[2])])
@@ -289,6 +289,8 @@ def read_list(name):
                     list.append([a[0], a[1], int(a[2])])
                 elif name == 'unclassified':
                     list.append([a[0], int(a[1])])
+                elif name == 'events':
+                    list.append([a[0], a[1], a[2], int(a[3])])
                 else:
                     list.append([str(x) for x in a])
             else:

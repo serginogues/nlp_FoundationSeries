@@ -2,15 +2,30 @@
 
 ### Author: Sergi Nogues Farres
 
-A Rule-Based Named Entity Recognition (NER) model to extract all the key entities and their connections from the Isaac Asimov's first three Foundation books, collectively known as the Foundation Trilogy.
+A Rule-Based NER model to extract all the key entities and their connections from the Isaac Asimov's first three Foundation books, collectively known as the Foundation Trilogy.
 
 [Interactive Character Network](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/character_network.html)
+[Foundation Trilogy Wiki](https://asimov.fandom.com/wiki/Foundation_trilogy)
 
-<!--![alt text](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/bokeh_plot.png?raw=true)-->
+## Interactive Renders Guide
+### NER on sentence
+Go to [ner_visualize.py](ner_visualize.py) <br>
+NUM parameter is the sentence's index from the book to be processed <br>
+Run <br>
+Go to http://localhost:5000/
 
-[About The Foundation Trilogy](https://asimov.fandom.com/wiki/Foundation_trilogy)
+### Character Network
+Run [network_graph.py](network_graph.py)
 
+### Galaxy map
+Run [interactive_map.py](interactive_map.py)
 
+## Code Guide
+Run [main.py](main.py) to do preprocess + NER + entity relations + normalization + network graph <br>
+NER is done at [ner.py](ner.py)<br>
+Entities are linked at [entity_connections.py](entity_connections.py) <br>
+[config.py](config.py) stores all configuration parameters such as [SpaCy](https://spacy.io/) pretrained en_core_web_sm model or the [Foundation Trilogy books](https://asimov.fandom.com/wiki/Foundation_trilogy). <br>
+Normalization is done at [normalization.py](normalization.py)
 
 <!--FOUNDATION
 

@@ -1,103 +1,88 @@
-Council,Councilman
-Ebling Mis,Mis
-Foundation,Second Foundation
+Korell,Forell
 Salvor Hardin,Hardin
-Forell,Korell
-Fara,Far Star
-Lee Senter,Lee,Senter
-Chen,Linge Chen
-Asper Argo,Asper
 Han Pritcher,Flan Pritcher
-Semic,Elvett Semic
+Second Foundation,Foundation
+Far Star,Fara
+Mis,Ebling Mis
 Bail Channis,Channis
-Loris
-Palver
-Dad
-Fie
-Callia
-Brodrig
-Pritcher
-Tamper Plateau
-Lieutenant Tinter
-Jaim Twer
-Mamma
-Gorm
-Board
-First Minister
-Avakim
-Poochie
-Mangin
-Grand Master
-Fox
-Personal Capsule
 Elders
-Emperor
+Board
+Tamper Plateau
+Fox
+Bayta
+Brodrig
+Gorov
+Lieutenant Dirige
 Bort
 Sermak
-Iwo
-Wienis
-Pirenne
-Dorwin
-Kalgan
+Mangin
 Advocate
-Stettin
-Lathan Devers
-Commason
+Poochie
+Personal Capsule
 Haut Rodric
-Toran
-Meirus
-Orsy
-Privy Secretary
-Askonian
-Lameth
-Gorov
-Aporat
-Hella
-Mule
-Pherl
-Fran
-Galaxy
-Siwennian
-Ponyets
-Bayta
-Union
 Periphery
-End
-Prince Lefkin
-Pappa
-Jael
-Lieutenant Dirige
-Thallos
-Commissioners
-Yohan Lee
-Chairman
-Magnifico
-Lepold
-Indbur
+Lundin Crast
+Commason
+Council
 Student
+Lathan Devers
+Galaxy
+Supervisor
+Fulham
+Siwennian
+Lepold
+Jerril
+Meirus
+Loris
+Ponyets
+Verisof
+Dorwin
+Magnifico
+Mamma
+Randu
+Callia
+Jael
+Avakim
+Asper
+Arcadia
+Union
+Toran
+Pappa
+Emperor
+Wienis
+Semic
+Palver
+First Minister
+Stettin
+Indbur
+Grand Master
+Iwo
+Chen
+Jaim Twer
+Fran
+End
+Darell
+Mule
+Pritcher
+Fie
+Gaal
 Kleise
 Cleon II
-Supervisor
-Lundin Crast
-Randu
-Verisof
-Arcadia
-Darell
+Pirenne
 Walto
-Jerril
-Trading Representative
-Second Empire,Empire
-Ovall Gri,Ovall
-Riose,Bel Riose
+Dad
+Pherl
+Kalgan
+Pelleas Anthor,Anthor
+Yohan Lee,Lee
 Jorane Sutt,Sutt
-Sutt,Tomaz Sutt
-Yate Fulham,Fulham
+Turbor,Jole Turbor
+Second Empire,Empire
+Ovall,Ovall Gri
+Uncle Homir,Homir
 Hari Seldon,Seldon
 Speaker,First Speaker
+Munn,Homir Munn
+Mallow,Hober Mallow
 Barr,Ducem Barr
-Dornick,Gaal Dornick
-Gaal Dornick,Gaal
-Homir Munn,Homir
-Anthor,Pelleas Anthor
-Turbor,Jole Turbor
-Hober Mallow,Mallow
+Bel Riose,Riose

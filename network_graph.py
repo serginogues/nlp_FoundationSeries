@@ -5,6 +5,8 @@ from bokeh.models import Range1d, Circle, ColumnDataSource, MultiLine, NodesAndL
 from bokeh.plotting import figure, from_networkx
 from bokeh.palettes import Blues8, Spectral11
 from networkx.algorithms import community as commun
+from normalization import normalize_list
+from utils import read_list
 
 
 def preprocess_tuple(tuple_list):
@@ -14,10 +16,12 @@ def preprocess_tuple(tuple_list):
     return new_list
 
 
-def CHARACTER_NETWORK(tuple_list, STAGE=True):
+def CHARACTER_NETWORK():
     """
     https://melaniewalsh.github.io/Intro-Cultural-Analytics/Network-Analysis/Making-Network-Viz-with-Bokeh.html
     """
+    tuple_list = normalize_list(read_list("people_links"))
+    [tuple_list.remove(x) for x in tuple_list if "Galaxy" in x]
     tuple_list = preprocess_tuple(tuple_list)
     df = DataFrame(tuple_list, columns=['Source', 'Target', 'Weight'])
     G = networkx.from_pandas_edgelist(df, source='Source', target='Target', edge_attr='Weight')
@@ -27,6 +31,7 @@ def CHARACTER_NETWORK(tuple_list, STAGE=True):
     # Create empty dictionaries
     modularity_class = {}
     modularity_color = {}
+    modularity_color2 = {}
     # Loop through each community in the network
     for community_number, community in enumerate(communities):
         # For each member of the community, add their community number and a distinct color
@@ -107,17 +112,8 @@ def CHARACTER_NETWORK(tuple_list, STAGE=True):
     plot.renderers.append(labels)
 
     show(plot)
-    # save(plot, filename=f"{title}.html")
+    #save(plot, filename=f"{title}.html")
 
 
-def mapping_character_location():
-    """
-    https://plotly.com/python/scatter-plots-on-maps/
-    https://melaniewalsh.github.io/Intro-Cultural-Analytics/Mapping/Mapping.html#making-interactive-maps
-    https://melaniewalsh.github.io/Intro-Cultural-Analytics/Mapping/Custom-Maps.html
-    https://towardsdatascience.com/i-scraped-more-than-1k-top-machine-learning-github-profiles-and-this-is-what-i-found-1ab4fb0c0474
-    https://towardsdatascience.com/top-6-python-libraries-for-visualization-which-one-to-use-fe43381cd658
-    """
-    print("Not implemented")
-
-
+if __name__ == '__main__':
+    CHARACTER_NETWORK()

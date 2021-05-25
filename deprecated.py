@@ -1,5 +1,7 @@
 from config import *
 
+#text = FoundationTrilogy[:-1200000]
+
 entities = [['Arkady Darell'], ['Hari Seldon'], ['Seldon Plan'], ['Seldon Crisis'], ['Raven Seldon'],
                       ['Seldon Convention'], ['Ducem Barr'], ['Onum Barr'], ['Bayta Darell'], ['Hober Mallow'],
                       ['Trader Mallow'], ['Flober Mallow'], ['Extinguishing Field'], ['Field Bearings'],
