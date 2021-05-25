@@ -181,6 +181,7 @@ def precision_recall_f1_kappa():
     sentences = [sentences2[i] for i in validation_idx]"""
     pred = read_list('validation_predicted')
     trues = read_list('validation_true')
+    trues2 = read_list('validation_true2')
     """for i, sent in enumerate(sents_true_labels):
         for ent in sent:
             # 'start_idx', 'end_idx', 'text', 'type'
@@ -197,24 +198,41 @@ def precision_recall_f1_kappa():
     for s in trues:
         for x in s:
             y_true1.append(x)
+    y_true2 = []
+    for s in trues2:
+        for x in s:
+            y_true2.append(x)
 
-    labels = ['B-PER', 'I-PER', 'B-LOC']
+    labels = ['B-PER', 'I-PER', 'B-LOC', 'I-LOC']
 
     # discard useless tokens
     new_y_true1 = []
+    new_y_true2 = []
     new_y_pred = []
     for i in range(len(y_pred)):
         x = y_pred[i]
         y = y_true1[i]
-        if x == y and x == 'O':
+        z = y_true2[i]
+        if x == y and y == z and z == x and x == 'O':
             pass
         else:
             new_y_true1.append(y)
+            new_y_true2.append(z)
             new_y_pred.append(x)
-
+    print("Annotator 1 vs predicted:")
     print(confusion_matrix(new_y_true1, new_y_pred, labels=labels))
     print(classification_report(new_y_true1, new_y_pred, labels=labels))
     print(cohen_kappa_score(new_y_true1, new_y_pred, labels=labels))
+
+    print("Annotator 2 vs predicted:")
+    print(confusion_matrix(new_y_true2, new_y_pred, labels=labels))
+    print(classification_report(new_y_true2, new_y_pred, labels=labels))
+    print(cohen_kappa_score(new_y_true2, new_y_pred, labels=labels))
+
+    print("Annotator 1 vs Annotator 2:")
+    print(confusion_matrix(new_y_true2, new_y_true1, labels=labels))
+    print(classification_report(new_y_true2, new_y_true1, labels=labels))
+    print(cohen_kappa_score(new_y_true2, new_y_true1, labels=labels))
 
 
 def deprecated_validate():

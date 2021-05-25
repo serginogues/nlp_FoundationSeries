@@ -281,7 +281,7 @@ def read_list(name):
     with open('data_outputs/' + name + '.txt', 'r') as f:
         for line in f:
             item = line[:-1]
-            if name == 'people_links' or name == 'location_links' or name == 'normalized' or name == 'predicted' or name == 'validation_true' or name == 'validation_predicted' or name == 'events':
+            if name == 'people_links' or name == 'location_links' or name == 'normalized' or name == 'predicted' or name == 'validation_true' or name == 'validation_true2' or name == 'validation_predicted' or name == 'events':
                 a = [x for x in item.split(',')]
                 if name == 'people_links':
                     list.append([a[0], a[1], int(a[2])])

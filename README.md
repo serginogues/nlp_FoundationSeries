@@ -24,7 +24,9 @@ Run [main.py](main.py) to do preprocess + NER + entity relations + normalization
 NER is done at [ner.py](ner.py)<br>
 Entities are linked at [entity_connections.py](entity_connections.py) <br>
 [config.py](config.py) stores all configuration parameters such as [SpaCy](https://spacy.io/) pretrained en_core_web_sm model or the [Foundation Trilogy books](https://asimov.fandom.com/wiki/Foundation_trilogy). <br>
-Normalization is done at [normalization.py](normalization.py)
+Normalization is done at [normalization.py](normalization.py) <br>
+Validation results can be obtained running [validation.py](validation.py). <br>
+Intermediate results are stored at [data_outputs](data_outputs) repo as .txt files.
 
 <!--FOUNDATION
 
