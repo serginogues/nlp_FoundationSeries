@@ -4,7 +4,7 @@ from utils import read_list
 from spacy.tokens import Span
 from validation import list_of_values
 
-NUM = 380
+NUM = 105
 
 sentences = [x for i,x in enumerate(get_texts(FoundationTrilogy)) if i==NUM][0]
 predicted = [y for idx,y in enumerate(read_list('predicted')) if idx==NUM][0]
@@ -23,7 +23,7 @@ for sp in tags:
 
 spans = []
 for sp in dict_list:
-    spans.append(Span(doc, int(sp['start_idx']), int(sp['end_idx']+1), label=sp['type']))
+    spans.append(Span(doc, int(sp['start_idx']), int(sp['end_idx']), label=sp['type']))
 
 doc.ents = spans
 colors = {"PER": "linear-gradient(90deg, #aa9cfc, #fc9ce7)", "LOC": "linear-gradient(90deg, #aa9cfc, #fc9ce7)"}

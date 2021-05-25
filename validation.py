@@ -174,9 +174,7 @@ def y_pred(predicted, parsed_list):
 
 def precision_recall_f1_kappa():
     from sklearn.metrics import confusion_matrix, classification_report, cohen_kappa_score
-    from preprocess import get_texts
-    from config import FoundationTrilogy
-    from utils import read_list, write_list
+    from utils import read_list
 
     """validation_idx = read_list('validation_dataset')
     sentences2 = get_texts(FoundationTrilogy)
@@ -190,29 +188,33 @@ def precision_recall_f1_kappa():
             type = ent['type']
             trues[i][start] = type"""
 
+    # make a list of all tokens
     y_pred = []
     for s in pred:
         for x in s:
             y_pred.append(x)
-    y_true = []
+    y_true1 = []
     for s in trues:
         for x in s:
-            y_true.append(x)
+            y_true1.append(x)
+
     labels = ['B-PER', 'I-PER', 'B-LOC']
-    new_y_true = []
+
+    # discard useless tokens
+    new_y_true1 = []
     new_y_pred = []
     for i in range(len(y_pred)):
         x = y_pred[i]
-        y = y_true[i]
+        y = y_true1[i]
         if x == y and x == 'O':
             pass
         else:
-            new_y_true.append(y)
+            new_y_true1.append(y)
             new_y_pred.append(x)
 
-    print(confusion_matrix(new_y_true, new_y_pred, labels=labels))
-    print(classification_report(new_y_true, new_y_pred, labels=labels))
-    print(cohen_kappa_score(new_y_true, new_y_pred, labels=labels))
+    print(confusion_matrix(new_y_true1, new_y_pred, labels=labels))
+    print(classification_report(new_y_true1, new_y_pred, labels=labels))
+    print(cohen_kappa_score(new_y_true1, new_y_pred, labels=labels))
 
 
 def deprecated_validate():
