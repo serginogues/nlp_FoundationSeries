@@ -5,13 +5,6 @@ from config import combinations, tqdm
 from utils import read_list, write_list
 
 
-def alias_resolution(list):
-    if any(list):
-        return list[0]
-    else:
-        return None
-
-
 def family_links(entity_list, connection_list):
     """
     family connections by surname \n

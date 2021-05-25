@@ -11,8 +11,7 @@ A Rule-Based NER model to extract all the key entities and their connections fro
 ### NER on sentence
 Go to [ner_visualize.py](ner_visualize.py) <br>
 NUM parameter is the sentence's index from the book to be processed <br>
-Run <br>
-Go to http://localhost:5000/
+Run and go to http://localhost:5000/
 
 ### Character Network
 Run [network_graph.py](network_graph.py)
@@ -21,7 +20,7 @@ Run [network_graph.py](network_graph.py)
 Run [interactive_map.py](interactive_map.py)
 
 ## Code Guide
-Run [main.py](main.py) to do preprocess + NER + entity relations + normalization + network graph <br>
+Run [main.py](main.py) to do preprocess + NER + entity relations + normalization <br>
 NER is done at [ner.py](ner.py)<br>
 Entities are linked at [entity_connections.py](entity_connections.py) <br>
 [config.py](config.py) stores all configuration parameters such as [SpaCy](https://spacy.io/) pretrained en_core_web_sm model or the [Foundation Trilogy books](https://asimov.fandom.com/wiki/Foundation_trilogy). <br>

@@ -1,88 +1,88 @@
-Korell,Forell
-Salvor Hardin,Hardin
-Han Pritcher,Flan Pritcher
-Second Foundation,Foundation
-Far Star,Fara
+Foundation,Second Foundation
+Hardin,Salvor Hardin
 Mis,Ebling Mis
-Bail Channis,Channis
-Elders
-Board
-Tamper Plateau
-Fox
+Flan Pritcher,Han Pritcher
+Korell,Forell
+Channis,Bail Channis
+Far Star,Fara
 Bayta
-Brodrig
-Gorov
-Lieutenant Dirige
-Bort
-Sermak
-Mangin
-Advocate
-Poochie
-Personal Capsule
-Haut Rodric
-Periphery
-Lundin Crast
-Commason
-Council
-Student
-Lathan Devers
-Galaxy
-Supervisor
-Fulham
-Siwennian
-Lepold
-Jerril
-Meirus
-Loris
-Ponyets
-Verisof
-Dorwin
+Fox
 Magnifico
-Mamma
-Randu
-Callia
-Jael
-Avakim
-Asper
-Arcadia
-Union
-Toran
-Pappa
-Emperor
-Wienis
-Semic
-Palver
-First Minister
-Stettin
-Indbur
-Grand Master
-Iwo
-Chen
-Jaim Twer
-Fran
+Haut Rodric
 End
-Darell
+Meirus
+Brodrig
+Sermak
+Wienis
 Mule
-Pritcher
-Fie
-Gaal
+Supervisor
+Callia
+Gorov
+Verisof
+Ponyets
+Siwennian
+Palver
+Chen
 Kleise
-Cleon II
+Fulham
+Pappa
+Periphery
+Elders
+Randu
+Council
+Avakim
+Bort
+Pritcher
+First Minister
 Pirenne
-Walto
+Indbur
+Darell
+Emperor
+Poochie
+Lieutenant Dirige
+Lepold
+Stettin
+Board
+Cleon II
+Lundin Crast
+Union
+Commason
+Semic
+Grand Master
 Dad
+Tamper Plateau
 Pherl
+Personal Capsule
+Fie
+Galaxy
+Student
+Advocate
+Walto
+Iwo
+Arcadia
+Jerril
+Toran
+Gaal
+Fran
+Lathan Devers
 Kalgan
-Pelleas Anthor,Anthor
-Yohan Lee,Lee
-Jorane Sutt,Sutt
-Turbor,Jole Turbor
-Second Empire,Empire
-Ovall,Ovall Gri
-Uncle Homir,Homir
+Mangin
+Dorwin
+Mamma
+Jaim Twer
+Asper
+Jael
+Loris
 Hari Seldon,Seldon
-Speaker,First Speaker
-Munn,Homir Munn
-Mallow,Hober Mallow
-Barr,Ducem Barr
+Anthor,Pelleas Anthor
+Sutt,Jorane Sutt
 Bel Riose,Riose
+Empire,Second Empire
+Homir,Uncle Homir
+Lee,Yohan Lee
+Speaker,First Speaker
+Hober Mallow,Mallow
+Turbor,Jole Turbor
+Barr,Ducem Barr
+Ovall,Ovall Gri
+Munn,Homir Munn
