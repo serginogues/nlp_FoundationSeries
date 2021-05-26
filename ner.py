@@ -79,7 +79,7 @@ def NER(sentence_list, STAGE=True, VALIDATE=False):
             if tup[0] in location_list:
                 ner_unclassified_loc(predicted, unclassified_sent, tup)
 
-        write_list('predicted', predicted)
+        # write_list('predicted', predicted)
 
     else:
         predicted = read_list('predicted')
@@ -113,7 +113,7 @@ def ner_location(doc, token):
     for match_id, start, end in m:
         span = doc[start: end]
         for word in location_name:
-            if word in str(span) and str(token) in str(span):
+            if word.lower() in str(span) and str(token) in str(span):
                 return True
 
     matcher.add('location', [travel_to_pattern])
