@@ -2,10 +2,7 @@
 
 ### Author: Sergi Nogues Farres
 
-A Rule-Based NER model to extract all the key entities and their connections from the Isaac Asimov's first three Foundation books, collectively known as the Foundation Trilogy.
-
-[Interactive Character Network](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/character_network.html)
-[Foundation Trilogy Wiki](https://asimov.fandom.com/wiki/Foundation_trilogy)
+A Rule-Based NER model to extract all the key entities and their connections from the Isaac Asimov's first three Foundation books, collectively known as the [Foundation Trilogy](https://asimov.fandom.com/wiki/Foundation_trilogy).
 
 ## Interactive Renders Guide
 ### NER on sentence

@@ -4,7 +4,7 @@ from utils import read_list
 from spacy.tokens import Span
 from validation import list_of_values
 
-NUM = 105
+NUM = 577
 
 sentences = [x for i,x in enumerate(get_texts(FoundationTrilogy)) if i==NUM][0]
 predicted = [y for idx,y in enumerate(read_list('predicted')) if idx==NUM][0]
