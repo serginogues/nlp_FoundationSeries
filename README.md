@@ -7,7 +7,7 @@ A Rule-Based NER model to extract all the key entities and their connections fro
 ## Interactive Renders Guide
 ### NER on sentence
 Go to [ner_visualize.py](ner_visualize.py) <br>
-NUM parameter is the sentence's index from the book to be processed <br>
+In the 'text' parameter you can specify the text containing the sentence from the book to be processed. It does not need to be the exact complete sentence but a span in it. <br>
 Run and go to http://localhost:5000/
 
 ### Character Network

@@ -4,13 +4,15 @@ from utils import read_list
 from spacy.tokens import Span
 from validation import list_of_values
 
-NUM = 577
+text = "When Hardin denied owning the Journal"
 
-sentences = [x for i,x in enumerate(get_texts(FoundationTrilogy)) if i==NUM][0]
-predicted = [y for idx,y in enumerate(read_list('predicted')) if idx==NUM][0]
-print(sentences)
+sentences = [(i,x) for i,x in enumerate(get_texts(FoundationTrilogy)) if text in x][0]
+index = sentences[0]
+sentence = sentences[1]
+predicted = [y for idx,y in enumerate(read_list('predicted')) if idx==index][0]
+print(sentence)
 nlp = spacy.load("en_core_web_sm", disable=['ner'])
-doc = nlp(sentences)
+doc = nlp(sentence)
 tags = list_of_values(predicted, doc)
 
 dict_list = []
