@@ -93,9 +93,9 @@ def LINK_ENTITIES(parsed_list, predicted, STAGE=True):
         # POST PROCESS
         people_links = sorted([x for x in people_links if x[2] > 4], key=lambda x: x[2], reverse=True)
         events = [x[0] for x in events]
-        write_list('people_links', people_links)
-        write_list('location_links', location_links)
-        write_list('events', events)
+        # write_list('people_links', people_links)
+        # write_list('location_links', location_links)
+        # write_list('events', events)
 
     else:
         people_links = read_list('people_links')

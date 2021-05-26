@@ -6,4 +6,6 @@ neuralcoref
 itertools
 networkx
 bokeh
-
+scikit-learn
+py_stringmatching
+plotly

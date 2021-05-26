@@ -8,6 +8,7 @@ from config import combinations
 from utils import is_name, write_list, read_list
 import collections
 import math
+import py_stringmatching as sm
 
 
 def normalize_list(people_links, STAGE=True):
@@ -23,7 +24,7 @@ def normalize_list(people_links, STAGE=True):
                 normalized.append([a[1][0], b[1][0]])
                 normalized[-1] = list(set(normalized[-1]))
 
-        write_list('normalized', normalized)
+        # write_list('normalized', normalized)
 
     else:
         normalized = read_list('normalized')
