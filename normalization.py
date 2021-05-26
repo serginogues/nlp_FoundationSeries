@@ -8,7 +8,6 @@ from config import combinations
 from utils import is_name, write_list, read_list
 import collections
 import math
-import py_stringmatching as sm
 
 
 def normalize_list(people_links, STAGE=True):
