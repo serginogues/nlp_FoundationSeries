@@ -2,9 +2,10 @@
 
 ### Author: Sergi Nogues Farres
 
-A Rule-Based NER model to extract all the key entities and their connections from the Isaac Asimov's first three Foundation books, collectively known as the [Foundation Trilogy](https://asimov.fandom.com/wiki/Foundation_trilogy).
+More than 70 characters and 15 planets interact in Isaac Asimov’s first three Foundation books, collectively known as the [Foundation Trilogy](https://asimov.fandom.com/wiki/Foundation_trilogy). To extract, classify, and connect all of these entities, a rules-based Named Entity Recognition
+model is proposed.
 
-![alt text](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/networkGephi.png?raw=true)
+See [here](Text_Mining_Foundation_trilogy.pdf) a detailed analysis of the tool.
 
 ## Interactive Renders Guide
 ### NER on sentence
@@ -26,6 +27,8 @@ Entities are linked at [entity_connections.py](entity_connections.py) <br>
 Normalization is done at [normalization.py](normalization.py) <br>
 Validation results can be obtained running [validation.py](validation.py). <br>
 Intermediate results are stored at [data_outputs](data_outputs) repo as .txt files.
+
+![alt text](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/networkGephi.png?raw=true)
 
 <!--FOUNDATION
 
