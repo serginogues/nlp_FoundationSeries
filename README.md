@@ -4,6 +4,8 @@
 
 A Rule-Based NER model to extract all the key entities and their connections from the Isaac Asimov's first three Foundation books, collectively known as the [Foundation Trilogy](https://asimov.fandom.com/wiki/Foundation_trilogy).
 
+![alt text](https://github.com/serginogues/nlp_FoundationSeries/blob/master/renders/networkGephi.png?raw=true)
+
 ## Interactive Renders Guide
 ### NER on sentence
 Go to [ner_visualize.py](ner_visualize.py) <br>
